@@ -238,30 +238,44 @@ like very much this" → I like this very much; "a person very intelligent"
 
 ## Sources
 
-Teaching lists: onlineteachersuk.com (51 false friends; 40 most common
-mistakes), reallifeglobal.com (17 dangerous cognates), londonschool.com
-("Brazinglish" parts 1–2), italki (7 common mistakes; 5 errors by
-Portuguese speakers), heatherhughes.co.uk (advanced-level mistakes),
-brazilusatranslations.com (802 verified false-friend pairs),
-learn-portuguese.org, portuguesepedia.com, practiceportuguese.com,
-blogs.transparent.com/portuguese, aje.com (editing tip on Portuguese
-false cognates), speakingbrazilian.com, migaku.com, languagesnaps.com,
-ai.glossika.com, internationalschooltutors.de (Portuguese speakers'
-English), elon.io (false friends; capitalization), gymglish.com.
+### ESL teaching lists
 
-Academic: SciELO "top ten tips" for Brazilian authors writing in English
-(https://www.scielo.br/j/clin/a/zcs47Q4bsW6yk7D86XQCVss/?lang=en); PMC
-"concise writing for Portuguese speakers"
-(https://pmc.ncbi.nlm.nih.gov/articles/PMC5175292/); Cambridge ELT
-"Common English Errors – Portuguese" PDF
-(https://www.cambridge.org/elt/blog/wp-content/uploads/2020/03/Portuguese.pdf);
-Swan & Smith, *Learner English* (Portuguese chapter); Creelman, *The Top 85
-Mistakes Brazilians Make in English*.
+- [Online Teachers UK — 51 English–Portuguese false friends](https://onlineteachersuk.com/false-friends-english-portuguese/)
+- [Online Teachers UK — 40 most common mistakes Portuguese speakers make](https://onlineteachersuk.com/40-most-common-mistakes-english-portuguese/)
+- [RealLife English — the 17 most dangerous Brazilian false-cognate errors](https://reallifeglobal.com/the-17-most-dangerous-brazilian-false-cognate-errors-in-english/)
+- [London School — "Brazinglish", part 1](https://www.londonschool.com/blog/from-brazilian-to-english-or-how-not-to-speak-brazinglish/)
+- [London School — "Brazinglish", part 2](https://www.londonschool.com/blog/from-brazinglish-to-english-part-2/)
+- [italki — 7 common mistakes Brazilians make in English](https://www.italki.com/en/article/1073/7-common-mistakes-that-brazilians-make-in-english)
+- [italki — 5 common English errors made by Portuguese speakers](https://www.italki.com/en/article/1228/5-common-english-errors-made-by-portuguese-speakers)
+- [Heather Hughes — top 10 mistakes Portuguese speakers make in advanced English](https://heatherhughes.co.uk/top-10-mistakes-that-portuguese-speakers-make-in-advanced-english/)
+- [Brazil USA Translations — 802 verified Portuguese–English false-friend pairs](https://brazilusatranslations.com/tools/portuguese-english-false-friends/)
+- [Learn Portuguese — false friends Portuguese/English](https://learn-portuguese.org/false-friends-portuguese-english)
+- [Portuguesepedia — English–Portuguese false friends](https://portuguesepedia.com/english-portuguese-false-friends/)
+- [Practice Portuguese — false cognates](https://www.practiceportuguese.com/learning-notes/false-cognates/)
+- [Transparent Language — false friends in Portuguese and English](https://blogs.transparent.com/portuguese/false-friends-in-portuguese-and-english/)
+- [AJE — editing tip: Portuguese–English false cognates](https://www.aje.com/arc/editing-tip-portuguese-english-false-cognates)
+- [Speaking Brazilian — false friends Portuguese/English](https://www.speakingbrazilian.com/false-friends-portuguese-english/)
+- [Migaku — Portuguese false friends](https://migaku.com/blog/language-fun/portuguese-false-friends)
+- [Language Snaps — false friends for Brazilian Portuguese speakers](https://languagesnaps.com/english/learning-tips-esl/false-friends-brazilian-portuguese/)
+- [Glossika — false friends between Portuguese and English](https://ai.glossika.com/blog/false-friends-between-portuguese-and-english)
+- [International School Tutors — English for Portuguese speakers](https://www.internationalschooltutors.de/English/advice/language/differences/portuguese.html)
+- [elon.io — false friends with English](https://elon.io/grammar/portuguese-brazil/errors/false-friends-english)
+- [elon.io — capitalization rules](https://elon.io/grammar/portuguese-brazil/spelling/capitalization-rules)
+- [Gymglish — 10 grammar mistakes Portuguese speakers make in English](https://blog.gymglish.com/2021/06/29/10-grammar-mistakes-english-portuguese-make)
 
-Machine-readable prior art: LanguageTool `false-friends.xml` (LGPL; 236
-en→pt entries — consulted for coverage, not copied), vale-cli/Harper (a
-Vale port of Harper's rules), Vale package library. No existing Vale style
-for Portuguese-speaker errors was found.
+### Academic and reference
 
-Full URL list: see the research report summary in `06-roadmap.md`
-("Research log").
+- [SciELO — top ten tips for Brazilian authors writing in English](https://www.scielo.br/j/clin/a/zcs47Q4bsW6yk7D86XQCVss/?lang=en)
+- [PMC — concise writing in English for Portuguese speakers](https://pmc.ncbi.nlm.nih.gov/articles/PMC5175292/)
+- [Cambridge ELT — "Common English Errors: Portuguese" (PDF)](https://www.cambridge.org/elt/blog/wp-content/uploads/2020/03/Portuguese.pdf)
+- Swan & Smith, *Learner English* (Portuguese chapter). Cambridge University Press.
+- Creelman, *The Top 85 Mistakes Brazilians Make in English*.
+
+### Machine-readable prior art
+
+- [LanguageTool `false-friends.xml`](https://github.com/languagetool-org/languagetool/blob/master/languagetool-core/src/main/resources/org/languagetool/rules/false-friends.xml) — LGPL; 236 en→pt entries. Consulted for coverage, not copied.
+- [vale-cli/Harper](https://github.com/vale-cli/Harper) — a Vale port of Harper's rules.
+- [Vale package library](https://github.com/vale-cli/packages) — no existing style for Portuguese-speaker errors was found.
+
+The same URLs, plus the Harper and Vale documentation pages, are listed in
+the research log of `06-roadmap.md`.
