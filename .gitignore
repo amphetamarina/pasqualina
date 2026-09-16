@@ -1,0 +1,9 @@
+node_modules/
+vendor/
+.vercel/
+.direnv/
+result
+*.log
+.DS_Store
+# Vale downloads packages here if `vale sync` is ever used
+styles/.vale-config/

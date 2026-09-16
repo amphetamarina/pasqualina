@@ -1,0 +1,72 @@
+# Latinate words that sound normal in Portuguese but stiff or wrong in
+# English, plus Portuguese-formal openers. Suggestions only.
+# Catalogue with sources: docs/03-brazilian-english-mistakes.md
+extends: substitution
+message: "Consider '%s' instead of '%s' — the Latinate word reads as stiff or off in English."
+level: suggestion
+ignorecase: true
+action:
+  name: replace
+swap:
+  utilize: use
+  utilizes: uses
+  utilized: used
+  utilizing: using
+  utilization: use
+  utilise: use
+  utilised: used
+  utilising: using
+  utilisation: use
+  necessitate: need
+  necessitates: needs
+  necessitated: needed
+  '(diverse|diverses) (things|people|times|places|options|reasons|ways|forms|types|kinds|problems|questions|examples|areas|countries|cities|companies|projects|tasks|activities|situations|cases|aspects|factors|elements|items|points|topics|subjects|studies|authors|researchers|experts|professionals|teachers|students|clients|customers|users|products|services|features|tools|methods|techniques|approaches|strategies|solutions|possibilities|opportunities|alternatives|models|versions|languages|files|pages|documents|articles|papers|books|sources|references|links|sites|websites|platforms|systems|devices|machines|colors|colours|sizes|shapes|styles|formats|levels|stages|phases|steps|parts|pieces|sections|chapters|episodes|years|months|weeks|days|hours|moments|occasions|events|meetings|classes|courses|lessons|exercises|tests|exams|games|sports|teams)': 'several $2 ("diverse" is not "diversos")'
+  '(diverse|diverses) (players|groups|families|friends|colleagues|partners|members|participants|candidates|employees|workers|managers|leaders|organizations|organisations|institutions|universities|schools|hospitals|banks|stores|shops|restaurants|hotels|rooms|buildings|houses|regions|states|cultures|traditions|habits|attitudes|opinions|ideas|theories|concepts|definitions|meanings|words|terms|names|titles|categories|lists|tables|charts|graphs|figures|images|photos|pictures|videos|songs|movies|films|shows|programs|channels|apps|applications)': 'several $2 ("diverse" is not "diversos")'
+  '(it is|it''s) (important|worth|necessary|relevant|interesting|essential|fundamental|crucial|vital|imperative|noteworthy) to (highlight|emphasize|emphasise|stress|underline|mention|note|point out|remember|remark|observe|say|state|notice|underscore|reinforce|reiterate|ratify|register|reflect) that': 'Note that / Notably, ... (or just say it)'
+  'in the sense (of|that)': 'in that / meaning that (or drop)'
+  'in a general way': 'generally / in general'
+  'in a certain way': 'in a way / somewhat'
+  'in the case (of|that)': 'if / for'
+  'through of': 'through'
+  'by means of': 'by / with / using'
+  'in relation to': 'about / regarding'
+  'with the objective of': 'to'
+  'with the purpose of': 'to'
+  'in order to': 'to'
+  'the majority of': 'most'
+  'has as objective': 'aims to'
+  'has as goal': 'aims to'
+  'have as objective': 'aim to'
+  'have as goal': 'aim to'
+  'to make possible': 'to enable / to allow'
+  'make the verification': 'verify / check'
+  'make an analysis': 'analyze'
+  'make the analysis': 'analyze'
+  'make a comparison': 'compare'
+  'make a presentation': 'present'
+  'make a research': 'do research / research'
+  'make researches': 'do research'
+  'give information': 'inform / tell'
+  'give an explanation': 'explain'
+  'give a description': 'describe'
+  'realize interviews': 'interview'
+  'conduct an examination': 'examine'
+  'proceed with the': 'start the / do the'
+  'in this way,?': 'so / this way'
+  'in that way,?': 'so / that way'
+  'in this sense,?': 'so / in that light'
+  'namely,?': '(drop, or "that is,")'
+  'that is to say': 'that is / meaning'
+  'at the moment,? it is not possible': 'we currently cannot'
+  'i inform you that': 'note that / just to let you know,'
+  'i come to inform': 'I am writing to tell'
+  'we come to inform': 'we are writing to tell'
+  'in attention to': 'regarding / in response to'
+  'in the sequence,?': 'next / then'
+  'in sequence,?': 'next / then'
+  'in the same way,?': 'likewise / similarly'
+  'in a first moment': 'at first / initially'
+  'in a second moment': 'later / afterwards'
+  'in a first step': 'first'
+  'in a second step': 'then'
+  'as (well|much) as possible': 'as $1 as possible'

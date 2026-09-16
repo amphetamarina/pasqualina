@@ -1,0 +1,65 @@
+# Portuguese does not capitalize days, months, languages or nationalities;
+# English does. Case-sensitive on purpose. Harper flags these as spelling
+# errors with a confusing message, so this rule names the actual issue.
+# Catalogue with sources: docs/03-brazilian-english-mistakes.md
+extends: existence
+message: "Capitalize '%s': English capitalizes days, months, languages, nationalities and religions (Portuguese does not)."
+level: warning
+ignorecase: false
+tokens:
+  - monday
+  - tuesday
+  - wednesday
+  - thursday
+  - friday
+  - saturday
+  - sunday
+  - january
+  - february
+  - march(?= \d)
+  - april
+  - june
+  - july
+  - august(?= \d)
+  - september
+  - october
+  - november
+  - december
+  - english
+  - portuguese
+  - spanish
+  - french
+  - german
+  - italian
+  - japanese
+  - chinese
+  - korean
+  - russian
+  - arabic
+  - brazilian
+  - brazilians
+  - american
+  - americans
+  - british
+  - european
+  - europeans
+  - latin american
+  - argentinian
+  - argentine
+  - mexican
+  - canadian
+  - australian
+  - african
+  - asian
+  - indian
+  - catholic
+  - christian
+  - jewish
+  - muslim
+  - buddhist
+  - protestant
+  - evangelical
+  - brazil
+  - portugal
+  - são paulo
+  - rio de janeiro

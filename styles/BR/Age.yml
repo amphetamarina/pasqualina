@@ -1,0 +1,7 @@
+extends: existence
+message: "Age is expressed with 'be' in English: 'I am 30 years old', not 'I have 30 years' (ter X anos)."
+level: error
+ignorecase: true
+nonword: true
+tokens:
+  - '\b(?:I|you|we|they|he|she|it|\w+)\s+(?:have|has|had)\s+(?:\d+|[a-z]+)\s+years?(?:\s+old)?\b'

@@ -1,0 +1,30 @@
+# Sentence-level calques: dropped subjects (Portuguese drops "it"),
+# existential "have" (tem/existe), "the people is", "I born", article
+# overuse with abstract nouns, "the most of". Existence rule: the message
+# says what to do; there is no single replacement.
+# Catalogue with sources: docs/03-brazilian-english-mistakes.md
+extends: existence
+message: "'%s' — Portuguese syntax leaking in. Check: subject (it/there), 'there is/are' for existence, 'people are', 'I was born', no article before abstract nouns, 'most of'."
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  # "Is raining." "Is important to…" — sentence-initial verb with no subject
+  - '(?m)(?:^|(?<=[.!?]\s))(?:Is|Was)\s+(?:raining|snowing|sunny|cloudy|windy|hot|cold|late|early|important|necessary|possible|impossible|true|false|difficult|hard|easy|good|bad|better|worse|best|worst|normal|common|rare|nice|great|fine|ok|okay|obvious|clear|interesting|boring|dangerous|safe|expensive|cheap|free|available|ready|done|over|time|a pity|a shame|a good idea|a bad idea|the first time|the last time|the same|very|so|really|quite|too|not|always|never|because)\b'
+  # "because is important", "that is raining" (dropped "it" after a conjunction)
+  - '\b(?:because|but|and|so|that|if|when|although|though|since|as)\s+is\s+(?:raining|snowing|important|necessary|possible|impossible|true|difficult|hard|easy|better|worse|normal|common|obvious|clear|interesting|dangerous|expensive|cheap|late|early|time to)\b'
+  # existential "have": "Have many people", "In Brazil have", "there have"
+  - '(?m)(?:^|(?<=[.!?]\s))(?:Have|Has|Had)\s+(?:many|a lot of|lots of|some|several|few|a few|no|two|three|four|five|ten|hundreds of|thousands of|too many|so many|more|less|fewer|only|just|about|around|approximately|nearly|almost)\b'
+  - '\b(?:in|at|on|near|around|inside|outside|here|there|where)\s+(?:\w+\s+){0,3}?(?:have|has|had)\s+(?:many|a lot of|lots of|some|several|few|a few|no|two|three|four|five|ten|hundreds of|thousands of|too many|so many|more|less|fewer|only|just|about|around|approximately|nearly|almost)\s+(?:people|persons|things|places|restaurants|bars|shops|stores|options|problems|cars|houses|buildings|students|companies|jobs|opportunities|rooms|beaches|parks|schools|hospitals|churches|hotels|banks|trees|animals|dogs|cats|birds|children|kids|men|women|tourists|foreigners|immigrants|workers|employees|customers|clients|users|players|teams|books|movies|songs|games|apps|bugs|errors|issues|tasks|steps|ways|reasons|examples|questions|answers|ideas|rules|laws|taxes|fees|costs|prices|choices|alternatives|differences|similarities|advantages|disadvantages|benefits|risks|dangers|chances|possibilities|resources|tools|features|functions|methods|techniques|strategies|solutions|results|effects|consequences|changes|events|parties|festivals|concerts|shows|meetings|classes|courses|lessons|exams|tests|projects|activities|exercises)\b'
+  - '\b(?:there|here)\s+(?:have|has|had)\s+(?:many|a lot of|lots of|some|several|few|a few|no|two|three|four|five|ten|too many|so many|more|less|fewer|only|a|an|one)\b'
+  - '\b(?:exist|exists|existed)\s+(?:many|a lot of|lots of|some|several|few|a few|no|two|three|four|five|ten|too many|so many|more|less|fewer|only|a|an|one|people|things|places|others|other)\b'
+  # "the people is", "people is"
+  - '\b(?:the\s+)?people\s+(?:is|was|has|does|isn''t|wasn''t|hasn''t|doesn''t|likes|wants|needs|thinks|says|goes|lives|works|knows|believes|feels|loves|hates)\b'
+  - '\bthe people\s+(?:are|were|have|do|like|want|need|think|say|go|live|work|know|believe|feel|love|hate)\b'
+  # "I born in 1990"
+  - '\b(?:I|you|we|they|he|she|it|who)\s+born\b'
+  # "the life is", "the love is" — article before an abstract mass noun used generically
+  - '(?m)(?:^|(?<=[.!?,]\s))(?:The|the)\s+(?:life|love|happiness|freedom|nature|society|history|music|money|time|death|art|science|technology|education|health|peace|war|justice|truth|beauty|knowledge|power|success|failure|work|sport|sports|food|family|friendship|religion|politics|culture|language|literature|philosophy|humanity|mankind|people|children|women|men|animals|dogs|cats|cars|computers|books|movies|television|internet)\s+(?:is|are|was|were|has|have|can|could|will|would|should|must|may|might|makes|gives|brings|takes|teaches|helps|changes|means|matters|seems|becomes|remains|requires|needs|depends|allows|goes|comes|moves|works|plays|counts)\s+(?!\w+\s+of\b)'
+  # "the most of the students"
+  - '\bthe most of (?:the|my|your|his|her|their|our|these|those|them|us|it|people|time|us)\b'
+  # "how many years do you have" is in Collocations; "I have X years" in Age.

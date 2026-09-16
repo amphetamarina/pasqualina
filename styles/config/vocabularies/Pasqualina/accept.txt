@@ -1,0 +1,5 @@
+# One term per line; case-sensitive unless the line is a regex.
+# Words listed here are never flagged by Vale.Terms/Spelling.
+Pasqualina
+Harper
+Vale

@@ -1,0 +1,100 @@
+# Bare false friends: real English words that a Brazilian often uses with
+# the Portuguese meaning. Only words that are uncommon enough in everyday
+# writing that a flag is cheap, or whose misuse is notorious. They are
+# legitimate English, so this is a suggestion — keep the word if you meant
+# the English sense. Everyday words (data, record, support, office, turn…)
+# are deliberately absent; their pattern-anchored cases live in
+# FalseFriends.yml. Catalogue with sources: docs/03-brazilian-english-mistakes.md
+extends: substitution
+message: "If you meant the Portuguese look-alike, English needs '%s'; '%s' means something else. Ignore if you meant the English sense."
+level: suggestion
+ignorecase: true
+action:
+  name: replace
+swap:
+  pretend: intend
+  pretends: intends
+  pretended: intended
+  pretending: intending
+  eventually: occasionally / possibly
+  exquisite: weird
+  ingenuity: naivety
+  ingenuous: naive
+  preservative: condom
+  preservatives: condoms
+  casualty: coincidence
+  deception: disappointment
+  deceptions: disappointments
+  engross: thicken / fatten
+  genial: brilliant
+  procure: look for
+  spectacles: show
+  oration: prayer
+  intoxication: food poisoning
+  gratuity: free of charge
+  propaganda: advertising
+  prejudice: loss / harm
+  costume: habit / custom
+  costumes: habits / customs
+  sympathetic: nice / friendly
+  comprehensive: understanding
+  injury: insult
+  legend: subtitle / caption
+  legends: subtitles / captions
+  mascara: mask
+  cigar: cigarette
+  cigars: cigarettes
+  collar: necklace
+  diversion: fun
+  grip: flu
+  silicon: silicone
+  parcel: installment
+  parcels: installments
+  stranger: foreigner
+  strangers: foreigners
+  scholar: pupil / school
+  mayor: bigger / major
+  vicious: addicted
+  refrigerant: soft drink
+  convict: convinced
+  tenant: lieutenant
+  coroner: colonel
+  fiscal: inspector
+  hazard: bad luck
+  moisture: mixture
+  balcony: counter
+  cafeteria: coffee shop
+  idiom: language
+  idioms: languages
+  journal: newspaper
+  lace: bow / ribbon
+  luxury: lust
+  apology: defence / praise
+  anthem: antenna
+  apparel: device / appliance
+  alumnus: student
+  amass: crush / knead
+  constipated: having a cold
+  conceit: concept
+  beef: steak
+  brave: angry
+  cargo: position / job
+  chef: boss
+  patron: boss
+  disgrace: misfortune
+  dent: tooth
+  hospice: asylum
+  physician: physicist
+  recipient: container
+  retire: withdraw
+  terrific: terrible
+  ultimately: lately
+  assist: attend / watch
+  fabric: factory
+  resume: summary
+  sensible: sensitive
+  pasta: folder
+  lecture: reading
+  excited: (careful — sounds sexual) thrilled / eager
+  notorious: well-known
+  motel: hotel (a motel implies a love hotel in Brazil)

@@ -1,0 +1,42 @@
+# Nouns that are countable in Portuguese but uncountable in English.
+# Harper 2.3.0 flags most of these as spelling errors ("in formations"),
+# which is misleading; this rule says what is actually wrong.
+# Catalogue with sources: docs/03-brazilian-english-mistakes.md
+extends: substitution
+message: "Use '%s': '%s' is uncountable in English (no plural, no 'a/an'). Use 'some', 'a piece of', or the singular."
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  informations: information
+  advices: advice
+  furnitures: furniture
+  homeworks: homework
+  equipments: equipment
+  feedbacks: feedback
+  softwares: software
+  hardwares: hardware
+  knowledges: knowledge
+  luggages: luggage
+  baggages: baggage
+  musics: songs / music
+  breads: bread / loaves of bread
+  staffs: staff
+  evidences: evidence
+  progresses: progress
+  behaviours: behaviour
+  behaviors: behavior
+  trainings: training
+  moneys: money
+  monies: money
+  contents: content
+  literatures: literature
+  vocabularies: vocabulary
+  travels: trips
+  'an? (information|advice|furniture|homework|equipment|feedback|software|hardware|knowledge|luggage|baggage|news|evidence|progress|research|training|money|bread|traffic|weather|work|luck|fun|help|stuff|music|rice|milk|water|sugar|coffee|tea|paper|damage|accommodation|permission|proof|jewelry|jewellery|garbage|trash|rubbish|clothing|machinery|scenery|slang|spam|grammar|vocabulary|literature|poetry|housework|mail|leisure|laughter|applause|advertising|assistance|attendance|behaviour|behavior|cash|chaos|childhood|courage|dirt|dust|education|employment|energy|entertainment)': 'some $1 / a piece of $1'
+  'an? (faith|fame|freedom|fuel|gossip|happiness|harm|health|heat|honesty|hospitality|humor|humour|hunger|ignorance|importance|inflation|insurance|intelligence|justice|labour|labor|land|literacy|logic|love|loyalty|magic|management|nature|noise|nonsense|oil|oxygen|patience|peace|pollution|poverty|pride|privacy|publicity|racism|rain|reliability|respect|safety|salt|sand|satisfaction|security|silence|smoke|snow|steam|stress|sunshine|thunder|tolerance|transportation|trust|understanding|unemployment|usage|violence|warmth|wealth|welfare|wisdom|wood|wool|youth)': 'some $1 / a piece of $1'
+  '(the news|news) (are|were|have been|were being|are being)': 'the news is (news is singular)'
+  '(many|several|few|a few|two|three|four|five|ten|hundreds of|thousands of|a number of|numerous|various|multiple|these|those) (information|advice|furniture|homework|equipment|feedback|software|hardware|knowledge|luggage|baggage|news|evidence|progress|research|training|money|bread|traffic|weather|work|luck|fun|help|stuff|music|rice|milk|water|sugar|coffee|tea|paper|damage|accommodation|permission|proof|jewelry|jewellery|garbage|trash|rubbish|clothing|machinery|scenery|slang|spam|grammar|vocabulary|literature|poetry|housework|mail|leisure|laughter|applause|advertising|assistance|attendance|behaviour|behavior|cash|chaos|childhood|courage|dirt|dust|education|employment|energy|entertainment)': 'much / a lot of / pieces of $2'
+  '(many|several|few|a few|two|three|four|five|ten|hundreds of|thousands of|a number of|numerous|various|multiple|these|those) (faith|fame|freedom|fuel|gossip|happiness|harm|health|heat|honesty|hospitality|humor|humour|hunger|ignorance|importance|inflation|insurance|intelligence|justice|labour|labor|land|literacy|logic|love|loyalty|magic|management|nature|noise|nonsense|oil|oxygen|patience|peace|pollution|poverty|pride|privacy|publicity|racism|rain|reliability|respect|safety|salt|sand|satisfaction|security|silence|smoke|snow|steam|stress|sunshine|thunder|tolerance|transportation|trust|understanding|unemployment|usage|violence|warmth|wealth|welfare|wisdom|wood|wool|youth)': 'much / a lot of / pieces of $2'
+  '(persons)': 'people'

@@ -1,0 +1,25 @@
+# Portuguese honorifics and letter openers that get copied into English.
+# Catalogue with sources: docs/03-brazilian-english-mistakes.md
+extends: substitution
+message: "Use '%s' instead of '%s' in English."
+level: warning
+ignorecase: false
+nonword: true
+action:
+  name: replace
+swap:
+  'Sr\. ': 'Mr. '
+  'Sra\. ': 'Mrs./Ms. '
+  'Srta\. ': 'Ms. '
+  'Dra\. ': 'Dr. '
+  'Prof\. ': 'Prof. '
+  'Profa\. ': 'Prof. '
+  'Dear Sirs,?': 'Dear Sir or Madam, / Hello,'
+  'Dear Mr\. or Mrs\.': 'Dear Sir or Madam'
+  'Prezados,?': 'Dear all, / Hello everyone,'
+  'Atenciosamente,?': 'Best regards, / Kind regards,'
+  'Att\.,?': 'Best regards,'
+  'Abraços?,?': 'Cheers, / Best,'
+  'Obrigad[ao],?': 'Thank you,'
+  '\bkkk+\b': 'haha / lol'
+  '\brs\b': 'haha'

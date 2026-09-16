@@ -1,0 +1,4 @@
+We utilize diverse tools.
+It is important to highlight that the test failed.
+We did it with the objective of saving time.
+In a first moment we tried Vale.

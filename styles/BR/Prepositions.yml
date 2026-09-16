@@ -1,0 +1,28 @@
+# Prepositions copied from Portuguese. Harper 2.3.0 covers "arrive to",
+# "discuss about", "since + duration", "good in" and a few others (ArriveTo,
+# Discuss, SinceDuration, GoodAt, DespiteOf…), so they are not repeated here.
+# Catalogue with sources: docs/03-brazilian-english-mistakes.md
+extends: substitution
+message: "Use '%s' rather than '%s' (the Portuguese preposition does not carry over)."
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  '(depend|depends|depended|depending) (of|from|in)': '$1 on'
+  '(it''s|it is|that''s|that is|this is|everything is|all is|which is|it was|that was|this was) depend': '$1 depends (it depends on…)'
+  '(married|marry|marries|marrying|engaged) with': '$1 to'
+  '(enter|enters|entered|entering) in (the|a|an|this|that|my|your|his|her|their|our|some|any|each|every|one|another)': '$1 $2'
+  '(answered|answering|please answer|to answer|can answer|could answer|will answer|would answer|must answer|should answer|need to answer|have to answer|has to answer|had to answer|didn''t answer|did not answer|don''t answer|do not answer|doesn''t answer|does not answer|never answer|always answer) to (the|a|an|this|that|my|your|his|her|their|our|these|those|all the|every|each|some|any) (question|questions|email|emails|e-mail|e-mails|message|messages|letter|letters|comment|comments|request|requests|survey|form|complaint|complaints|inquiry|query|queries|ticket|tickets|post|posts|review|reviews|questionnaire|poll|invitation|invitations)': '$1 $2 $3'
+  '(in|at) the (internet|tv|television|radio)': 'on the $2'
+  '(in|at) (monday|tuesday|wednesday|thursday|friday|saturday|sunday|mondays|tuesdays|wednesdays|thursdays|fridays|saturdays|sundays|weekdays|weekends|the weekend|the weekends|christmas day|new year''s day|my birthday|your birthday|his birthday|her birthday|that day|this day|the first day|the last day|the next day|the following day|the same day|a rainy day|a sunny day|a cold day|a hot day|a beautiful day|the morning of|the afternoon of|the evening of|the night of)': 'on $2'
+  '(in|on|at) the next (week|month|year|semester|quarter|decade|weekend|monday|tuesday|wednesday|thursday|friday|saturday|sunday|summer|winter|spring|autumn|fall|holidays|vacation|vacations|term|sprint|release|iteration|cycle)': 'next $2 (no preposition)'
+  '(think|thinks|thought|thinking) (in|on) (you|him|her|them|me|us|someone|somebody|something|everything|nothing|anything|everyone|everybody|anyone|anybody|nobody|no one|the future|the past|the problem|the answer|the solution|the question|the idea|the plan|the project|the exam|the test|the meeting|the trip|the party|the weekend|the holidays|the vacation)': '$1 about $3'
+  '(dream|dreams|dreamed|dreamt|dreaming) with': '$1 about/of'
+  '(different|differently|differ|differs|differed|differing|distinct) of': '$1 from'
+  '(go|goes|went|going|come|comes|came|coming|arrive|arrives|arrived|arriving|get|gets|got|getting|return|returns|returned|returning|be back|back|straight|directly|walk|walks|walked|walking|drive|drives|drove|driving|run|runs|ran|running|head|heads|headed|heading) (to|at|in|into) home': '$1 home'
+  'in this moment': 'right now / at the moment'
+  '(in|at) the (moment|second|instant) (that|when|in which)': 'the $2 $3'
+  'in the (end|beginning|middle) of the (day|night|morning|afternoon|evening|week|month|year|semester|season|game|match|movie|film|book|story|meeting|class|lesson|lecture|course|project|trip|road|street|line|list|page|paragraph|sentence|text|chapter|episode|show|series|process|period|term|shift|session|call|conversation|interview|presentation|speech|talk|ceremony|party|event|century|decade|century|life|career|contract|trial|test|exam|report|document|file|email|message|letter|essay|article|paper|thesis|novel|song|video|program|programme|schedule|agenda|plan|route|path|tunnel|bridge|corridor|hall|hallway|aisle|row|queue)': 'at the $1 of the $2'
+  '(possibility|possibilities|intention|intentions|habit|habits|risk|risks|fear|fears|advantage|advantages|disadvantage|disadvantages|importance|necessity|purpose|cost|costs|difficulty|difficulties|experience|experiences|pleasure|honor|honour|privilege|art|business|point|question|problem|idea|ideas|hope|hopes|process|way|ways|method|methods|means|manner) to (do|make|be|have|go|come|see|get|take|give|use|find|work|study|learn|teach|live|travel|buy|sell|pay|win|lose|change|improve|grow|build|create|write|read|speak|talk|say|tell|ask|answer|help|start|stop|finish|continue|try|play|watch|listen|meet|know|understand|think|feel|love|like|enjoy|want|need|choose|decide|avoid|prevent|solve|fix|reduce|increase|develop|apply|participate|join|leave|stay|return|move|open|close|run|walk|drive|fly|cook|eat|drink|sleep|rest|relax|exercise|train|compete|succeed|fail|save|protect|search)': '$1 of $2ing'
+  '(possibility|possibilities|intention|intentions|habit|habits|risk|risks|fear|fears|advantage|advantages|disadvantage|disadvantages|importance|necessity|purpose|cost|costs|difficulty|difficulties|experience|experiences|pleasure|honor|honour|privilege|art|business|point|question|problem|idea|ideas|hope|hopes|process|way|ways|method|methods|means|manner) to (discover|explore|design|test|check|verify|measure|compare|analyze|analyse|evaluate|describe|explain|define|organize|organise|manage|control|lead|follow|offer|provide|deliver|send|receive|accept|refuse|reject|approve|allow|cancel|postpone|delay|wait|expect|plan|prepare|arrange|schedule|book|reserve|order|spend|invest|earn|afford|waste|share|connect|remove|delete|add|include|replace|repeat|copy|print|upload|download|install|update|upgrade|configure|deploy|debug|code|program)': '$1 of $2ing'

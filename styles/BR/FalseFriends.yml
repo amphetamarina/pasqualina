@@ -1,0 +1,85 @@
+# Pattern-anchored false friends (falsos cognatos). Each key only matches
+# in a context where the Portuguese meaning was almost certainly intended,
+# so these are warnings with a concrete replacement. Bare words that are
+# merely suspicious live in FalseFriendsWords.yml (suggestion level).
+# Catalogue with sources: docs/03-brazilian-english-mistakes.md
+#
+# Vale substitution notes: keys are Go RE2 regexes (no lookahead), wrapped
+# in \b...\b, case-insensitive here; values may use $1..$n. In `message`
+# the FIRST %s is the replacement and the SECOND is the matched text.
+extends: substitution
+message: "Did you mean '%s'? '%s' is a false friend (falso cognato)."
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  # pretender = intend. "pretend to be/that" is real English, so anchor on intent verbs.
+  '(pretend|pretends|pretended|pretending) to (go|do|make|study|work|travel|buy|start|finish|learn|visit|write|send|apply|move|change|stay|leave|take|get|open|build|create|use|read|watch|see|call|talk|speak|ask|try|sell|pay|come|return|continue|stop|begin|become|spend|marry|hire|launch|release)': 'intend to $2'
+  # assistir = watch / attend
+  '(assist|assists|assisted|assisting) (to )?(a |the |this |that |my |our |your |his |her |their |some |many |every )?(class|classes|lecture|lectures|meeting|meetings|course|courses|conference|concert|movie|movies|film|films|game|games|match|show|series|talk|presentation|webinar|workshop|seminar|play|event|wedding|ceremony|lesson|lessons|tv|television|video|videos|news)': 'attend/watch $3$4'
+  # atender = answer (phone) / serve (customer)
+  '(attend|attends|attended|attending) (the |a |my |your |his |her |their )?(phone|telephone|call|calls|door|cellphone|cell phone|mobile)': 'answer $2$3'
+  '(attend|attends|attended|attending) (the |a |my |our |your |their )?(client|clients|customer|customers|patient|patients|public|guests)': 'serve $2$3'
+  # atual = current, atualmente = currently
+  '(the|this|our|my|your|their|its) actual (version|situation|state|status|president|government|moment|scenario|price|prices|value|values|owner|job|position|address|number|phase|stage|level|rate|salary|boss|manager|team|system|model|design|plan|policy|law|rules|contract|project|schedule|context|market|conditions|location|balance|configuration|setup|code|release|build)': '$1 current $2'
+  'actually (i|we|they|he|she|it|you) (live|work|study|am|are|is|have|has|use|stay|lives|works|studies|uses)': 'currently $1 $2'
+  # realizar = carry out / hold
+  '(realize|realizes|realized|realizing|realise|realised|realising) (a |the |an |this |that |our |my |your |their |some |several |many |two |three )?(meeting|meetings|project|projects|event|events|study|studies|test|tests|exam|exams|task|tasks|survey|surveys|research|analysis|interview|interviews|training|workshop|workshops|dream|dreams|purchase|payment|payments|sale|sales|trip|visit|visits|experiment|experiments|procedure|procedures|operation|operations|deployment|migration|backup|backups|update|updates|change|changes|activity|activities|inspection|audit|presentation|search)': 'carry out $2$3'
+  # resumo = summary
+  '(a |the |this |my |your |short |brief |quick |small |little )?resume of (the|this|that|my|our|your|his|her|their|what|it|everything)': '$1summary of $2'
+  '(make|made|makes|making|do|did|does|doing|write|wrote|writes|writing|give|gave|gives|giving) (a |the |an |my |your |our |this )?(short |brief |quick |small |little |good )?resume': 'write a $3summary'
+  # esquisito = weird (English exquisite = refined)
+  '(so|very|really|too|a bit|a little|kind of|kinda|pretty) exquisite': '$1 weird'
+  # prejuízo = loss / damage
+  '(financial|big|huge|great|serious|large|major|significant|considerable|economic|monetary) prejudice': '$1 loss'
+  '(cause|caused|causes|causing|have|had|has|having|suffer|suffered|suffers|suffering|take|took|takes|taking|give|gave|gives|giving|bring|brought|brings|bringing) (a |the |some |any |much |big |huge |great |serious |financial |economic )?(prejudice|prejudices)': '$1 $2loss'
+  # perder = lose / miss
+  '(lose|lost|loses|losing) (the |my |our |your |his |her |their |a |this |that )(bus|train|flight|plane|subway|metro|class|classes|meeting|appointment|show|movie|film|deadline|beginning|start|call|lesson|lecture|party|concert|interview|exam|test|session|event|ferry|boat|taxi|uber|ride|game|match|opening|talk|wedding|episode|episodes)': 'miss $2$3'
+  # ganhar = earn / win / get
+  '(win|wins|won|winning) (money|a salary|salary|a living|more money|good money|enough money|a lot of money|well|badly|little|less|more)': 'earn $2'
+  '(win|wins|won|winning) (weight|time|a present|presents|a gift|gifts|experience|confidence|space|attention|visibility|a discount|discounts|a promotion|trust|respect|strength|a raise|a bonus|the flu|a cold|a scholarship)': 'gain/get $2'
+  # emprestar = lend / borrow
+  '(borrow|borrows|borrowed|borrowing) (me|us|him|her|them)': 'lend $2'
+  # notícia = news
+  '(good|bad|great|sad|terrible|excellent|wonderful|latest|breaking|some|any|no) (notice|notices)( about| of| from| that| on)': '$1 news$3'
+  # legenda = subtitles
+  '(with|without|the|no|english|portuguese|spanish|turn on|turn off|turn on the|turn off the|activate|activate the|enable|enable the|disable|disable the|need|needs|read|reads|reading) (legends|legend)( on| off)?': '$1 subtitles$3'
+  # novela = soap opera
+  '(watch|watched|watches|watching|see|saw|sees|seeing|follow|followed|follows|following|the|a|this|that|brazilian|mexican|turkish|korean|new|old|evening|night|globo|tv|television) (novel|novels)': '$1 soap opera'
+  # estrangeiro = foreign
+  '(stranger|strangers) (country|countries|language|languages|company|companies|currency|currencies|market|markets|student|students|investor|investors|tourist|tourists|film|films|movie|movies|product|products|word|words|accent|accents|trade|policy|affairs|minister|ministry|exchange|bank|banks|worker|workers|citizen|citizens|passport|passports|money|capital|debt|investment|investments|press|media|land|city|cities|university|universities|firm|firms|brand|brands|car|cars|goods|origin|body|object|objects|substance|import|imports|export|exports)': 'foreign $2'
+  # particular = private
+  '(particular|particulars) (school|schools|lesson|lessons|class|classes|teacher|teachers|tutor|tutors|hospital|hospitals|clinic|clinics|doctor|doctors|university|universities|college|colleges|company|companies|sector|life|car|cars|driver|drivers|property|properties|beach|island|jet|plane|pool|room|rooms|bathroom|office|offices|bank|banks|security|guard|guards|investor|investors|equity|health|insurance|pension|pensions|education|initiative|enterprise|ownership|owner|owners|funds|fund|funding|capital|firm|firms|practice|lives|space|garden|road|land|collection|library|museum|gallery|screening|dinner|lunch|helicopter|yacht|boat|residence|home|homes|apartment|house|houses|villa|resort|club|clubs)': 'private $2'
+  '(particular|particulars) (conversation|conversations|message|messages|chat|chats|account|accounts|number|numbers|phone|phones|affairs|business|party|parties|event|events|meeting|meetings|tour|tours|transfer|network|networks|server|servers|cloud|repository|repositories|repo|repos|key|keys|channel|channels|group|groups|session|sessions|call|calls|note|notes|browsing|mode|window|tab|tabs|data|information|details|photos|photo|pictures|picture|videos|video|files|file|folder|folders|documents|document|email|emails|correspondence|use|purposes|purpose|interest|interests|reasons|reason|matters)': 'private $2'
+  # escolar = school (adj)
+  '(scholar|scholars) (year|years|bus|buses|material|materials|uniform|uniforms|trip|trips|supplies|supply|holiday|holidays|vacation|vacations|calendar|schedule|meal|meals|lunch|lunches|backpack|backpacks|transport|transportation|fees|fee|environment|life|age|days|day|period|term|semester|break|building|library|record|records|report|performance|activities|activity|project|projects|community|board|principal|staff|teacher|teachers|kids|children|student|students|system|network)': 'school $2'
+  # entender = understand (not intend)
+  '(i|we|they|you) (don''t|do not|didn''t|did not|can''t|cannot|couldn''t|could not|never|still don''t|still do not|really don''t|really do not) intend (what|why|how|when|where|who|which|the|this|that|it|him|her|them|you|anything|nothing|a word|a thing|your|his|her|their|my|our)': '$1 $2 understand $3'
+  '(he|she|it) (doesn''t|does not|didn''t|did not|can''t|cannot|couldn''t|could not|never|still doesn''t|still does not|really doesn''t|really does not) intend (what|why|how|when|where|who|which|the|this|that|it|him|her|them|you|me|anything|nothing|a word|a thing|your|his|her|their|my|our)': '$1 $2 understand $3'
+  # recordar = remember (not record)
+  '(i|we|they|you) (don''t|do not|didn''t|did not|can''t|cannot|couldn''t|could not|never|still don''t|still do not|really don''t|really do not) record (what|why|how|when|where|who|which|the name|the day|the date|the time|the place|his name|her name|their name|your name|my password|the password|it well|anything about|much about|exactly)': '$1 $2 remember $3'
+  '(he|she) (doesn''t|does not|didn''t|did not|can''t|cannot|couldn''t|could not|never|still doesn''t|still does not) record (what|why|how|when|where|who|which|the name|the day|the date|the time|the place|his name|her name|their name|your name|my name|the password|it well|anything about|much about|exactly)': '$1 $2 remember $3'
+  # sorte = luck
+  '(good|bad|much|a lot of|no|some|any|little|great|terrible|pure|sheer|what|such) sort': '$1 luck'
+  '(have|had|has|having|wish|wished|wishes|wishing|bring|brought|brings|bringing|need|needed|needs|needing|want|wanted|wants|wanting) (good |bad |much |a lot of |some |any |no |more |little |a little |the |so much |such )?sort': '$1 $2luck'
+  # silicone
+  'silicon (implant|implants|breast|breasts|prosthesis|surgery|injection|injections|filler|fillers|case|cases|cover|covers|mold|molds|mould|moulds|baking|spatula|sealant|gel|band|bands|lid|lids|mat|mats|ring|rings|tray|trays|pad|pads|mask|masks|strap|straps|tube|tubing|hose|hoses|rubber|toy|toys|doll|dolls|glue|caulk|grease|oil|spray|coating|bracelet|bracelets|watch|watchband|phone case|keyboard|keyboards|bag|bags)': 'silicone $1'
+  # tenente = lieutenant
+  'tenant (colonel|general|commander|governor|coronel)': 'lieutenant $1'
+  # fábrica = factory
+  '(car |chocolate |shoe |textile |cement |steel |beer |cigarette |toy |paper |glass |furniture |food |chemical |clothing |auto |automobile |electronics |battery |semiconductor |chip )(fabric|fabrics)': '$1factory'
+  '(fabric|fabrics) (worker|workers|owner|owners|floor|manager|managers|director|production line|building|gate|gates|closed|closes|closing|shutdown|jobs|shift|shifts|emissions|pollution|chimney|chimneys|outlet|outlets|reset|settings|defaults|farming|farm|farms|conditions|inspection|automation|robots|machines|equipment|output|capacity|town|district|zone|site|located)': 'factory $2'
+  # colégio = (secondary) school, not college
+  '(elementary|primary|secondary|middle|junior|senior|private|public|state|municipal|military|catholic|adventist|technical|boarding|kindergarten|nursery|preschool|bilingual|international|jesuit|salesian|marist|methodist|baptist|lutheran|presbyterian|christian|montessori|waldorf) college': '$1 school'
+  'college (uniform|uniforms|bus|buses|recess|playground|principal|headmaster|headmistress|homework|report card|report cards|pupil|pupils|classmate|classmates|kid|kids|backpack|backpacks|canteen|bell|yard|gate|coordinator|inspector|janitor|first grade|second grade|third grade|fourth grade|fifth grade|sixth grade|seventh grade|eighth grade|ninth grade)': 'school $1'
+  # físico = physicist
+  '(nuclear|quantum|theoretical|particle|applied|modern|classical|famous|brilliant|great|german|british|american|brazilian|french|italian|russian|indian|japanese|chinese) physician': '$1 physicist'
+  # propaganda = advertising / advertisement
+  '(a |an |the |this |that |new |old |funny |good |bad |great |beautiful |creative |famous |tv |television |radio |internet |online |facebook |instagram |youtube |beer |car |shampoo |perfume |bank |christmas |world cup |olympic |nike |apple |samsung |google )propaganda( of| for| about| on| in| that| which| where| with| by| from| was| is| are| were)': '$1advertisement$2'
+  '(make|made|makes|making|create|created|creates|creating|produce|produced|produces|producing|shoot|shot|film|filmed|record|recorded|design|designed|see|saw|seen|watch|watched|show|showed|run|ran|air|aired|publish|published|post|posted|launch|launched|pay for|paid for|invest in|invested in|spend on|spent on|skip|skipped|block|blocked|hate|love|like|enjoy|remember|notice|ignore|click on|clicked on|buy|bought|sell|sold|need|want) (a |an |the |this |that |some |many |more |lots of |a lot of |so many |too many |too much |so much |all the |these |those |our |my |your |his |her |their |its |new |old |good |bad |great |funny |creative |famous |cheap |expensive |free |paid |online |digital |printed |tv |television |radio |internet |social media |facebook |instagram |youtube |google |targeted |annoying |boring |misleading |false |fake |political |commercial |corporate |government |public |local |national |international |global |christmas |black friday |world cup )?(propaganda|propagandas)': '$1 $2advertising'
+  # fazer um curso = take a course
+  '(make|made|makes|making|do|did|does|doing) (a |an |the |this |that |some |another |one more |my |your |his |her |their |our |one |two |three |several |many |a few |more |free |paid |online |short |long |intensive |good |great |new |university |graduate |postgraduate |mba |phd |technical |vocational |professional |training |certification |preparatory |crash |refresher |beginner |beginners |intermediate |advanced |basic |introductory )?(course|courses)': 'take $2$3'
+  '(make|made|makes|making|do|did|does|doing) (a |an |the |this |that |some |another |my |your |our )?(english|spanish|french|german|italian|japanese|chinese|korean|portuguese|programming|coding|python|javascript|java|data science|machine learning|ai|design|marketing|photography|cooking|dance|yoga|first aid|safety|leadership|management|business|finance|accounting|sales|writing|drawing|painting|music|guitar|piano|singing|acting|driving|diving|swimming) (course|courses)': 'take $2$3 $4'
+  # fazer uma festa = throw/have a party
+  '(make|made|makes|making) (a |the |this |that |my |your |his |her |their |our |another |a big |a small |a huge |a nice |a great |a good |a birthday |a surprise |a farewell |a welcome |a housewarming |a christmas |a new year''s |a halloween |a costume |a pool |a barbecue |a dinner |a bachelor |a bachelorette |a baby shower |a graduation |a retirement |a launch |an office |a company |a kids'' |a children''s |a family |a school |a class |a private |a secret |a wild |a themed |a beach |a boat |a rooftop |a house )?(party|parties)': 'throw $2$3'

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "public",
+  "functions": {
+    "api/lint.mjs": {
+      "includeFiles": "{.vale.ini,styles/**,vendor/vale/**,node_modules/harper.js/dist/*.wasm}",
+      "maxDuration": 30,
+      "memory": 1024
+    }
+  }
+}
