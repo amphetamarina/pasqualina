@@ -33,10 +33,23 @@ vercel build                       # local build; inspect .vercel/output/functio
 vercel --prod
 ```
 
-After `vercel build`, confirm the bundle contains `vendor/vale/vale`,
-`styles/BR/*.yml`, `.vale.ini` and `node_modules/harper.js/dist/harper_wasm_bg.wasm`.
-If `.vale.ini` is missing (dotfile glob), add it to `includeFiles`
-explicitly or move the config generation into `api/lint.mjs`.
+After `vercel build`, the function folder
+`.vercel/output/functions/api/lint.func/` physically holds only the traced
+code (`lint.mjs`, `api/lint.mjs`, three harper.js files) and
+`vendor/vale/vale`. **That is expected.** Everything from `includeFiles` is
+recorded as a reference in `.vc-config.json` under `filePathMap`
+(function path → path in the repo) and uploaded from the project tree when
+you deploy; the CLI does this for every file it can point at on disk
+instead of copying it (`filesWithoutFsRefs` in the CLI). So check:
+
+```
+jq .filePathMap .vercel/output/functions/api/lint.func/.vc-config.json
+```
+
+It must list `.vale.ini`, every `styles/**` file and
+`node_modules/harper.js/dist/harper_wasm_bg.wasm` (verified 2026-09-16:
+it does, including the dotfile). Missing entries mean the glob in
+`vercel.json` did not match.
 
 Then test:
 
