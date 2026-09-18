@@ -5,7 +5,7 @@
 // Baseline 923d1e9 (Node 24.19, vendored vale 3.14.2, harper.js 2.10.0):
 //   harper warm p50=2.8ms   lintAll warm p50=214.6ms (dominated by the Vale
 //   spawn — report-only, see below)   backdrop(500) min=0.9ms
-//   backdrop(5000) min=68.5ms
+//   backdrop(5000) min=68.5ms → 6.1ms after single-sweep rewrite (c0d8aa0)
 //
 // We gate only what we own. Vale is a spawned Go binary (~215ms/request,
 // no server mode); a hard gate on lintAll warm would be a Vale gate in
@@ -28,8 +28,8 @@ const SOFT = process.argv.includes("--soft") || process.env.PERF_SOFT === "1";
 // to fit the code; re-baseline with a recorded number instead.
 const THRESHOLDS = {
   harperWarmP50: 10,   // ms, hard
-  backdrop500Min: 2.5, // ms, hard — re-baselined down in Phase 5
-  backdrop5000Min: 103, // ms, hard until Phase 5 kills the quadratic sweep
+  backdrop500Min: 2.5, // ms, hard
+  backdrop5000Min: 10, // ms, hard — re-baselined from 103 after c0d8aa0 (single-sweep)
 };
 
 function benchJson() {
