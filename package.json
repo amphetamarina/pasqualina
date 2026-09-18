@@ -16,7 +16,8 @@
     "check": "npm run lint && npm run typecheck && npm run knip && npm test && npm run check-perf",
     "test:unit": "node --test \"test/unit/**/*.test.mjs\"",
     "test:integration": "node --test \"test/integration/**/*.test.mjs\"",
-    "test": "npm run test:unit && npm run test:integration"
+    "test": "npm run test:unit && npm run test:integration",
+    "mutate": "stryker run"
   },
   "dependencies": {
     "harper.js": "^2.10.0"
@@ -26,6 +27,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@stryker-mutator/core": "^10.0.0",
+    "@stryker-mutator/tap-runner": "^10.0.0",
     "@types/node": "^26.6.1",
     "eslint": "^10.11.0",
     "globals": "^17.12.0",

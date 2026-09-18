@@ -5,6 +5,7 @@ vendor/
 result
 *.log
 .DS_Store
+reports/
 # Vale downloads packages here if `vale sync` is ever used
 styles/.vale-config/
 .vercel
