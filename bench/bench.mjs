@@ -18,7 +18,7 @@ import { performance } from "node:perf_hooks";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { lintAll, runHarper, runVale } from "../lint.mjs";
+import { lintAll, runHarper, runVale } from "../src/lint.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const JSON_OUT = process.argv.includes("--json");

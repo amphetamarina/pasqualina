@@ -1,3 +1,3 @@
 {
-  "entry": ["bin/lint.mjs", "bin/check-styles.mjs", "bin/harper-rules.mjs", "test/**/*.test.mjs"]
+  "entry": ["api/lint.mjs", "bin/lint.mjs", "bin/check-styles.mjs", "bin/harper-rules.mjs", "test/**/*.test.mjs"]
 }

@@ -8,7 +8,7 @@ import http from "node:http";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { lintAll } from "./lint.mjs";
+import { lintAll } from "./src/lint.mjs";
 import { parseLintRequest } from "./src/http/lint-request.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));

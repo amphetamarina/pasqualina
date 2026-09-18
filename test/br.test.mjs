@@ -4,7 +4,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { runVale } from "../lint.mjs";
+import { runVale } from "../src/lint.mjs";
 
 const dir = new URL("./fixtures/br/", import.meta.url);
 const files = fs.readdirSync(dir).filter((f) => f.endsWith(".txt"));

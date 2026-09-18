@@ -1,8 +1,6 @@
 import js from "@eslint/js";
 import globals from "globals";
 
-const composeEntry = "lint.mjs";
-
 // Quality gate: clean-code thresholds and import boundaries.
 //
 // Boundary model (Phase 3 target layout):
@@ -42,8 +40,7 @@ export default [
       "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
 
       // architecture: adapters may import only the pure modules; nothing
-      // else reaches them except the compose entries (lint.mjs until
-      // src/lint.mjs lands — root exemption removed when it does)
+      // else reaches them except the compose entry src/lint.mjs
       "no-restricted-imports": ["error", {
         patterns: [
           {
@@ -67,8 +64,8 @@ export default [
     },
   },
   {
-    // the compose entries are the only places allowed to reach adapters
-    files: [composeEntry, "src/lint.mjs"],
+    // the compose entry is the only place allowed to reach adapters
+    files: ["src/lint.mjs"],
     rules: { "no-restricted-imports": "off" },
   },
   {

@@ -2,7 +2,7 @@
 // Same contract as server.mjs (the local dev server); both call lintAll().
 // Harper runs in-process (harper.js); Vale is the binary bundled from
 // vendor/vale/ by scripts/fetch-vale.mjs (see vercel.json includeFiles).
-import { lintAll } from "../lint.mjs";
+import { lintAll } from "../src/lint.mjs";
 import { parseLintRequest } from "../src/http/lint-request.mjs";
 
 export default async function handler(req, res) {

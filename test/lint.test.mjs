@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { lintAll, runHarper } from "../lint.mjs";
+import { lintAll, runHarper } from "../src/lint.mjs";
 
 const sample = fs.readFileSync(new URL("./fixtures/sample.txt", import.meta.url), "utf8");
 

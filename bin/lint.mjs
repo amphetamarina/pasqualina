@@ -3,7 +3,7 @@
 //   bin/lint draft.txt            bin/lint --json draft.txt
 //   echo "I have 30 years" | bin/lint
 import fs from "node:fs";
-import { lintAll } from "../lint.mjs";
+import { lintAll } from "../src/lint.mjs";
 
 const args = process.argv.slice(2);
 const asJson = args.includes("--json");
