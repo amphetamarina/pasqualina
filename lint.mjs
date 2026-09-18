@@ -121,7 +121,7 @@ export async function runHarper(text) {
 // bit, so the bundled binary is copied to the temp dir and chmod'ed once.
 /** @type {Promise<string> | null} */
 let valeBinPromise = null;
-function getValeBin() {
+export function getValeBin() { // also used by bin/check-styles.mjs
   if (!valeBinPromise) {
     valeBinPromise = (async () => {
       const vendored = path.join(ROOT, "vendor", "vale", "vale");
