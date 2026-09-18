@@ -76,6 +76,7 @@ function harperSuggestions(suggestions, matched) {
     if (k === SuggestionKind.Replace) out.push(s.get_replacement_text());
     else if (k === SuggestionKind.Remove) out.push("");
     else if (k === SuggestionKind.InsertAfter) out.push(matched + s.get_replacement_text());
+    s.free?.(); // WASM object: reclaim as soon as its text is read
   }
   return out;
 }
