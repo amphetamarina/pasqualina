@@ -4,18 +4,7 @@
 // machine it comes from nixpkgs (on PATH); on Vercel it is the pinned
 // release that scripts/fetch-vale.mjs downloads into vendor/vale/.
 //
-// Normalized issue shape (what /api/lint returns and the page renders):
-//   {
-//     tool:        "harper" | "vale",
-//     rule:        "SpellCheck" | "BR.FalseFriends" | ...,
-//     kind:        "Spelling" | "Grammar" | "warning" | ...   (tool-specific)
-//     severity:    "error" | "warning" | "suggestion",
-//     message:     string,
-//     start, end:  UTF-16 offsets into the original text (end exclusive),
-//     line, column: 1-based,
-//     matched:     the offending text,
-//     suggestions: string[]   (replacement strings; "" means remove)
-//   }
+// Normalized issue shape: see the @typedef Issue in src/issues.mjs.
 
 import { spawn } from "node:child_process";
 import fs from "node:fs";
@@ -25,6 +14,7 @@ import { fileURLToPath } from "node:url";
 import { LocalLinter, Dialect, SuggestionKind } from "harper.js";
 import { binary } from "harper.js/binary";
 import { codePointToUtf16Table, lineCol, lineStartTable } from "./src/offsets.mjs";
+import { sortIssues } from "./src/issues.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const VALE_CONFIG = path.join(ROOT, ".vale.ini");
@@ -184,6 +174,6 @@ export async function runVale(text) {
 
 export async function lintAll(text) {
   const [harper, vale] = await Promise.all([runHarper(text), runVale(text)]);
-  const issues = [...harper, ...vale].sort((a, b) => a.start - b.start || a.end - b.end);
+  const issues = sortIssues([...harper, ...vale]);
   return { issues, counts: { harper: harper.length, vale: vale.length } };
 }
