@@ -14,7 +14,9 @@
     "knip": "knip",
     "check-perf": "node scripts/check-perf.mjs",
     "check": "npm run lint && npm run typecheck && npm run knip && npm test && npm run check-perf",
-    "test": "node --test \"test/**/*.test.mjs\""
+    "test:unit": "node --test \"test/unit/**/*.test.mjs\"",
+    "test:integration": "node --test \"test/integration/**/*.test.mjs\"",
+    "test": "npm run test:unit && npm run test:integration"
   },
   "dependencies": {
     "harper.js": "^2.10.0"
