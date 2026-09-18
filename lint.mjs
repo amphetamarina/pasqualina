@@ -140,12 +140,13 @@ export function getValeBin() { // also used by bin/check-styles.mjs
 function runCli(cmd, args, input, { timeoutMs = 15000 } = {}) {
   return new Promise((resolve, reject) => {
     const child = spawn(cmd, args, { cwd: ROOT, stdio: ["pipe", "pipe", "pipe"] });
-    let stdout = "", stderr = "";
-    const timer = setTimeout(() => { child.kill("SIGKILL"); reject(new Error(`${cmd} timed out`)); }, timeoutMs);
+    let stdout = "", stderr = "", settled = false;
+    const finish = (fn) => { if (settled) return; settled = true; clearTimeout(timer); fn(); };
+    const timer = setTimeout(() => { child.kill("SIGKILL"); finish(() => reject(new Error(`${cmd} timed out`))); }, timeoutMs);
     child.stdout.setEncoding("utf8").on("data", (d) => (stdout += d));
     child.stderr.setEncoding("utf8").on("data", (d) => (stderr += d));
-    child.on("error", (e) => { clearTimeout(timer); reject(e); });
-    child.on("close", (code) => { clearTimeout(timer); resolve({ code, stdout, stderr }); });
+    child.on("error", (e) => finish(() => reject(e)));
+    child.on("close", (code) => finish(() => resolve({ code, stdout, stderr })));
     child.stdin.on("error", () => {});
     child.stdin.end(input);
   });
