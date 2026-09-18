@@ -1,7 +1,7 @@
 // Exercises the Vercel function handler with a fake req/res pair.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import handler from "../api/lint.mjs";
+import handler from "../../api/lint.mjs";
 
 /**
  * @param {string} method

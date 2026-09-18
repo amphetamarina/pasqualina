@@ -1,9 +1,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { lintAll, runHarper } from "../src/lint.mjs";
+import { lintAll, runHarper } from "../../src/lint.mjs";
 
-const sample = fs.readFileSync(new URL("./fixtures/sample.txt", import.meta.url), "utf8");
+const sample = fs.readFileSync(new URL("../fixtures/sample.txt", import.meta.url), "utf8");
 
 test("offsets point at the matched text, even after non-BMP characters", async () => {
   const { issues } = await lintAll(sample);

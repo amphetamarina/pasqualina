@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { startServer } from "./helpers/server.mjs";
+import { startServer } from "../helpers/server.mjs";
 
 test("GET with a malformed percent-escape answers 400 and keeps the server alive", async () => {
   const { port, close } = await startServer();
