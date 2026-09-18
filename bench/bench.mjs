@@ -86,7 +86,9 @@ async function benchLint() {
 // are excluded. Phase 3 extracts the algorithm into an importable module and
 // this bench will point at the real thing.
 
-const esc = (s) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+const ESC_MAP = { "&": "&amp;", "<": "&lt;", ">": "&gt;" };
+const esc = (s) => s.replace(/[&<>]/g, (c) => ESC_MAP[c]);
+/** @type {Record<string, number>} */
 const rank = { error: 3, warning: 2, suggestion: 1 };
 
 function renderBackdropCore(src, issues, activeId) {

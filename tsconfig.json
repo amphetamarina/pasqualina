@@ -1,0 +1,20 @@
+// Cheap type gate over the JSDoc'd ESM sources: no emission, no runtime
+// change. Known gap: bin/* are extensionless scripts, so tsc does not see
+// them (knip lists them as explicit entries instead).
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "types": ["node"],
+    "checkJs": true,
+    "noEmit": true,
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "target": "es2023",
+    "lib": ["es2023"],
+    "strict": true,
+    // Phase 3 exit criterion: flip to true when src/ modules land with JSDoc
+    // types; Phase 3 is not closed until noImplicitAny: true is green.
+    "noImplicitAny": false
+  },
+  "include": ["lint.mjs", "server.mjs", "api/**/*.mjs", "scripts/**/*.mjs", "bench/**/*.mjs", "test/**/*.mjs"]
+}

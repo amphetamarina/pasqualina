@@ -15,6 +15,7 @@ const PUBLIC = path.join(ROOT, "public");
 const PORT = Number(process.env.PORT ?? 8321);
 const MAX_BODY = 200 * 1024; // 200 KB of text is plenty for a page
 
+/** @type {Record<string, string>} */
 const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8",
   ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8", ".svg": "image/svg+xml" };
 

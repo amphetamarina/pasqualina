@@ -31,6 +31,7 @@ export const VALE_CONFIG = path.join(ROOT, ".vale.ini");
 // ---------------------------------------------------------------- Harper
 
 // American English only (decision 2026-09-16, docs/05-decisions.md).
+/** @type {Promise<import("harper.js").LocalLinter> | null} */
 let harperPromise = null;
 export function getHarper() {
   if (!harperPromise) {
@@ -43,6 +44,7 @@ export function getHarper() {
   return harperPromise;
 }
 
+/** @type {Record<string, string>} */
 const HARPER_SEVERITY = {
   Spelling: "error", Grammar: "error", Typo: "error", Capitalization: "warning",
   Punctuation: "warning", Agreement: "error", Miscellaneous: "suggestion",
@@ -109,6 +111,7 @@ export async function runHarper(text) {
 // Vercel build downloads), then `vale` on PATH (nix-shell).
 // On Vercel the deployment filesystem is read-only and may drop the exec
 // bit, so the bundled binary is copied to the temp dir and chmod'ed once.
+/** @type {Promise<string> | null} */
 let valeBinPromise = null;
 export function getValeBin() {
   if (!valeBinPromise) {
