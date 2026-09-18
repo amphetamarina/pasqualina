@@ -37,7 +37,10 @@ async function readBody(req) {
 async function handleLint(req, res) {
   let payload;
   try { payload = JSON.parse(await readBody(req)); }
-  catch (e) { return json(res, e.status ?? 400, { error: e.message }); }
+  catch (e) {
+    const status = e instanceof Error && "status" in e ? e.status : 400;
+    return json(res, status, { error: e instanceof Error ? e.message : String(e) });
+  }
   const text = typeof payload?.text === "string" ? payload.text : null;
   if (text === null) return json(res, 400, { error: "expected {text: string}" });
   const t0 = performance.now();
@@ -46,7 +49,7 @@ async function handleLint(req, res) {
     json(res, 200, { ...result, ms: Math.round(performance.now() - t0) });
   } catch (e) {
     console.error(e);
-    json(res, 500, { error: e.message });
+    json(res, 500, { error: e instanceof Error ? e.message : String(e) });
   }
 }
 

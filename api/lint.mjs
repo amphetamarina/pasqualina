@@ -23,6 +23,6 @@ export default async function handler(req, res) {
     res.status(200).json({ ...result, ms: Math.round(performance.now() - t0) });
   } catch (e) {
     console.error(e);
-    res.status(500).json({ error: e.message });
+    res.status(500).json({ error: e instanceof Error ? e.message : String(e) });
   }
 }
