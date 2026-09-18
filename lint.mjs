@@ -148,6 +148,25 @@ function codePointToUtf16Table(text) {
   return table;
 }
 
+// Plain data in, plain data out: one Vale JSON alert -> { start, end } UTF-16
+// offsets into the original text.
+function valeSpanOffsets(text, lineStarts, alert) {
+  const lineStart = lineStarts[alert.Line - 1] ?? 0;
+  const lineText = text.slice(lineStart, lineStarts[alert.Line] ?? text.length);
+  const cp = codePointToUtf16Table(lineText);
+  return {
+    start: lineStart + (cp[alert.Span[0] - 1] ?? 0),
+    end: lineStart + (cp[alert.Span[1]] ?? lineText.length),
+  };
+}
+
+// Plain data in, plain data out: a.Action -> replacement strings; "" means remove.
+function valeSuggestions(action) {
+  if (action?.Name === "replace" && Array.isArray(action.Params)) return action.Params;
+  if (action?.Name === "remove") return [""];
+  return [];
+}
+
 export async function runVale(text) {
   const bin = await getValeBin();
   const args = ["--config", VALE_CONFIG, "--no-global", "--no-exit", "--output=JSON", "--ext=.txt"];
@@ -158,17 +177,11 @@ export async function runVale(text) {
   const lineStarts = lineStartTable(text);
   const alerts = Object.values(parsed).flat();
   return alerts.map((a) => {
-    const lineStart = lineStarts[a.Line - 1] ?? 0;
-    const lineText = text.slice(lineStart, lineStarts[a.Line] ?? text.length);
-    const cp = codePointToUtf16Table(lineText);
-    const start = lineStart + (cp[a.Span[0] - 1] ?? 0);
-    const end = lineStart + (cp[a.Span[1]] ?? lineText.length);
-    const suggestions = a.Action?.Name === "replace" && Array.isArray(a.Action.Params) ? a.Action.Params
-      : a.Action?.Name === "remove" ? [""] : [];
+    const { start, end } = valeSpanOffsets(text, lineStarts, a);
     return {
       tool: "vale", rule: a.Check, kind: a.Severity, severity: a.Severity,
       message: a.Message, start, end, line: a.Line, column: a.Span[0],
-      matched: a.Match, suggestions,
+      matched: a.Match, suggestions: valeSuggestions(a.Action),
       link: a.Link || undefined, description: a.Description || undefined,
     };
   });
