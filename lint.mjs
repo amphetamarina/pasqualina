@@ -13,8 +13,9 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { LocalLinter, Dialect, SuggestionKind } from "harper.js";
 import { binary } from "harper.js/binary";
-import { codePointToUtf16Table, lineCol, lineStartTable } from "./src/offsets.mjs";
+import { codePointToUtf16Table, lineStartTable } from "./src/offsets.mjs";
 import { sortIssues } from "./src/issues.mjs";
+import { harperSuggestions, toIssue } from "./src/harper/normalize.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const VALE_CONFIG = path.join(ROOT, ".vale.ini");
@@ -42,31 +43,6 @@ export function getHarper() {
 const IS_SERVERLESS = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
 if (IS_SERVERLESS) getHarper().catch(() => {}); // the real error surfaces at first use
 
-/** @type {Record<string, string>} */
-const HARPER_SEVERITY = {
-  Spelling: "error", Grammar: "error", Typo: "error", Capitalization: "warning",
-  Punctuation: "warning", Agreement: "error", Miscellaneous: "suggestion",
-  Formatting: "suggestion", Repetition: "warning", Readability: "suggestion",
-  Style: "suggestion", Usage: "warning", Enhancement: "suggestion",
-  WordChoice: "warning", Redundancy: "suggestion", Regionalism: "suggestion",
-  Nonstandard: "warning", Eggcorn: "warning", Malapropism: "warning",
-  BoundaryError: "error",
-};
-
-// Plain data in, plain data out: takes harper Suggestion objects and the
-// already-sliced matched text; "" means "remove".
-function harperSuggestions(suggestions, matched) {
-  const out = [];
-  for (const s of suggestions) {
-    const k = s.kind();
-    if (k === SuggestionKind.Replace) out.push(s.get_replacement_text());
-    else if (k === SuggestionKind.Remove) out.push("");
-    else if (k === SuggestionKind.InsertAfter) out.push(matched + s.get_replacement_text());
-    s.free?.(); // WASM object: reclaim as soon as its text is read
-  }
-  return out;
-}
-
 export async function runHarper(text) {
   const linter = await getHarper();
   // organizedLints groups by rule name; lint() alone only exposes the kind.
@@ -78,18 +54,19 @@ export async function runHarper(text) {
       const { start, end } = l.span(); // harper.js spans are UTF-16 offsets
       const matched = text.slice(start, end);
       const kind = l.lint_kind();
-      const suggestions = harperSuggestions(l.suggestions(), matched);
-      issues.push({
-        tool: "harper", rule, kind,
-        severity: HARPER_SEVERITY[kind] ?? "warning",
-        message: l.message(),
-        start, end, ...lineCol(text, lineStarts, start),
-        matched, suggestions,
-      });
+      const suggestions = harperSuggestions(l.suggestions().map(mapVariant), matched);
+      issues.push(toIssue(text, lineStarts, { rule, kind, message: l.message(), start, end, matched, suggestions }));
       l.free?.();
     }
   }
   return issues;
+}
+
+// Map harper's SuggestionKind enum to the plain variant tag that
+// src/harper/normalize.mjs understands (keeps that module harper.js-free).
+function mapVariant(s) {
+  const variant = { [SuggestionKind.Replace]: "replace", [SuggestionKind.Remove]: "remove", [SuggestionKind.InsertAfter]: "insertAfter" }[s.kind()];
+  return { variant, replacement: s.get_replacement_text() };
 }
 
 // ------------------------------------------------------------------ Vale
