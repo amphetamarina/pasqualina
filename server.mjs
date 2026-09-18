@@ -20,8 +20,10 @@ const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; cha
   ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8", ".svg": "image/svg+xml" };
 
 function send(res, status, body, type = "application/json; charset=utf-8") {
+  // HEAD requests must not carry a body.
+  const isHead = res.req?.method === "HEAD";
   res.writeHead(status, { "content-type": type, "cache-control": "no-store" });
-  res.end(body);
+  res.end(isHead ? undefined : body);
 }
 const json = (res, status, obj) => send(res, status, JSON.stringify(obj));
 

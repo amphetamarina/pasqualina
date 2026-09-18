@@ -17,3 +17,17 @@ test("GET with a malformed percent-escape answers 400 and keeps the server alive
     await close();
   }
 });
+
+test("HEAD answers 200 with no body and without crashing the process", async () => {
+  const { port, close } = await startServer();
+  try {
+    const head = await fetch(`http://127.0.0.1:${port}/`, { method: "HEAD" });
+    assert.equal(head.status, 200);
+    assert.equal(await head.text(), "");
+    // still healthy afterwards
+    const next = await fetch(`http://127.0.0.1:${port}/`);
+    assert.equal(next.status, 200);
+  } finally {
+    await close();
+  }
+});
