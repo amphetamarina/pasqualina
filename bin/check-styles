@@ -13,7 +13,7 @@ let bad = 0;
 for (const f of fs.readdirSync(dir).filter((f) => f.endsWith(".yml"))) {
   const lines = fs.readFileSync(path.join(dir, f), "utf8").split("\n");
   lines.forEach((l, i) => {
-    const m = /^  '((?:[^']|'')*)':/.exec(l) || /^  ([^'#][^:]*):/.exec(l);
+    const m = /^ {2}'((?:[^']|'')*)':/.exec(l) || /^ {2}([^'#][^:]*):/.exec(l);
     if (m && m[1].length > 1024) { bad++; console.log(`${f}:${i + 1}: key is ${m[1].length} chars (max 1024)`); }
   });
 }
