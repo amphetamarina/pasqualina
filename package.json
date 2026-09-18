@@ -9,10 +9,18 @@
     "dev": "node --watch server.mjs",
     "build": "node scripts/fetch-vale.mjs",
     "bench": "node bench/bench.mjs",
+    "lint": "eslint .",
     "test": "node --test test/*.test.mjs"
   },
   "dependencies": {
     "harper.js": "^2.10.0"
   },
-  "engines": { "node": "22.x" }
+  "engines": {
+    "node": "22.x"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.11.0",
+    "globals": "^17.12.0"
+  }
 }
