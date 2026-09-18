@@ -1,6 +1,5 @@
 // Cheap type gate over the JSDoc'd ESM sources: no emission, no runtime
-// change. Known gap: bin/* are extensionless scripts, so tsc does not see
-// them (knip lists them as explicit entries instead).
+// change.
 {
   "compilerOptions": {
     "allowJs": true,

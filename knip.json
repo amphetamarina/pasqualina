@@ -1,0 +1,4 @@
+{
+  "entry": ["bin/lint.mjs", "bin/check-styles.mjs", "bin/harper-rules.mjs", "test/**/*.test.mjs"],
+  "ignoreBinaries": ["vale"]
+}

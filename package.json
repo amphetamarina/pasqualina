@@ -11,6 +11,7 @@
     "bench": "node bench/bench.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "knip": "knip",
     "test": "node --test test/*.test.mjs"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
     "@types/node": "^26.6.1",
     "eslint": "^10.11.0",
     "globals": "^17.12.0",
+    "knip": "^6.37.0",
     "typescript": "^7.0.2"
   }
 }
