@@ -86,27 +86,7 @@ async function benchLint() {
 // are excluded. Phase 3 extracts the algorithm into an importable module and
 // this bench will point at the real thing.
 
-const ESC_MAP = { "&": "&amp;", "<": "&lt;", ">": "&gt;" };
-const esc = (s) => s.replace(/[&<>]/g, (c) => ESC_MAP[c]);
-/** @type {Record<string, number>} */
-const rank = { error: 3, warning: 2, suggestion: 1 };
-
-function renderBackdropCore(src, issues, activeId) {
-  const cuts = new Set([0, src.length]);
-  for (const i of issues) { cuts.add(i.start); cuts.add(i.end); }
-  const points = [...cuts].sort((a, b) => a - b);
-  let html = "";
-  for (let k = 0; k < points.length - 1; k++) {
-    const a = points[k], b = points[k + 1];
-    const covering = issues.filter((i) => i.start <= a && i.end >= b);
-    const seg = esc(src.slice(a, b));
-    if (!covering.length) { html += seg; continue; }
-    const top = covering.reduce((m, i) => rank[i.severity] > rank[m.severity] ? i : m);
-    const active = covering.some((i) => i.id === activeId) ? " active" : "";
-    html += `<mark class="${top.severity}${active}">${seg}</mark>`;
-  }
-  return html + "\n";
-}
+import { buildBackdropHtml } from "../public/backdrop.js";
 
 async function benchBackdrop(nIssues, seed) {
   const rng = lcg(seed);
@@ -121,9 +101,9 @@ async function benchBackdrop(nIssues, seed) {
     return { id: n, start, end: start + 3 + Math.floor(rng() * 10), severity: severities[Math.floor(rng() * 3)] };
   });
 
-  renderBackdropCore(text, issues, null); // warm-up
+  buildBackdropHtml(text, issues, null); // warm-up
   let r = 0; // alternate the active id so both branches of the sweep run
-  const runs = await timedRuns(BACKDROP_RUNS, () => renderBackdropCore(text, issues, r++ % 2 ? null : 7));
+  const runs = await timedRuns(BACKDROP_RUNS, () => buildBackdropHtml(text, issues, r++ % 2 ? null : 7));
 
   if (!JSON_OUT) {
     console.log(`  backdrop(${nIssues}) min : ${ms(runs[0])}  (p50 ${ms(p50(runs))})`);

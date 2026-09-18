@@ -52,6 +52,11 @@ export default [
     },
   },
   {
+    // the page runs in the browser
+    files: ["public/**"],
+    languageOptions: { globals: globals.browser },
+  },
+  {
     // the adapters' only allowed internals are the three pure modules
     files: ["src/harper/**", "src/vale/**"],
     rules: {
