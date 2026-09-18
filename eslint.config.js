@@ -41,22 +41,33 @@ export default [
       "no-param-reassign": "error",
       "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
 
-      // architecture: nothing enters the internals except through the compose
-      // entry; adapters stay isolated from each other
+      // architecture: adapters may import only the pure modules; nothing
+      // else reaches them except the compose entries (lint.mjs until
+      // src/lint.mjs lands — root exemption removed when it does)
       "no-restricted-imports": ["error", {
         patterns: [
           {
-            group: ["**/src/harper.mjs", "**/src/vale.mjs"],
-            message: "import the compose entry (lint.mjs / src/lint.mjs), not an adapter directly",
+            group: ["**/src/harper/*", "**/src/vale/*"],
+            message: "import the compose entry (lint.mjs / src/lint.mjs), not an adapter",
           },
         ],
       }],
     },
   },
   {
-    // the compose entries are the only places allowed to reach adapters.
-    // NOTE: in Phase 3 the root lint.mjs becomes a thin re-export shim of
-    // src/lint.mjs and loses this exemption.
+    // the adapters' only allowed internals are the three pure modules
+    files: ["src/harper/**", "src/vale/**"],
+    rules: {
+      "no-restricted-imports": ["error", {
+        patterns: [{
+          group: ["!../offsets.mjs", "!../issues.mjs", "!../memo.mjs", "!./normalize.mjs", "!harper.js", "!harper.js/binary", "!node:/*", "!../http/**"],
+          message: "adapters import only the pure modules (offsets, issues, memo), their own normalize, and their tool",
+        }],
+      }],
+    },
+  },
+  {
+    // the compose entries are the only places allowed to reach adapters
     files: [composeEntry, "src/lint.mjs"],
     rules: { "no-restricted-imports": "off" },
   },
@@ -67,6 +78,19 @@ export default [
     files: ["test/**"],
     rules: {
       "max-lines-per-function": "off",
+    },
+  },
+  {
+    // unit specs test the pure modules directly; integration specs and
+    // everything else still enter through the compose entry
+    files: ["test/**"],
+    rules: {
+      "no-restricted-imports": ["error", {
+        patterns: [{
+          group: ["**/src/harper/linter.mjs", "**/src/vale/linter.mjs"],
+          message: "tests import the compose entry (lint.mjs / src/lint.mjs) or the pure normalize modules",
+        }],
+      }],
     },
   },
 ];
