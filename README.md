@@ -11,7 +11,7 @@ npm install      # harper.js (Harper as WASM)
 npm start        # http://127.0.0.1:8321
 npm run dev      # restarts the server when files change
 npm test         # fixtures through both linters
-bin/lint.mjs file.txt          # same pipeline from the terminal
+bin/pasqualina.mjs file.txt    # same pipeline from the terminal
 vercel --prod    # deploy (see docs/07-vercel.md)
 ```
 

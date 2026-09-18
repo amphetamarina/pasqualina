@@ -58,7 +58,7 @@ pasqualina/
   lint.mjs             harper.js in-process + vale binary, normalizes both outputs
   scripts/fetch-vale.mjs  downloads the pinned Vale release (Vercel build step)
   vercel.json          static public/ + api function with bundled files
-  bin/lint.mjs          terminal front-end to lint.mjs
+  bin/pasqualina.mjs    CLI: lint files or stdin through lint.mjs
   bin/harper-rules.mjs  regenerates docs/appendix-harper-rules.md
   bin/check-styles.mjs  catches YAML-key-too-long and broken rule files
   public/index.html    the page (single file, no build step)
