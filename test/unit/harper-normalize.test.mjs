@@ -26,6 +26,17 @@ describe("harperSuggestions", () => {
     });
   });
 
+  describe("when the suggestions mix variants", () => {
+    it("applies each variant's rule to its own item", () => {
+      const r = harperSuggestions([
+        { variant: "replace", replacement: "fix" },
+        { variant: "remove", replacement: "" },
+        { variant: "insertAfter", replacement: " suffix" },
+      ], "word");
+      assert.deepEqual(r, ["fix", "", "word suffix"]);
+    });
+  });
+
   describe("when there are no suggestions", () => {
     it("returns an empty list", () => {
       assert.deepEqual(harperSuggestions([], "typo"), []);

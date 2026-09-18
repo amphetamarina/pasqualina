@@ -30,6 +30,17 @@ describe("valeSpanOffsets", () => {
       assert.equal(r.start, 0);
     });
   });
+
+  describe("when a non-BMP character precedes the alert's line", () => {
+    it("slices the line from the text, not the whole text", () => {
+      // 😀 is 2 UTF-16 units, 1 code point. Line 1 = "😀ab" (5 UTF-16 units),
+      // line 2 = "cdef". Alert on line 2 columns 1..3 -> "cde".
+      const t = "😀ab\ncdef";
+      const s = lineStartTable(t); // [0, 5]
+      const r = valeSpanOffsets(t, s, { Line: 2, Span: [1, 3] });
+      assert.deepEqual(r, { start: 5, end: 8 });
+    });
+  });
 });
 
 describe("toIssue", () => {
@@ -72,8 +83,8 @@ describe("toIssue", () => {
 
   describe("when the alert has no Action", () => {
     it("sets suggestions to an empty list", () => {
-      const a = alert();
-      delete a.Action;
+      const a = /** @type {Parameters<typeof toIssue>[2]} */ (alert());
+      a.Action = undefined;
       const span = valeSpanOffsets(text, starts, a);
       const i = toIssue(text, starts, a, span);
       assert.deepEqual(i.suggestions, []);
