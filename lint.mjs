@@ -65,6 +65,19 @@ function lineCol(text, lineStarts, offset) {
   return { line: lo + 1, column: Array.from(text.slice(lineStarts[lo], offset)).length + 1 };
 }
 
+// Plain data in, plain data out: takes harper Suggestion objects and the
+// already-sliced matched text; "" means "remove".
+function harperSuggestions(suggestions, matched) {
+  const out = [];
+  for (const s of suggestions) {
+    const k = s.kind();
+    if (k === SuggestionKind.Replace) out.push(s.get_replacement_text());
+    else if (k === SuggestionKind.Remove) out.push("");
+    else if (k === SuggestionKind.InsertAfter) out.push(matched + s.get_replacement_text());
+  }
+  return out;
+}
+
 export async function runHarper(text) {
   const linter = await getHarper();
   // organizedLints groups by rule name; lint() alone only exposes the kind.
@@ -76,13 +89,7 @@ export async function runHarper(text) {
       const { start, end } = l.span(); // harper.js spans are UTF-16 offsets
       const matched = text.slice(start, end);
       const kind = l.lint_kind();
-      const suggestions = [];
-      for (const s of l.suggestions()) {
-        const k = s.kind();
-        if (k === SuggestionKind.Replace) suggestions.push(s.get_replacement_text());
-        else if (k === SuggestionKind.Remove) suggestions.push("");
-        else if (k === SuggestionKind.InsertAfter) suggestions.push(matched + s.get_replacement_text());
-      }
+      const suggestions = harperSuggestions(l.suggestions(), matched);
       issues.push({
         tool: "harper", rule, kind,
         severity: HARPER_SEVERITY[kind] ?? "warning",
