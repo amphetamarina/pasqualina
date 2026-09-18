@@ -157,7 +157,7 @@ own `Vale` style is built in and needs no sync.
 
 - **YAML implicit keys are limited to 1024 characters.** A longer
   `swap` key fails with the useless `could not find expected ':'`.
-  `bin/check-styles` reports offenders; split long alternations into
+  `bin/check-styles.mjs` reports offenders; split long alternations into
   several keys.
 - **`matchcase` is rejected** by 3.14.2 (`has invalid keys: 'matchcase'`)
   even though the current docs list it. Replacements therefore come back

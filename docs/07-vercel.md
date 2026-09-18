@@ -73,7 +73,7 @@ curl -s -X POST https://<deployment>/api/lint -H 'content-type: application/json
 ## Local equivalents
 
 - `npm start` — same handler logic through `server.mjs` on port 8321.
-- `npm run build && VERCEL=1 bin/lint file.txt` — exercises the vendored
+- `npm run build && VERCEL=1 bin/lint.mjs file.txt` — exercises the vendored
   binary and the temp-dir copy path without deploying.
 - `vercel dev` also works once the project is linked.
 

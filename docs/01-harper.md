@@ -171,7 +171,7 @@ which is what the Vale style covers.
   `InsertAfter`; `get_replacement_text()` holds the text.
 - 2.10.0 still does not flag "I am agree with you" or "Close the light",
   so the Vale rules for those stay.
-- `bin/harper-rules` regenerates the appendix from
+- `bin/harper-rules.mjs` regenerates the appendix from
   `getLintDescriptions()` + `getDefaultLintConfig()`.
 
 ## License

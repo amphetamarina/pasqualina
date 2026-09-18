@@ -58,9 +58,9 @@ pasqualina/
   lint.mjs             harper.js in-process + vale binary, normalizes both outputs
   scripts/fetch-vale.mjs  downloads the pinned Vale release (Vercel build step)
   vercel.json          static public/ + api function with bundled files
-  bin/lint             terminal front-end to lint.mjs
-  bin/harper-rules     regenerates docs/appendix-harper-rules.md
-  bin/check-styles     catches YAML-key-too-long and broken rule files
+  bin/lint.mjs          terminal front-end to lint.mjs
+  bin/harper-rules.mjs  regenerates docs/appendix-harper-rules.md
+  bin/check-styles.mjs  catches YAML-key-too-long and broken rule files
   public/index.html    the page (single file, no build step)
   .vale.ini            Vale config used by the server
   styles/BR/*.yml      the Brazilian-mistakes Vale style (13 rules: Age, FalseFriends,

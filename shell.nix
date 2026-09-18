@@ -8,7 +8,7 @@
 #   npm start            # serve http://127.0.0.1:8321
 #   npm run dev          # same, restarts the server on file changes
 #   npm test             # fixtures through both linters
-#   bin/lint file.txt    # lint a file from the terminal (both tools)
+#   bin/lint.mjs file.txt # lint a file from the terminal (both tools)
 #   vercel               # deploy (vercel CLI comes from ~/Projects/shell.nix)
 #
 # Vale comes from nixpkgs here; on Vercel `npm run build` downloads the

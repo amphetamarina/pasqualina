@@ -1,6 +1,6 @@
 # Harper rules (harper.js 2.10.0, `getLintDescriptions()`)
 
-Generated from harper.js; regenerate with `bin/harper-rules`. Rules with default `false` are opt-in.
+Generated from harper.js; regenerate with `bin/harper-rules.mjs`. Rules with default `false` are opt-in.
 
 | Rule | Default | Description |
 |---|---|---|
