@@ -1,0 +1,22 @@
+# Quality gates on push/PR: lint, typecheck, knip, tests, perf (soft).
+# The perf gate runs PERF_SOFT=1 on runners: report-only for spawned-binary
+# latency, but still a hard table — locally `npm run check` fails hard.
+name: check
+
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: PERF_SOFT=1 npm run check
