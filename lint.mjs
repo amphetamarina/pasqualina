@@ -11,9 +11,10 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { codePointToUtf16Table, lineStartTable } from "./src/offsets.mjs";
+import { lineStartTable } from "./src/offsets.mjs";
 import { sortIssues } from "./src/issues.mjs";
 import { runHarper, getHarper } from "./src/harper/linter.mjs";
+import { toIssue, valeSpanOffsets } from "./src/vale/normalize.mjs";
 
 // re-exported for bin/harper-rules.mjs; goes away when the shim dies (Phase 3, commit 11)
 export { getHarper, runHarper };
@@ -60,25 +61,6 @@ function runCli(cmd, args, input, { timeoutMs = 15000 } = {}) {
   });
 }
 
-// Plain data in, plain data out: one Vale JSON alert -> { start, end } UTF-16
-// offsets into the original text.
-function valeSpanOffsets(text, lineStarts, alert) {
-  const lineStart = lineStarts[alert.Line - 1] ?? 0;
-  const lineText = text.slice(lineStart, lineStarts[alert.Line] ?? text.length);
-  const cp = codePointToUtf16Table(lineText);
-  return {
-    start: lineStart + (cp[alert.Span[0] - 1] ?? 0),
-    end: lineStart + (cp[alert.Span[1]] ?? lineText.length),
-  };
-}
-
-// Plain data in, plain data out: a.Action -> replacement strings; "" means remove.
-function valeSuggestions(action) {
-  if (action?.Name === "replace" && Array.isArray(action.Params)) return action.Params;
-  if (action?.Name === "remove") return [""];
-  return [];
-}
-
 export async function runVale(text) {
   const bin = await getValeBin();
   const args = ["--config", VALE_CONFIG, "--no-global", "--no-exit", "--output=JSON", "--ext=.txt"];
@@ -88,15 +70,7 @@ export async function runVale(text) {
   try { parsed = JSON.parse(stdout || "{}"); } catch { throw new Error(`vale: bad JSON: ${stdout.slice(0, 200)}`); }
   const lineStarts = lineStartTable(text);
   const alerts = Object.values(parsed).flat();
-  return alerts.map((a) => {
-    const { start, end } = valeSpanOffsets(text, lineStarts, a);
-    return {
-      tool: "vale", rule: a.Check, kind: a.Severity, severity: a.Severity,
-      message: a.Message, start, end, line: a.Line, column: a.Span[0],
-      matched: a.Match, suggestions: valeSuggestions(a.Action),
-      link: a.Link || undefined, description: a.Description || undefined,
-    };
-  });
+  return alerts.map((a) => toIssue(text, lineStarts, a, valeSpanOffsets(text, lineStarts, a)));
 }
 
 // ------------------------------------------------------------------ both
