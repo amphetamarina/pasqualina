@@ -1,6 +1,7 @@
 // Characterization specs for buildBackdropHtml (Phase 4 commit 0): written
 // against the CURRENT implementation so the Phase 5 rewrite is provably
-// behavior-preserving. These assertions must not change.
+// behavior-preserving. These assertions must not change. Changing one of
+// them is a behavior change and needs its own commit with a stated reason.
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { buildBackdropHtml } from "../../public/backdrop.js";
@@ -52,6 +53,15 @@ describe("buildBackdropHtml", () => {
   describe("when an issue spans zero characters", () => {
     it("produces no mark (its cut dedupes away)", () => {
       assert.equal(buildBackdropHtml("abc", [issue(2, 2, "error")], null), "abc");
+    });
+  });
+
+  describe("when the active issue is not the strongest one", () => {
+    it("keeps both: top drives the class, active drives the highlight", () => {
+      // top is computed over severity, active over the active issue id,
+      // independently — a rewrite tracking only the top issue would lose it
+      const html = buildBackdropHtml("abc", [issue(0, 3, "error", 1), issue(0, 3, "suggestion", 2)], 2);
+      assert.equal(html, "<mark class=\"error active\">abc</mark>");
     });
   });
 });
