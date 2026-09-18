@@ -44,6 +44,13 @@ export function getHarper() {
   return harperPromise;
 }
 
+// On Vercel the WASM setup is pure import-time work: start it as the module
+// loads so it overlaps the cold start instead of adding to the first
+// request's latency. Local cold stays untouched so the bench's cold number
+// (baseline 923d1e9) remains comparable.
+const IS_SERVERLESS = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+if (IS_SERVERLESS) getHarper().catch(() => {}); // the real error surfaces at first use
+
 /** @type {Record<string, string>} */
 const HARPER_SEVERITY = {
   Spelling: "error", Grammar: "error", Typo: "error", Capitalization: "warning",
