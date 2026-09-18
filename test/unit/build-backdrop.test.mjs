@@ -6,6 +6,12 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { buildBackdropHtml } from "../../public/backdrop.js";
 
+/**
+ * @param {number} start
+ * @param {number} end
+ * @param {string} severity
+ * @param {number} [id]
+ */
 const issue = (start, end, severity, id = 1) => ({ start, end, severity, id });
 
 describe("buildBackdropHtml", () => {

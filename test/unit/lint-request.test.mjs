@@ -1,7 +1,7 @@
 // Behavior specs for the shared lint request parser (pure, no HTTP, no WASM).
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { parseLintRequest } from "../src/http/lint-request.mjs";
+import { parseLintRequest } from "../../src/http/lint-request.mjs";
 
 describe("parseLintRequest", () => {
   describe("when the body is valid {text: string} JSON", () => {
