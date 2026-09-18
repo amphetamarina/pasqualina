@@ -7,7 +7,7 @@
 import http from "node:http";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { lintAll } from "./lint.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
@@ -56,7 +56,9 @@ async function handleLint(req, res) {
 
 async function serveStatic(req, res) {
   const url = new URL(req.url, "http://x");
-  let rel = decodeURIComponent(url.pathname);
+  let rel;
+  try { rel = decodeURIComponent(url.pathname); }
+  catch { return send(res, 400, "bad request", "text/plain"); }
   if (rel === "/") rel = "/index.html";
   const file = path.normalize(path.join(PUBLIC, rel));
   if (!file.startsWith(PUBLIC + path.sep)) return send(res, 403, "forbidden", "text/plain");
@@ -68,12 +70,20 @@ async function serveStatic(req, res) {
   }
 }
 
-const server = http.createServer((req, res) => {
+function handle(req, res) {
   if (req.method === "POST" && req.url === "/api/lint") return handleLint(req, res);
   if (req.method === "GET" || req.method === "HEAD") return serveStatic(req, res);
   send(res, 405, "method not allowed", "text/plain");
-});
+}
 
-server.listen(PORT, "127.0.0.1", () => {
-  console.log(`pasqualina  http://127.0.0.1:${PORT}`);
-});
+// Exposed for tests: returned server is not listening yet.
+export function createServer() {
+  return http.createServer(handle);
+}
+
+// Run only when invoked directly (`node server.mjs`), not when imported.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  createServer().listen(PORT, "127.0.0.1", () => {
+    console.log(`pasqualina  http://127.0.0.1:${PORT}`);
+  });
+}
