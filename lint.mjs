@@ -24,6 +24,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { LocalLinter, Dialect, SuggestionKind } from "harper.js";
 import { binary } from "harper.js/binary";
+import { codePointToUtf16Table, lineCol, lineStartTable } from "./src/offsets.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const VALE_CONFIG = path.join(ROOT, ".vale.ini");
@@ -61,18 +62,6 @@ const HARPER_SEVERITY = {
   Nonstandard: "warning", Eggcorn: "warning", Malapropism: "warning",
   BoundaryError: "error",
 };
-
-function lineStartTable(text) {
-  const starts = [0];
-  for (let i = 0; i < text.length; i++) if (text[i] === "\n") starts.push(i + 1);
-  return starts;
-}
-// 1-based line and column; column counted in code points like Vale does.
-function lineCol(text, lineStarts, offset) {
-  let lo = 0, hi = lineStarts.length - 1;
-  while (lo < hi) { const mid = (lo + hi + 1) >> 1; if (lineStarts[mid] <= offset) lo = mid; else hi = mid - 1; }
-  return { line: lo + 1, column: Array.from(text.slice(lineStarts[lo], offset)).length + 1 };
-}
 
 // Plain data in, plain data out: takes harper Suggestion objects and the
 // already-sliced matched text; "" means "remove".
@@ -150,14 +139,6 @@ function runCli(cmd, args, input, { timeoutMs = 15000 } = {}) {
     child.stdin.on("error", () => {});
     child.stdin.end(input);
   });
-}
-
-// Vale counts Span columns in code points within the line; convert to UTF-16.
-function codePointToUtf16Table(text) {
-  const table = [0];
-  let i = 0;
-  for (const ch of text) { i += ch.length; table.push(i); }
-  return table;
 }
 
 // Plain data in, plain data out: one Vale JSON alert -> { start, end } UTF-16
