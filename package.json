@@ -12,6 +12,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "knip": "knip",
+    "check-perf": "node scripts/check-perf.mjs",
+    "check": "npm run lint && npm run typecheck && npm run knip && npm test && npm run check-perf",
     "test": "node --test test/*.test.mjs"
   },
   "dependencies": {
