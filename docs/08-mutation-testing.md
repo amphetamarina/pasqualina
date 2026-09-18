@@ -30,7 +30,7 @@ Out of scope (not pure): `src/lint.mjs` (imports adapters with WASM/spawn),
 `src/harper/linter.mjs` (harper.js), `src/vale/linter.mjs` (child_process),
 `server.mjs`, `api/lint.mjs` (HTTP plumbing).
 
-## First honest run (234 mutants)
+## Final score (234 mutants, after spec additions)
 
 | File | Score | Killed | Survived | NoCov |
 |---|---|---|---|---|
@@ -40,30 +40,31 @@ Out of scope (not pure): `src/lint.mjs` (imports adapters with WASM/spawn),
 | `harper/normalize.mjs` | 97.73% | 43 | 1 | 0 |
 | `http/lint-request.mjs` | 97.67% | 42 | 1 | 0 |
 | `offsets.mjs` | 93.94% | 25 | 2 | 0 |
-| `vale/normalize.mjs` | 69.44% | 25 | 2 | 9 |
-| **Overall** | **92.74%** | 210 | 8 | 9 |
+| `vale/normalize.mjs` | 97.22% | 35 | 1 | 0 |
+| **Overall** | **97.01%** | 220 | 7 | 0 |
 
 ## Thresholds
 
-Set from the honest first run. After killing real survivors (adding specs),
-re-baseline:
+Set from the e54fdb8 run (97.01%, 7 equivalent mutants).
 
-- `break`: 90 — CI would fail below this
-- `low`: 93 — warning
-- `high`: 97 — aspiration
+- `break`: 95 — CI would fail below this
+- `low`: 97 — warning
+- `high`: 97 — matches achievable ceiling (all survivors are equivalent)
 
 ## Equivalent mutants (by design, not fixed)
 
-These survivors are provably equivalent — no test can kill them because the
+All 7 survivors are provably equivalent — no test can kill them because the
 mutated code produces identical observable output:
 
 | Mutant | File:Line | Why equivalent |
 |---|---|---|
 | `>` → `>=` in severity comparison | `backdrop.js:18` | Equal severities: first-wins vs last-wins picks a different object but `top.severity` is the same string |
 | `<` → `<=` in loop bound | `backdrop.js:43` | Extra iteration: `src.slice(src.length, undefined)` = `""`, all issues already dropped |
-| `hi = length - 1` → `length + 1` | `offsets.mjs:24` | Binary search still correct: `lineStarts[length]` is undefined, `offset < undefined` is false |
+| `insertAfter` → `true` | `harper/normalize.mjs:40` | Replace and remove are checked first; insertAfter is the only remaining variant |
+| `payload !== null` → `true` | `lint-request.mjs:21` | With `payload = null`: `obj = null` (typeof null is "object"), then same fallthrough path |
+| `?? text.length` → `&& text.length` | `vale/normalize.mjs:16` | For in-bounds lines `lineStarts[Line]` is a positive number; both `??` and `&&` with truthy LHS return the same value |
 | `< text.length` → `<= text.length` | `offsets.mjs:12` | Extra iteration reads past string end, returns undefined ≠ `"\n"` |
-| `payload !== null` → `true` | `lint-request.mjs:21` | With `payload = null`: `obj = null` (typeof null is "object"), then `null.text` → TypeError → catch returns same 400 + message |
+| `hi = length - 1` → `length + 1` | `offsets.mjs:24` | Binary search still correct: `lineStarts[length]` is undefined, `offset < undefined` is false |
 
 ## Interpreting the report
 
