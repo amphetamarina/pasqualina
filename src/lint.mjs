@@ -12,7 +12,7 @@ import { sortIssues } from "./issues.mjs";
 // (getValeBin) enter through here like everyone else
 export { getHarper, runHarper, getValeBin, runVale };
 
-export async function lintAll(text) {
+export async function lintAll(/** @type {string} */ text) {
   const [harper, vale] = await Promise.all([runHarper(text), runVale(text)]);
   const issues = sortIssues([...harper, ...vale]);
   return { issues, counts: { harper: harper.length, vale: vale.length } };

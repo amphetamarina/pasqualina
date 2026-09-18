@@ -3,11 +3,18 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import handler from "../api/lint.mjs";
 
+/**
+ * @param {string} method
+ * @param {unknown} [body]
+ */
 function call(method, body) {
   return new Promise((resolve) => {
-    const res = { headers: {}, statusCode: 200,
+    const res = { headers: (/** @type {Record<string, string>} */ ({})), statusCode: 200,
+      /** @param {string} k @param {string} v */
       setHeader(k, v) { this.headers[k] = v; },
+      /** @param {number} c */
       status(c) { this.statusCode = c; return this; },
+      /** @param {object} o */
       json(o) { resolve({ status: this.statusCode, body: o }); } };
     handler({ method, body }, res);
   });

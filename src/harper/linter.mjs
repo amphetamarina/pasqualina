@@ -23,11 +23,20 @@ if (IS_SERVERLESS) getHarper().catch(() => {}); // the real error surfaces at fi
 
 // Map harper's SuggestionKind enum to the plain variant tag that
 // normalize.mjs understands (keeps that module harper.js-free).
+/**
+ * 
+ * @param {import("harper.js").Suggestion} s
+ * @returns {{ variant: "replace" | "remove" | "insertAfter", replacement: string }}
+ */
 function mapVariant(s) {
-  const variant = { [SuggestionKind.Replace]: "replace", [SuggestionKind.Remove]: "remove", [SuggestionKind.InsertAfter]: "insertAfter" }[s.kind()];
+  const k = s.kind();
+  const variant = k === SuggestionKind.Replace ? "replace" : k === SuggestionKind.Remove ? "remove" : "insertAfter";
   return { variant, replacement: s.get_replacement_text() };
 }
 
+/**
+ * @param {string} text
+ */
 export async function runHarper(text) {
   const linter = await getHarper();
   // organizedLints groups by rule name; lint() alone only exposes the kind.

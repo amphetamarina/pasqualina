@@ -2,7 +2,9 @@
 // every issue boundary and wrap each segment with the strongest severity
 // covering it. Importable from Node (bench) and the browser (type=module).
 
-const esc = (s) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+/** @param {string} s */
+const esc = (s) => s.replace(/[&<>]/g, (/** @type {string} */ c) => (/** @type {Record<string, string>} */ ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }))[c]);
+/** @type {Record<string, number>} */
 const rank = { error: 3, warning: 2, suggestion: 1 };
 
 /**

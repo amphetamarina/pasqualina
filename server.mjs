@@ -20,14 +20,29 @@ const MAX_BODY = 200 * 1024; // 200 KB of text is plenty for a page
 const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8",
   ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8", ".svg": "image/svg+xml" };
 
+/**
+ * @param {import("http").ServerResponse} res
+ * @param {number} status
+ * @param {string | Buffer | undefined} body
+ * @param {string} [type]
+ */
 function send(res, status, body, type = "application/json; charset=utf-8") {
   // HEAD requests must not carry a body.
   const isHead = res.req?.method === "HEAD";
   res.writeHead(status, { "content-type": type, "cache-control": "no-store" });
   res.end(isHead ? undefined : body);
 }
+/**
+ * @param {import("http").ServerResponse} res
+ * @param {number} status
+ * @param {object} obj
+ */
 const json = (res, status, obj) => send(res, status, JSON.stringify(obj));
 
+/**
+ * @param {http.IncomingMessage} req
+ * @returns {Promise<string>}
+ */
 async function readBody(req) {
   let size = 0; const chunks = [];
   for await (const c of req) {
@@ -38,11 +53,15 @@ async function readBody(req) {
   return Buffer.concat(chunks).toString("utf8");
 }
 
+/**
+ * @param {http.IncomingMessage} req
+ * @param {http.ServerResponse} res
+ */
 async function handleLint(req, res) {
   let parsed;
   try { parsed = parseLintRequest(await readBody(req)); }
   catch (e) { // readBody throws on an oversized raw body
-    const status = e instanceof Error && "status" in e ? e.status : 400;
+    const status = e instanceof Error && "status" in e ? /** @type {number} */ (e.status) : 400;
     return json(res, status, { error: e instanceof Error ? e.message : String(e) });
   }
   if (!parsed.ok) return json(res, parsed.status, { error: parsed.error });
@@ -56,8 +75,12 @@ async function handleLint(req, res) {
   }
 }
 
+/**
+ * @param {http.IncomingMessage} req
+ * @param {http.ServerResponse} res
+ */
 async function serveStatic(req, res) {
-  const url = new URL(req.url, "http://x");
+  const url = new URL(req.url ?? "/", "http://x");
   let rel;
   try { rel = decodeURIComponent(url.pathname); }
   catch { return send(res, 400, "bad request", "text/plain"); }
@@ -72,6 +95,10 @@ async function serveStatic(req, res) {
   }
 }
 
+/**
+ * @param {http.IncomingMessage} req
+ * @param {http.ServerResponse} res
+ */
 function handle(req, res) {
   if (req.method === "POST" && req.url === "/api/lint") return handleLint(req, res);
   if (req.method === "GET" || req.method === "HEAD") return serveStatic(req, res);
@@ -80,7 +107,7 @@ function handle(req, res) {
 
 // Exposed for tests: returned server is not listening yet.
 export function createServer() {
-  return http.createServer(handle);
+  return http.createServer((req, res) => handle(req, res));
 }
 
 // Run only when invoked directly (`node server.mjs`), not when imported.

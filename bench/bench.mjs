@@ -25,6 +25,13 @@ const JSON_OUT = process.argv.includes("--json");
 
 // ---------------------------------------------------------------- helpers
 
+/**
+ * Runs fn n times sequentially, returns sorted run times (ms).
+ * @template T
+ * @param {number} n
+ * @param {() => T | Promise<T>} fn
+ * @returns {Promise<number[]>}
+ */
 async function timedRuns(n, fn) {
   const runs = [];
   for (let i = 0; i < n; i++) {
@@ -37,13 +44,22 @@ async function timedRuns(n, fn) {
 
 // Deterministic PRNG so the synthetic input (and therefore the numbers)
 // is reproducible run to run.
+/**
+ * Deterministic PRNG; the synthetic input (and therefore the numbers) is
+ * reproducible run to run.
+ * @param {number} seed
+ * @returns {() => number}
+ */
 function lcg(seed) {
   let s = seed >>> 0;
   return () => (s = (s * 1664525 + 1013904223) >>> 0) / 2 ** 32;
 }
 
-function p50(xs) { return percentile(xs, 50); }
+/** @param {number[]} sorted @param {number} p */
 function percentile(sorted, p) { return sorted[Math.min(sorted.length - 1, Math.floor((p / 100) * sorted.length))]; }
+/** @param {number[]} xs */
+function p50(xs) { return percentile(xs, 50); }
+/** @param {number} n */
 const ms = (n) => `${n.toFixed(1)}ms`;
 
 const LINT_RUNS = 15;
@@ -88,6 +104,10 @@ async function benchLint() {
 
 import { buildBackdropHtml } from "../public/backdrop.js";
 
+/**
+ * @param {number} nIssues
+ * @param {number} seed
+ */
 async function benchBackdrop(nIssues, seed) {
   const rng = lcg(seed);
   const TARGET = 200 * 1024;

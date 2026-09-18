@@ -5,6 +5,17 @@
 import { lintAll } from "../src/lint.mjs";
 import { parseLintRequest } from "../src/http/lint-request.mjs";
 
+/**
+ * Minimal structural types for the Vercel function surface (the real
+ * @vercel/node types aren't installed; the shapes here are what we use).
+ * @typedef {{ method?: string, body?: unknown }} VercelRequest
+ * @typedef {{ setHeader(k: string, v: string): void, status(c: number): { json(o: object): void } }} VercelResponse
+ */
+
+/**
+ * @param {VercelRequest} req
+ * @param {VercelResponse} res
+ */
 export default async function handler(req, res) {
   res.setHeader("cache-control", "no-store");
   if (req.method !== "POST") {

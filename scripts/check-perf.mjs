@@ -53,7 +53,8 @@ const report = [
   { name: "lintAll cold", value: b.lintAll.cold },
 ];
 
-const fmt = (ms) => `${ms.toFixed(1)}ms`;
+/** @param {number} n */
+const fmt = (n) => `${n.toFixed(1)}ms`;
 let failed = false;
 for (const c of checks) {
   const ok = c.value <= c.max;

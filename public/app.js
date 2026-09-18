@@ -4,14 +4,23 @@
 import { buildBackdropHtml } from "./backdrop.js";
 
 (() => {
+  /** @param {string} s @returns {any} */
   const $ = (s) => document.querySelector(s);
-  const text = $("#text"), backdrop = $("#backdrop"), issuesEl = $("#issues"), status = $("#status");
-  const auto = $("#auto"), checkBtn = $("#check");
+  /** @type {HTMLTextAreaElement} */
+  const text = $("#text");
+  /** @type {HTMLElement} */
+  const backdrop = $("#backdrop"), issuesEl = $("#issues"), status = $("#status");
+  /** @type {HTMLInputElement} */
+  const auto = $("#auto");
+  /** @type {HTMLButtonElement} */
+  const checkBtn = $("#check");
   /** @typedef {import("../src/issues.mjs").Issue & { id: number }} PageIssue */
   /** @type {PageIssue[]} */
   let issues = [];
   /** @type {number | null} */
-  let activeId = null, lastText = null;
+  let activeId = null;
+  /** @type {string | null} */
+  let lastText = null;
   /** @type {ReturnType<typeof setTimeout> | null} */
   let timer = null;
   /** @type {AbortController | null} */
@@ -31,7 +40,11 @@ import { buildBackdropHtml } from "./backdrop.js";
   } catch { // persistence is best-effort
   } };
 
-  const esc = (s) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+  /**
+   * @param {string} s
+   * @returns {string}
+   */
+  const esc = (s) => s.replace(/[&<>]/g, (/** @type {string} */ c) => (/** @type {Record<string, string>} */ ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }))[c]);
 
   // ---- highlight backdrop: issues can overlap, so the cut-and-sweep
   // algorithm is in backdrop.js; the DOM sync stays here
@@ -42,6 +55,9 @@ import { buildBackdropHtml } from "./backdrop.js";
   text.addEventListener("scroll", () => { backdrop.scrollTop = text.scrollTop; backdrop.scrollLeft = text.scrollLeft; });
 
   // ---- issues panel
+  /**
+   * @param {{ harper?: number, vale?: number } | null} [meta]
+   */
   function renderIssues(meta) {
     if (!issues.length) {
       issuesEl.innerHTML = `<div class="empty">${lastText === null ? "Nothing checked yet." : "No issues found."}</div>`;
@@ -61,12 +77,14 @@ import { buildBackdropHtml } from "./backdrop.js";
     }
     issuesEl.innerHTML = html;
   }
-  issuesEl.addEventListener("click", (e) => {
-    const fix = e.target.closest(".fix");
-    if (fix) { applyFix(Number(fix.dataset.id), Number(fix.dataset.n)); return; }
-    const card = e.target.closest(".issue");
-    if (card) focusIssue(Number(card.dataset.id));
+  issuesEl.addEventListener("click", (/** @type {MouseEvent} */ e) => {
+    const target = /** @type {HTMLElement} */ (e.target);
+    const fix = target.closest(".fix");
+    if (fix) { applyFix(Number((/** @type {HTMLElement} */ (fix)).dataset.id), Number((/** @type {HTMLElement} */ (fix)).dataset.n)); return; }
+    const card = target.closest(".issue");
+    if (card) focusIssue(Number((/** @type {HTMLElement} */ (card)).dataset.id));
   });
+  /** @param {number} id */
   function focusIssue(id) {
     const i = issues.find((x) => x.id === id); if (!i) return;
     activeId = id;
@@ -74,9 +92,10 @@ import { buildBackdropHtml } from "./backdrop.js";
     renderBackdrop(); renderIssues(lastMeta);
     issuesEl.querySelector(`.issue[data-id="${id}"]`)?.scrollIntoView({ block: "nearest" });
     // scroll the textarea so the selection is visible: mirror the mark's offset
-    const m = backdrop.querySelector("mark.active");
+    const m = /** @type {HTMLElement} */ (backdrop.querySelector("mark.active"));
     if (m) text.scrollTop = Math.max(0, m.offsetTop - text.clientHeight / 2);
   }
+  /** @param {number} id @param {number} n */
   function applyFix(id, n) {
     const i = issues.find((x) => x.id === id); if (!i) return;
     const rep = i.suggestions[n];
@@ -96,15 +115,21 @@ import { buildBackdropHtml } from "./backdrop.js";
       if (id !== null) issuesEl.querySelector(`.issue[data-id="${id}"]`)?.scrollIntoView({ block: "nearest" }); }
   }
   text.addEventListener("click", syncActiveToCaret);
+  /** @param {KeyboardEvent} e */
   text.addEventListener("keyup", (e) => { if (e.key.startsWith("Arrow") || e.key === "Home" || e.key === "End") syncActiveToCaret(); });
 
   // ---- linting
+  /** @param {string} value */
   function clearFor(value) {
     issues = []; lastText = value; lastMeta = null;
     renderBackdrop(); renderIssues();
     status.textContent = "idle";
   }
 
+  /**
+   * @param {string} text
+   * @param {AbortSignal} signal
+   */
   async function fetchLint(text, signal) {
     const r = await fetch("/api/lint", { method: "POST", headers: { "content-type": "application/json" },
       body: JSON.stringify({ text }), signal });
@@ -113,6 +138,10 @@ import { buildBackdropHtml } from "./backdrop.js";
     return data;
   }
 
+  /**
+   * @param {string} value
+   * @param {{ issues: PageIssue[], counts: Record<string, number>, ms: number }} data
+   */
   function renderResult(value, data) {
     issues = data.issues.map((i, n) => ({ ...i, id: n }));
     lastText = value; lastMeta = data.counts; activeId = null;

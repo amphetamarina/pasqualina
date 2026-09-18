@@ -29,10 +29,18 @@ export const getValeBin = memoizeAsync(async () => {
   return bin;
 });
 
+/**
+ * @param {string} cmd
+ * @param {string[]} args
+ * @param {string} input
+ * @param {{ timeoutMs?: number }} [opts]
+ * @returns {Promise<{ code: number | null, stdout: string, stderr: string }>} resolves on close; the first settle wins
+ */
 function runCli(cmd, args, input, { timeoutMs = 15000 } = {}) {
   return new Promise((resolve, reject) => {
     const child = spawn(cmd, args, { cwd: ROOT, stdio: ["pipe", "pipe", "pipe"] });
     let stdout = "", stderr = "", settled = false;
+    /** @param {() => void} fn */
     const finish = (fn) => { if (settled) return; settled = true; clearTimeout(timer); fn(); };
     const timer = setTimeout(() => { child.kill("SIGKILL"); finish(() => reject(new Error(`${cmd} timed out`))); }, timeoutMs);
     child.stdout.setEncoding("utf8").on("data", (d) => (stdout += d));
@@ -44,6 +52,7 @@ function runCli(cmd, args, input, { timeoutMs = 15000 } = {}) {
   });
 }
 
+/** @param {string} text */
 export async function runVale(text) {
   const bin = await getValeBin();
   const args = ["--config", VALE_CONFIG, "--no-global", "--no-exit", "--output=JSON", "--ext=.txt"];

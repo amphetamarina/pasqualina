@@ -25,7 +25,7 @@ for (const file of files) {
 
   test(`${rule} fires on every line of ${file}`, async () => {
     const issues = await runVale(text);
-    const missing = [];
+    const missing = /** @type {string[]} */ ([]);
     lines.forEach((line, idx) => {
       if (!line.trim()) return;
       if (!issues.some((i) => i.rule === rule && i.line === idx + 1)) missing.push(`${idx + 1}: ${line}`);

@@ -13,6 +13,5 @@
     "strict": true,
     // Phase 3 exit criterion: flip to true when src/ modules land with JSDoc
     // types; Phase 3 is not closed until noImplicitAny: true is green.
-    "noImplicitAny": false
   },
   "include": ["lint.mjs", "server.mjs", "api/**/*.mjs", "scripts/**/*.mjs", "bench/**/*.mjs", "test/**/*.mjs", "src/**/*.mjs", "public/**/*.js"]}
