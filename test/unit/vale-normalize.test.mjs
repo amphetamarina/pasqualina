@@ -41,6 +41,18 @@ describe("valeSpanOffsets", () => {
       assert.deepEqual(r, { start: 5, end: 8 });
     });
   });
+
+  describe("when Span[1] extends past the end of a non-last line", () => {
+    it("clamps end to the line boundary, not the text length", () => {
+      // "ab\ncd": lineStarts = [0, 3]. Alert on line 1 with Span [1,99].
+      // lineText = text.slice(0, lineStarts[1]) = "ab\n" (3 chars).
+      // cp[99] is undefined, fallback = lineText.length = 3, so end = 3.
+      const t = "ab\ncd";
+      const s = lineStartTable(t);
+      const r = valeSpanOffsets(t, s, { Line: 1, Span: [1, 99] });
+      assert.equal(r.end, 3);
+    });
+  });
 });
 
 describe("toIssue", () => {

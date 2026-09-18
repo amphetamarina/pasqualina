@@ -36,7 +36,7 @@ export default {
   timeoutMS: 10000,
   tempDirName: "node_modules/.temp/stryker",
   cleanTempDir: true,
-  // Thresholds from e54fdb8 run (97.01%, 7 equivalent mutants remain).
+  // Thresholds from final run (97.44%, 6 equivalent mutants remain).
   // break = floor(score) - 2, low = floor(score), high = floor(score).
   thresholds: { break: 95, low: 97, high: 97 },
 };
