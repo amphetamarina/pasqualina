@@ -9,6 +9,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { lintAll } from "./lint.mjs";
+import { parseLintRequest } from "./src/http/lint-request.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC = path.join(ROOT, "public");
@@ -38,17 +39,16 @@ async function readBody(req) {
 }
 
 async function handleLint(req, res) {
-  let payload;
-  try { payload = JSON.parse(await readBody(req)); }
-  catch (e) {
+  let parsed;
+  try { parsed = parseLintRequest(await readBody(req)); }
+  catch (e) { // readBody throws on an oversized raw body
     const status = e instanceof Error && "status" in e ? e.status : 400;
     return json(res, status, { error: e instanceof Error ? e.message : String(e) });
   }
-  const text = typeof payload?.text === "string" ? payload.text : null;
-  if (text === null) return json(res, 400, { error: "expected {text: string}" });
+  if (!parsed.ok) return json(res, parsed.status, { error: parsed.error });
   const t0 = performance.now();
   try {
-    const result = await lintAll(text);
+    const result = await lintAll(parsed.text);
     json(res, 200, { ...result, ms: Math.round(performance.now() - t0) });
   } catch (e) {
     console.error(e);

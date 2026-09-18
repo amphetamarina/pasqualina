@@ -15,5 +15,4 @@
     // types; Phase 3 is not closed until noImplicitAny: true is green.
     "noImplicitAny": false
   },
-  "include": ["lint.mjs", "server.mjs", "api/**/*.mjs", "scripts/**/*.mjs", "bench/**/*.mjs", "test/**/*.mjs"]
-}
+  "include": ["lint.mjs", "server.mjs", "api/**/*.mjs", "scripts/**/*.mjs", "bench/**/*.mjs", "test/**/*.mjs", "src/**/*.mjs"]}
