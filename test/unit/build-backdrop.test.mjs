@@ -62,6 +62,13 @@ describe("buildBackdropHtml", () => {
     });
   });
 
+  describe("when a zero-length issue sits inside a covering issue", () => {
+    it("keeps the cut but the zero-length issue is a no-op on the active set", () => {
+      const html = buildBackdropHtml("abc", [issue(0, 3, "error", 1), issue(2, 2, "suggestion", 2)], null);
+      assert.equal(html, "<mark class=\"error\">ab</mark><mark class=\"error\">c</mark>");
+    });
+  });
+
   describe("when the active issue is not the strongest one", () => {
     it("keeps both: top drives the class, active drives the highlight", () => {
       // top is computed over severity, active over the active issue id,

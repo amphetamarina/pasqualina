@@ -32,12 +32,10 @@ export function buildBackdropHtml(src, issues, activeId) {
   const startsAt = Object.create(null);
   const endsAt = Object.create(null);
   for (const i of issues) {
-    if (i.end > i.start) {
-      cuts.add(i.start);
-      cuts.add(i.end);
-      (startsAt[i.start] || (startsAt[i.start] = [])).push(i);
-      (endsAt[i.end] || (endsAt[i.end] = [])).push(i);
-    }
+    cuts.add(i.start);
+    cuts.add(i.end);
+    (startsAt[i.start] || (startsAt[i.start] = [])).push(i);
+    (endsAt[i.end] || (endsAt[i.end] = [])).push(i);
   }
   const points = [...cuts].sort((a, b) => a - b);
   const active = /** @type {{ start: number, end: number, severity: string, id?: number }[]} */ ([]);
