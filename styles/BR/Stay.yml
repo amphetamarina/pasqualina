@@ -12,3 +12,7 @@ swap:
   '(stays) with (the |a |some |my |your |his |her |their |our |this |that |these |those )?(change|money|book|keys|car|copy|receipt|ticket|file|files|document|documents|rest|remainder|leftovers|bag|umbrella|phone|charger|pen|notes)': 'keeps $2$3'
   '(stayed) with (the |a |some |my |your |his |her |their |our |this |that |these |those )?(change|money|book|keys|car|copy|receipt|ticket|file|files|document|documents|rest|remainder|leftovers|bag|umbrella|phone|charger|pen|notes)': 'kept $2$3'
   '(staying) with (the |a |some |my |your |his |her |their |our |this |that |these |those )?(change|money|book|keys|car|copy|receipt|ticket|file|files|document|documents|rest|remainder|leftovers|bag|umbrella|phone|charger|pen|notes)': 'keeping $2$3'
+  '(stay) (surprised|impressed|shocked|disappointed|embarrassed|confused|scared|excited|pregnant|famous|rich|known|aware|red|pale)': 'get $2'
+  '(stays) (surprised|impressed|shocked|disappointed|embarrassed|confused|scared|excited|pregnant|famous|rich|known|aware|red|pale)': 'gets $2'
+  '(stayed) (surprised|impressed|shocked|disappointed|embarrassed|confused|scared|excited|pregnant|famous|rich|known|aware|red|pale)': 'got $2'
+  '(staying) (surprised|impressed|shocked|disappointed|embarrassed|confused|scared|excited|pregnant|famous|rich|known|aware|red|pale)': 'getting $2'
