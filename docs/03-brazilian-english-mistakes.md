@@ -220,6 +220,8 @@ harper.js 2.10.0.*
 | all the days → every day; all the world → everyone; in all the world → all over the world; the half of → half of; go to the school → go to school; in the home → at home; which is your name → what is your name | todos os dias / todo mundo / no mundo todo / a metade de / ir à escola / em casa / qual é | ArticlesPhrases (existence) |
 | the police is → the police are; I have born → I was born; there is many → there are many | a polícia é / nasci / tem muitos | Agreement |
 | everybody are → everybody is; everyone have → everyone has | todo mundo são / todo mundo tem | AgreementPhrases (existence) |
+| What you want? → What do you want?; You have a car? → Do you have a car?; What means this? → What does this mean? | pergunta sem auxiliar | Questions (suggestion) |
+| I no like → I don't like; not is → it isn't | eu não | Syntax |
 | since 3 years → for 3 years | há 3 anos | H (`SinceDuration`) |
 | think in you → think about you | pensar em | Prepositions |
 | dream with → dream about | sonhar com | Prepositions |

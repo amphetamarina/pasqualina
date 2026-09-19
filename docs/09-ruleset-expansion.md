@@ -761,7 +761,7 @@ state* (marital status), *fiscal* (tax), *judicial* overuse — skip.
 | 9 | `styles: add Complements (verb complementation)` | Complements, ComplementsPhrases | 15 |
 | 10 | `styles: add Articles` | Articles, ArticlesPhrases | 15 |
 | 11 | `styles: add Agreement` | Agreement, AgreementPhrases | 12 |
-| 11 | `styles: add Agreement` | Agreement | 12 |
+| 12 | `styles: add Questions and extend Syntax with negation` | Questions, Syntax | 5 |
 | 12 | `styles: add Questions and extend Syntax with negation` | Questions, Syntax | 10 |
 | 13 | `styles: add Degree` | Degree | 20 |
 | 14 | `styles: add Relatives` | Relatives | 8 |

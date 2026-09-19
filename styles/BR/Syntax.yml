@@ -27,4 +27,7 @@ tokens:
   - '(?m)(?:^|(?<=[.!?,]\s))(?:The|the)\s+(?:life|love|happiness|freedom|nature|society|history|music|money|time|death|art|science|technology|education|health|peace|war|justice|truth|beauty|knowledge|power|success|failure|work|sport|sports|food|family|friendship|religion|politics|culture|language|literature|philosophy|humanity|mankind|people|children|women|men|animals|dogs|cats|cars|computers|books|movies|television|internet)\s+(?:is|are|was|were|has|have|can|could|will|would|should|must|may|might|makes|gives|brings|takes|teaches|helps|changes|means|matters|seems|becomes|remains|requires|needs|depends|allows|goes|comes|moves|works|plays|counts)\s+(?!\w+\s+of\b)'
   # "the most of the students"
   - '\bthe most of (?:the|my|your|his|her|their|our|these|those|them|us|it|people|time|us)\b'
+  # eu não sei -> I don't know
+  - '\b(I|you|we|they|he|she|it) (no|not) (like|want|need|know|have|has|think|understand|remember|speak|see|go|work|live|eat|drink|sleep|can|could|will|would|should|must|am|is|are|was|were)\b'
+  - '\b(no|not) (is|are|was|were|has|have|had|can|could|should|must|do|does|did)\b(?! only| just| yet| even| always)'
   # "how many years do you have" is in Collocations; "I have X years" in Age.
