@@ -17,3 +17,5 @@ tokens:
   - '\b(?:make|makes|made|making)\s+(?:an? )?interviews?\s+(?:with|to)\b'
   - '\b(?:make|makes|made|making)\s+(?:a |the |my |your |his |her )?work\s+(?:for|of|about)\s+(?:school|the school|university|the course|the class)\b'
   - '\b(?:make|makes|made|making)\s+(?:a |one )?company\s+(?:to|for)\b'
+  - '\b(?:pass|passes|passed|passing)\s+(?:a |the )?(?:cloth|rag|broom|iron|vacuum|mop)\s+(?:on|in|at|over)\b'
+  - '\b(?:I|you|we|they|he|she)\s+(?:am|is|are|was|were)?\s*(?:pass|passes|passed|passing)\s+(?:bad|badly|well|good)\b'
