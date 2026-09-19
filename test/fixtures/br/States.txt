@@ -72,3 +72,55 @@ He was agree.
 I have not sure that it works.
 I have almost sure that it works.
 I have no sure.
+I have anger.
+We have anger.
+He has anger.
+I am with anger.
+I have rage.
+We have rage.
+He has rage.
+I am with rage.
+I have nausea.
+We have nausea.
+He has nausea.
+I am with nausea.
+I have dizziness.
+We have dizziness.
+He has dizziness.
+I am with dizziness.
+I have sleepiness.
+We have sleepiness.
+He has sleepiness.
+I am with sleepiness.
+I had hunger.
+We had hunger.
+I had thirst.
+We had thirst.
+I had sleep.
+We had sleep.
+I had fear.
+We had fear.
+I had shame.
+We had shame.
+I had hurry.
+We had hurry.
+I had luck.
+We had luck.
+I had cold.
+We had cold.
+I had heat.
+We had heat.
+I had envy.
+We had envy.
+I had jealousy.
+We had jealousy.
+I had anger.
+We had anger.
+I had rage.
+We had rage.
+I had nausea.
+We had nausea.
+I had dizziness.
+We had dizziness.
+I had sleepiness.
+We had sleepiness.

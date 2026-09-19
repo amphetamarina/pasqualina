@@ -132,7 +132,8 @@ that pins the Portuguese meaning, never bare.
 ## 2. Grammar calques
 
 *`BR.States` / `BR.StatesPhrases`: Harper was silent on all 46 State
-candidates, tested 2026-09-18 with harper.js 2.10.0.*
+candidates and all 18 extra/past-state candidates, tested 2026-09-18 with
+harper.js 2.10.0.*
 
 | Wrong → right | Trigger | Rule |
 |---|---|---|
@@ -170,6 +171,12 @@ candidates, tested 2026-09-18 with harper.js 2.10.0.*
 | have/be with heat → be hot | ter calor / estar com calor | `BR.States` |
 | have/be with envy → be envious | ter inveja / estar com inveja | `BR.States` |
 | have/be with jealousy → be jealous | ter ciúme / estar com ciúme | `BR.States` |
+| have/be with anger → be angry | ter raiva / estar com raiva | `BR.States` |
+| have/be with rage → be furious | ter raiva (intensa) | `BR.States` |
+| have/be with nausea → be nauseous | ter náusea / estar com náusea | `BR.States` |
+| have/be with dizziness → be dizzy | ter tontura / estar com tontura | `BR.States` |
+| have/be with sleepiness → be sleepy | ter sonolência | `BR.States` |
+| I had X → I was X; we/you/they had X → were X | ter/estar com (past) | `BR.States` |
 | put attention → pay attention | prestar atenção | Collocations |
 | give a look → take a look | dar uma olhada | Collocations; H has `HaveTakeALook` for other forms |
 | close/open the light, TV, computer → turn off/on | fechar/abrir | Collocations; H (`OpenTheLight`) did not fire on "close" in 2.3.0 |
