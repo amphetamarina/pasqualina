@@ -140,6 +140,9 @@ harper.js 2.10.0.*
 | I have 30 years → I am 30 (years old) | ter X anos | `BR.Age` |
 | how many years do you have → how old are you | quantos anos você tem | Collocations |
 | make a question → ask a question | fazer uma pergunta | Collocations |
+| make a party → throw/have a party; make a surgery → have surgery; make an exam → take an exam; make a course → take a course; make research → do research; make a favor → do a favor; make the dishes → do the dishes; make a diet → go on a diet; make a walk → go for a walk; make a photo → take a photo; make a visit → pay a visit; make part of → be part of; make cold → it is cold; make a text → write a text | fazer festa/cirurgia/prova/curso/pesquisa/favor/louça/dieta/caminhada/foto/visita/parte/frio/texto | `BR.Collocations` |
+| win money → earn; win weight → gain; win a gift → get; win time → save; win a baby → have a baby; win a living → make a living | ganhar dinheiro/peso/presente/tempo/neném/a vida | `BR.Collocations` |
+| want that he goes → want him to go; how many years do you have → how old are you; make lack → be missed; make a question of → insist on; make N years that → it has been N years; make will → do what he wants; make an interview → do an interview; make a work for school → do an assignment; make company → keep company | quero que ele vá / quantos anos você tem / fazer falta / fazer questão / faz N anos / fazer a vontade / fazer uma entrevista / fazer um trabalho / fazer companhia | `BR.CollocationsPhrases` (existence; rephrase) |
 | make homework → do homework | fazer o dever | Collocations |
 | make exercises / make sport / practice sport → do exercise / play sports | fazer exercício, praticar esporte | Collocations |
 | make a travel → take a trip | fazer uma viagem | Collocations |

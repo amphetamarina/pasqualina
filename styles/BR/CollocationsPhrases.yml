@@ -1,0 +1,19 @@
+# Collocation calques whose English fix is a rephrase (object pronouns,
+# to-infinitive, articles), not a slot fill; the message names the pattern.
+# See docs/03-brazilian-english-mistakes.md.
+extends: existence
+message: "'%s' is a Portuguese collocation calque. English rephrases it: 'want him to go' (quero que ele vá), 'how old are you' (quantos anos você tem), 'be missed' (fazer falta), 'insist on' (fazer questão), 'it has been N years' (faz N anos), 'do what he wants' (fazer a vontade), 'do an interview' (fazer uma entrevista), 'do an assignment' (fazer um trabalho), 'keep company' (fazer companhia)."
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - '\b(?:want|wants|wanted|wanting|would like|''d like|need|needs|needed|needing|prefer|prefers|preferred|preferring|allow|allows|allowed|allowing|force|forces|forced|forcing|invite|invites|invited|inviting|encourage|encourages|encouraged|encouraging|teach|teaches|taught|teaching|help|helps|helped|helping|persuade|persuades|persuaded|persuading|convince|convinces|convinced|convincing|let|lets|letting)\s+that\s+(?:I|you|he|she|it|we|they|people|someone|somebody|everyone|everybody|nobody|no one|anyone|anybody)\b'
+  - '\b(?:how|and how)\s+many\s+years\s+(?:do|does|did)\s+(?:you|he|she|they|we|it|your|his|her|their|our|the|this|that|my)\s+(?:have|has|had)\b'
+  - '\b(?:how|and how)\s+many\s+years\s+(?:have|has|had)\s+(?:you|he|she|they|we|it|your|his|her|their|our|the|this|that|my)\b'
+  - '\b(?:make|makes|made|making)\s+(?:a |the )?lack\b'
+  - '\b(?:make|makes|made|making)\s+(?:a |one )?question\s+(?:of|to)\b'
+  - '\b(?:make|makes|made|making)\s+(?:\d+|many|several|few|two|three|five|ten)\s+years\s+(?:that|since)\b'
+  - '\b(?:make|makes|made|making)\s+(?:the |his |her |my |your |their )?will\b'
+  - '\b(?:make|makes|made|making)\s+(?:an? )?interviews?\s+(?:with|to)\b'
+  - '\b(?:make|makes|made|making)\s+(?:a |the |my |your |his |her )?work\s+(?:for|of|about)\s+(?:school|the school|university|the course|the class)\b'
+  - '\b(?:make|makes|made|making)\s+(?:a |one )?company\s+(?:to|for)\b'
