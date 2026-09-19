@@ -9,12 +9,12 @@ It runs only the pure modules that have no WASM or child_process dependency.
 npm run mutate
 ```
 
-This is **not** part of `npm run check`. It takes ~6 s for 234 mutants and is
+This is **not** part of `npm run check`. It takes ~7 s for 382 mutants and is
 meant for local verification before review, not CI gating.
 
 ## Scope
 
-Seven files, all pure:
+Nine files, all pure:
 
 | File | Specs |
 |---|---|
@@ -24,32 +24,37 @@ Seven files, all pure:
 | `src/harper/normalize.mjs` | `test/unit/harper-normalize.test.mjs` |
 | `src/vale/normalize.mjs` | `test/unit/vale-normalize.test.mjs` |
 | `src/http/lint-request.mjs` | `test/unit/lint-request.test.mjs` |
+| `src/cli/args.mjs` | `test/unit/cli-args.test.mjs` |
+| `src/cli/format.mjs` | `test/unit/cli-format.test.mjs` |
 | `public/backdrop.js` | `test/unit/build-backdrop.test.mjs` |
 
-Out of scope (not pure): `src/lint.mjs` (imports adapters with WASM/spawn),
+Out of scope: `src/cli/run.mjs` (orchestration, covered by injected-io unit
+specs but not mutated), `src/lint.mjs` (imports adapters with WASM/spawn),
 `src/harper/linter.mjs` (harper.js), `src/vale/linter.mjs` (child_process),
 `server.mjs`, `api/lint.mjs` (HTTP plumbing).
 
-## Final score (234 mutants, after spec additions)
+## Final score (382 mutants, after spec additions)
 
-| File | Score | Killed | Survived | NoCov |
-|---|---|---|---|---|
-| `issues.mjs` | 100% | 9 | 0 | 0 |
-| `memo.mjs` | 100% | 7 | 0 | 0 |
-| `backdrop.js` | 96.77% | 59 | 2 | 0 |
-| `harper/normalize.mjs` | 97.73% | 43 | 1 | 0 |
-| `http/lint-request.mjs` | 97.67% | 42 | 1 | 0 |
-| `offsets.mjs` | 93.94% | 25 | 2 | 0 |
-| `vale/normalize.mjs` | 100% | 36 | 0 | 0 |
-| **Overall** | **97.44%** | 221 | 6 | 0 |
+| File | Score | Killed | Timeout | Survived | NoCov |
+|---|---|---|---|---|---|
+| `issues.mjs` | 100% | 9 | 0 | 0 | 0 |
+| `memo.mjs` | 100% | 7 | 0 | 0 | 0 |
+| `vale/normalize.mjs` | 100% | 36 | 0 | 0 | 0 |
+| `cli/args.mjs` | 100% | 103 | 0 | 0 | 0 |
+| `cli/format.mjs` | 100% | 45 | 0 | 0 | 0 |
+| `backdrop.js` | 96.77% | 59 | 1 | 2 | 0 |
+| `harper/normalize.mjs` | 97.73% | 43 | 0 | 1 | 0 |
+| `http/lint-request.mjs` | 97.67% | 42 | 0 | 1 | 0 |
+| `offsets.mjs` | 93.94% | 25 | 6 | 2 | 0 |
+| **Overall** | **98.43%** | 369 | 7 | 6 | 0 |
 
 ## Thresholds
 
-Set from the final run (97.44%, 6 equivalent mutants).
+Set from the final run (98.43%, 6 equivalent mutants).
 
-- `break`: 95 — CI would fail below this
-- `low`: 97 — warning
-- `high`: 97 — matches achievable ceiling (all survivors are equivalent)
+- `break`: 96 — CI would fail below this
+- `low`: 98 — warning
+- `high`: 98 — matches achievable ceiling (all survivors are equivalent)
 
 ## Equivalent mutants (by design, not fixed)
 

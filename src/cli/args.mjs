@@ -45,7 +45,7 @@ function asSeverity(value) {
 }
 
 /**
- * @param {string} value
+ * @param {string | undefined} value
  * @returns {"harper" | "vale" | null}
  */
 function asTool(value) {
@@ -62,7 +62,7 @@ function buildOptions(values, positionals) {
   const rawSeverity = values.severity ?? "suggestion";
   const format = asFormat(rawFormat);
   const severity = asSeverity(rawSeverity);
-  const tool = values.tool === undefined ? null : asTool(values.tool);
+  const tool = asTool(values.tool);
 
   if (format === null) return invalidChoice("format", rawFormat, FORMATS);
   if (severity === null) return invalidChoice("severity", rawSeverity, SEVERITIES);

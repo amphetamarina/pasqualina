@@ -3,15 +3,14 @@ import globals from "globals";
 
 // Quality gate: clean-code thresholds and import boundaries.
 //
-// Boundary model (Phase 3 target layout):
-//   src/harper.mjs, src/vale.mjs  — tool adapters, may not import each other
-//   src/lint.mjs                  — compose entry; the only thing consumers use
-//   src/http/**                   — request handling, may not import adapters
-//   bin/*, server.mjs, api/**, bench/** — may only enter through the compose
-//     entry (lint.mjs / src/lint.mjs), never an adapter directly
+// Boundary model:
+//   src/harper/**, src/vale/**  — tool adapters; may not import each other
+//   src/lint.mjs                — compose entry; the only thing consumers use
+//   src/http/**                 — request handling, may not import adapters
+//   src/cli/**                  — imports only src/lint.mjs and src/issues.mjs
+//   bin/*, server.mjs, api/**, bench/** — enter through the compose entry
+//     (lint.mjs / src/lint.mjs), never an adapter directly
 //
-// Known gap: the inline script in public/index.html is not linted until the
-// Phase 3 module split extracts it to a real .mjs file.
 // Thresholds are targets: they are never loosened to fit the code; violations
 // are fixed in their own commits instead.
 
@@ -72,6 +71,17 @@ export default [
     // the compose entry is the only place allowed to reach adapters
     files: ["src/lint.mjs"],
     rules: { "no-restricted-imports": "off" },
+  },
+  {
+    files: ["src/cli/**"],
+    rules: {
+      "no-restricted-imports": ["error", {
+        patterns: [{
+          regex: "^(?!(?:\\./|\\.\\./issues\\.mjs$|\\.\\./lint\\.mjs$|node:)).+$",
+          message: "src/cli imports only lint.mjs, issues.mjs, node builtins, and its own modules",
+        }],
+      }],
+    },
   },
   {
     // tests use describe/it closures as containers, not logic; a length

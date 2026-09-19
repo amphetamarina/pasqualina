@@ -29,6 +29,8 @@ export default {
     "src/harper/normalize.mjs",
     "src/vale/normalize.mjs",
     "src/http/*.mjs",
+    "src/cli/args.mjs",
+    "src/cli/format.mjs",
     "public/backdrop.js",
   ],
   reporters: ["clear-text", "html"],
@@ -36,7 +38,7 @@ export default {
   timeoutMS: 10000,
   tempDirName: "node_modules/.temp/stryker",
   cleanTempDir: true,
-  // Thresholds from final run (97.44%, 6 equivalent mutants remain).
+  // Thresholds from final run (98.43%, 6 equivalent mutants remain).
   // break = floor(score) - 2, low = floor(score), high = floor(score).
-  thresholds: { break: 95, low: 97, high: 97 },
+  thresholds: { break: 96, low: 98, high: 98 },
 };
