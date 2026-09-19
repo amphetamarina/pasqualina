@@ -1,0 +1,20 @@
+# Number/person agreement calques (todo mundo são, a polícia é, nasci).
+# Exact fixes only; the rephrases live in AgreementPhrases.
+# Catalogue with sources: docs/03-brazilian-english-mistakes.md
+extends: substitution
+message: "English says '%s', not '%s' (agreement)."
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  'the police is': 'the police are'
+  'the police was': 'the police were'
+  'the police has': 'the police have'
+  'the police does': 'the police do'
+  'the police doesn''t': 'the police don''t'
+  'the police isn''t': 'the police aren''t'
+  'the police wasn''t': 'the police weren''t'
+  '(I|he|she) (have|has|had) born': '$1 was born'
+  '(you|we|they) have born': '$1 were born'
+  '(there is|there''s) (many|several|two|three|four|five|ten|lots of|a lot of|some|few|a few|no|plenty of) (?!(?:years|days|months|weeks|hours|minutes|seconds)\b)(\w+s|people|children|men|women)': 'there are $2 $3'

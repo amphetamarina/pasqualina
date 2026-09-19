@@ -218,6 +218,8 @@ harper.js 2.10.0.*
 | must to go → must go; enjoy to read → enjoy reading; worth to try → worth trying; for that you can → so that you can; I wait that → I hope; can be that → maybe; logically → of course | deve ir / gosto de fazer / vale a pena / para que / espero que / pode ser / logicamente | ComplementsPhrases (existence) |
 | the my → my; the both → both; in the last week → last week; a other → another; others people → other people; the 80% → 80%; the Brazil → Brazil | o meu / os dois / na última semana / um outro / outras pessoas / os 80% / o Brasil | Articles |
 | all the days → every day; all the world → everyone; in all the world → all over the world; the half of → half of; go to the school → go to school; in the home → at home; which is your name → what is your name | todos os dias / todo mundo / no mundo todo / a metade de / ir à escola / em casa / qual é | ArticlesPhrases (existence) |
+| the police is → the police are; I have born → I was born; there is many → there are many | a polícia é / nasci / tem muitos | Agreement |
+| everybody are → everybody is; everyone have → everyone has | todo mundo são / todo mundo tem | AgreementPhrases (existence) |
 | since 3 years → for 3 years | há 3 anos | H (`SinceDuration`) |
 | think in you → think about you | pensar em | Prepositions |
 | dream with → dream about | sonhar com | Prepositions |

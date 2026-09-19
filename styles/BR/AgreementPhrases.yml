@@ -1,0 +1,9 @@
+# Agreement calques whose English fix is a rephrase; the message names the
+# pattern. See docs/03-brazilian-english-mistakes.md.
+extends: existence
+message: "'%s' is a Portuguese agreement calque. English uses singular: 'everyone is / has / does' (todo mundo é)."
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - '\b(everybody|everyone|nobody|no one|somebody|someone|anybody|anyone|each one|each person|every person) (are|were|have|do|don''t|like|want|need|think|say|go|know|live|work|feel|love|hate|believe)\b'
