@@ -7,7 +7,7 @@ level: warning
 ignorecase: true
 nonword: true
 tokens:
-  - '\b(?:want|wants|wanted|wanting|would like|''d like|need|needs|needed|needing|prefer|prefers|preferred|preferring|allow|allows|allowed|allowing|force|forces|forced|forcing|invite|invites|invited|inviting|encourage|encourages|encouraged|encouraging|teach|teaches|taught|teaching|help|helps|helped|helping|persuade|persuades|persuaded|persuading|convince|convinces|convinced|convincing|let|lets|letting)\s+that\s+(?:I|you|he|she|it|we|they|people|someone|somebody|everyone|everybody|nobody|no one|anyone|anybody)\b'
+  - '\b(?:want|wants|wanted|wanting|would like|''d like|need|needs|needed|needing|allow|allows|allowed|allowing|force|forces|forced|forcing|invite|invites|invited|inviting|encourage|encourages|encouraged|encouraging|teach|teaches|taught|teaching|help|helps|helped|helping|persuade|persuades|persuaded|persuading|convince|convinces|convinced|convincing|let|lets|letting)\s+that\s+(?:I|you|he|she|it|we|they|people|someone|somebody|everyone|everybody|nobody|no one|anyone|anybody)\b'
   - '\b(?:how|and how)\s+many\s+years\s+(?:do|does|did)\s+(?:you|he|she|they|we|it|your|his|her|their|our|the|this|that|my)\s+(?:have|has|had)\b'
   - '\b(?:how|and how)\s+many\s+years\s+(?:have|has|had)\s+(?:you|he|she|they|we|it|your|his|her|their|our|the|this|that|my)\b'
   - '\b(?:make|makes|made|making)\s+(?:a |the )?lack\b'

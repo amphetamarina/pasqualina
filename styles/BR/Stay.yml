@@ -2,7 +2,7 @@
 # so the one-click fix keeps the tense.
 # Catalogue with sources: docs/03-brazilian-english-mistakes.md
 extends: substitution
-message: "English says '%s', not '%s' (ficar com = keep)."
+message: "English says '%s', not '%s' (ficar calque)."
 level: warning
 ignorecase: true
 action:
