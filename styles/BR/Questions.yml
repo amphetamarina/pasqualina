@@ -6,6 +6,6 @@ level: suggestion
 ignorecase: true
 nonword: true
 tokens:
-  - '(?m)^(What|Where|When|Why|How|Who|Which|How much|How many|How long|How often) (you|he|she|they|we|I|it|people|your \w+|the \w+) (want|wants|need|needs|think|thinks|like|likes|say|says|do|does|go|goes|live|lives|work|works|know|knows|mean|means|have|has|feel|feels|prefer|prefers|use|uses|call|calls|make|makes|see|sees|come|comes|get|gets|take|takes|study|studies|speak|speaks|write|writes|read|reads|eat|eats|drink|drinks|sleep|sleeps|start|starts|finish|finishes|arrive|arrives|leave|leaves|cost|costs|happen|happens|look|looks|sound|sounds)\b'
+  - '(?m)^(What|Where|When|Why|How|Who|Which|How much|How many|How long|How often) (you|he|she|they|we|I|it|people|your \w+|the \w+) (want|wants|need|needs|think|thinks|like|likes|say|says|do|does|go|goes|live|lives|work|works|know|knows|mean|means|have|has|feel|feels|prefer|prefers|use|uses|call|calls|make|makes|see|sees|come|comes|get|gets|take|takes|study|studies|speak|speaks|write|writes|read|reads|eat|eats|drink|drinks|sleep|sleeps|start|starts|finish|finishes|arrive|arrives|leave|leaves|cost|costs|happen|happens|look|looks|sound|sounds|did|was|were|will|can|could|would|should)\b'
   - '(?m)^(What|How) (means|is the meaning of|you say|do you say|is called|you call|do you call) '
   - '(?m)^(You|He|She|They|We|It) (have|has|like|likes|want|wants|need|needs|know|knows|think|thinks|live|lives|work|works|speak|speaks|go|goes|went|did|do|does|saw|see|sees|are|is|was|were|can|could|will|would)\b[^.!?\n]{0,60}\?'

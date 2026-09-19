@@ -10,7 +10,7 @@ action:
 swap:
   'the (my|your|his|her|their|our|its)': '$1'
   'the both( of)?': 'both$1'
-  '(in|on|at|during) the (last|next|coming|previous) (week|month|year|weekend|semester|summer|winter|spring|autumn|fall|monday|tuesday|wednesday|thursday|friday|saturday|sunday|time|christmas|easter|carnival|holiday|holidays|vacation|vacations)': '$2 $3'
+  '(in|on|at|during) the (last|next|coming|previous) (week|month|year|weekend|semester|summer|winter|spring|autumn|fall|monday|tuesday|wednesday|thursday|friday|saturday|sunday|time|christmas|easter|carnival|holiday|holidays|vacation|vacations)(?!\s+of\b)': '$2 $3'
   '(an|a) other': 'another'
   'others (people|persons|things|countries|cities|places|options|ways|times|days|students|companies|languages|cultures|reasons|problems|questions|examples|ideas|projects|products|services|areas|types|kinds|forms|cases|situations|aspects|factors|elements|items|points|topics|subjects|activities|tasks|words|names|books|movies|films|songs|games|sports|teams|players|friends|colleagues|members|users|customers|clients|employees|workers)': 'other $1'
   'the (\d+)\s?(%|percent|per cent) ': '$1$2 '
