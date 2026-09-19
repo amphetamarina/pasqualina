@@ -222,6 +222,9 @@ harper.js 2.10.0.*
 | everybody are → everybody is; everyone have → everyone has | todo mundo são / todo mundo tem | AgreementPhrases (existence) |
 | What you want? → What do you want?; You have a car? → Do you have a car?; What means this? → What does this mean? | pergunta sem auxiliar | Questions (suggestion) |
 | I no like → I don't like; not is → it isn't | eu não | Syntax |
+| enough good → good enough | bom o suficiente | Degree |
+| more old → older (-er/-est); speaks very good → speaks very well; too much people → too many people; each day more → more and more | mais velho / fala bem / gente demais / cada vez mais | DegreePhrases (existence) |
+| definitively → definitely; specially → especially; the last news → the latest news | definitivamente / especialmente / a última notícia | DegreeSuggestions (existence, suggestion) |
 | since 3 years → for 3 years | há 3 anos | H (`SinceDuration`) |
 | think in you → think about you | pensar em | Prepositions |
 | dream with → dream about | sonhar com | Prepositions |

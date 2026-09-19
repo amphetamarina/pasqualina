@@ -1,0 +1,10 @@
+# Degree calques that are ambiguous, so suggestion level.
+extends: existence
+message: "'%s' is a Portuguese degree calque. English: 'definitely' (definitivamente), 'especially' (especialmente), 'latest' (a última versão)."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - '\bdefinitively (I|we|you|they|he|she|it|not|yes|no|the|this|that|a|an)\b'
+  - '(?m)^specially (in|when|because|if|the|this|those|these|now|today|during|after|before|since)\b'
+  - '\b(the |my |your |his |her |their |our )?last (version|release|update|news|model|technology|trend|fashion)(?!\s+(?:of|before|that|which|we|I|you|he|she|they|in|from|to)\b)'

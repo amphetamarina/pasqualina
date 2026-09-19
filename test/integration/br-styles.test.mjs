@@ -19,7 +19,7 @@ describe("BR styles", () => {
       describe("clean.txt", () => {
         it("triggers no BR rule except FalseFriendsWords", async () => {
           // FalseFriendsWords flags legitimate English by design (suggestion level), so it is exempt here.
-          const issues = (await runVale(text)).filter((i) => i.rule.startsWith("BR.") && i.rule !== "BR.FalseFriendsWords");
+          const issues = (await runVale(text)).filter((i) => i.rule.startsWith("BR.") && i.rule !== "BR.FalseFriendsWords" && i.rule !== "BR.DegreeSuggestions");
           assert.deepEqual(issues.map((i) => `${i.line}: ${i.rule} '${i.matched}'`), []);
         });
       });
@@ -42,7 +42,7 @@ describe("BR styles", () => {
         const extra = /** @type {string[]} */ ([]);
         lines.forEach((line, idx) => {
           if (!line.trim()) return;
-          const rules = new Set(issues.filter((i) => i.rule.startsWith("BR.") && i.rule !== "BR.FalseFriendsWords" && i.line === idx + 1).map((i) => i.rule));
+          const rules = new Set(issues.filter((i) => i.rule.startsWith("BR.") && i.rule !== "BR.FalseFriendsWords" && i.rule !== "BR.DegreeSuggestions" && i.line === idx + 1).map((i) => i.rule));
           if (rules.size > 1) extra.push(`${idx + 1}: ${[...rules].join(", ")} | ${line}`);
         });
         assert.deepEqual(extra, [], `lines flagged by more than one BR rule`);

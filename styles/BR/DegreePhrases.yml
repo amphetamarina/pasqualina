@@ -1,0 +1,15 @@
+# Degree calques whose English fix is a rephrase (comparative morphology,
+# adverb form); the message names the pattern. See docs/03.
+extends: existence
+message: "'%s' is a Portuguese degree calque. English rephrases it: '-er/-est' (mais velho -> older), 'well' (fala bem -> speaks well), 'many + plural', 'more and more' (cada vez mais)."
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - '\b(more|most) (old|big|small|cheap|fast|slow|young|high|low|long|strong|weak|rich|poor|cold|large|tall|late|early|near|wide|deep|thin|fat|thick|heavy|quick|smart|warm|hot|short|new|nice|hard|easy|safe|sweet|loud|tight|tough|hungry|lucky|funny|pretty|ugly|busy|dirty|lazy|crazy|noisy|silly|tiny|empty|happy|angry)\b'
+  - '\b(speak|speaks|spoke|speaking|write|writes|wrote|writing|cook|cooks|cooked|cooking|sing|sings|sang|singing|play|plays|played|playing|drive|drives|drove|driving|dance|dances|danced|dancing|draw|draws|drew|drawing|work|works|worked|working|sleep|sleeps|slept|sleeping|eat|eats|ate|eating|know|knows|knew|explain|explains|explained|understand|understands|understood|see|sees|saw|hear|hears|heard|read|reads|behave|behaves|behaved|perform|performs|performed|handle|handles|handled|manage|manages|managed|treat|treats|treated) (\w+ )?(very |so |really |pretty |quite )good\b(?!\s+\w)'
+  - '\b(speak|speaks|spoke|speaking|write|writes|wrote|writing|cook|cooks|cooked|cooking|sing|sings|sang|singing|play|plays|played|playing|drive|drives|drove|driving|dance|dances|danced|dancing|draw|draws|drew|drawing|work|works|worked|working|sleep|sleeps|slept|sleeping|eat|eats|ate|eating|know|knows|knew|explain|explains|explained|understand|understands|understood|see|sees|saw|hear|hears|heard|read|reads|behave|behaves|behaved|perform|performs|performed|handle|handles|handled|manage|manages|managed|treat|treats|treated) good(?!\s+\w)'
+  - '\b(more|very|too|so|really) much (people|things|friends|students|cars|houses|books|problems|questions|options|places|countries|times|days|years|hours|reasons|examples|words|ideas|projects|tasks|jobs|companies|users|clients|customers|employees|children|kids|men|women|animals|photos|videos|songs|movies|games|apps|emails|messages|calls|meetings|classes|errors|bugs|issues|features|files|pages|items|steps|ways|groups|teams|players|comments|posts|views|sales|orders|products|shops|stores|restaurants|hotels|schools|hospitals|buildings|rooms|streets|cities|languages|rules|laws|taxes|costs|prices|opportunities|risks|benefits|changes|differences|details|facts|results|events|activities|studies|papers|articles|reports|documents|contracts|offers|plans|goals|complaints|requests|feelings|memories|experiences|stories|gifts|prizes|points|matches|competitions)\b'
+  - '\b(each|every) time more\b'
+  - '\b(each|every) (day|year) more(?:\s+(?:and more|difficult|expensive|common|important|popular|dangerous|complicated|beautiful|interesting|rare|frequent|serious|obvious|clear|necessary|urgent|distant|present))?\b(?!\s+\w)'
+  - '\b(each|every) (time|day|year) (less|worse|better|bigger|smaller|faster|harder)\b'

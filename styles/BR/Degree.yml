@@ -1,0 +1,10 @@
+# Degree calques (bom o suficiente). Exact reorder only.
+# Catalogue with sources: docs/03-brazilian-english-mistakes.md
+extends: substitution
+message: "English says '%s', not '%s' (degree)."
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  'enough (good|big|old|strong|fast|smart|tall|rich|long|high|large|small|hot|cold|warm|close|near|early|late|easy|hard|clear|safe|clean|ready|mature|experienced|qualified|confident|comfortable|flexible|fit|healthy|stable|reliable|brave|patient|careful|serious|important|interesting|simple|complex|deep|wide|thick|thin|light|heavy|bright|dark|loud|quiet|sweet|salty|spicy|soft|firm|tight|loose|dry|wet|full|empty|cheap|expensive)': '$1 enough'

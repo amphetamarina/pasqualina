@@ -762,7 +762,7 @@ state* (marital status), *fiscal* (tax), *judicial* overuse — skip.
 | 10 | `styles: add Articles` | Articles, ArticlesPhrases | 15 |
 | 11 | `styles: add Agreement` | Agreement, AgreementPhrases | 12 |
 | 12 | `styles: add Questions and extend Syntax with negation` | Questions, Syntax | 5 |
-| 12 | `styles: add Questions and extend Syntax with negation` | Questions, Syntax | 10 |
+| 13 | `styles: add Degree` | Degree, DegreePhrases, DegreeSuggestions | 11 |
 | 13 | `styles: add Degree` | Degree | 20 |
 | 14 | `styles: add Relatives` | Relatives | 8 |
 | 15 | `styles: extend FalseFriends (anchored) — part 1` | FalseFriends | 25 |
