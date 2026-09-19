@@ -1,0 +1,55 @@
+# States built with Portuguese light verbs (ter fome, estar com sono)
+# where English uses be + adjective. Anchored per grammatical person so each
+# replacement is an exact one-click fix.
+# Catalogue with sources: docs/03-brazilian-english-mistakes.md
+extends: substitution
+message: "English says '%s', not '%s' (ter/estar com + state)."
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  '(I) (?:have|''ve) (?:much |a lot of |so much |too much )?hunger': '$1 am hungry'
+  '(you|we|they) (?:have|''ve) (?:much |a lot of |so much |too much )?hunger': '$1 are hungry'
+  '(he|she|it) has (?:much |a lot of |so much |too much )?hunger': '$1 is hungry'
+  '(am|is|are|was|were) with (?:much |a lot of |so much |too much )?hunger': '$1 hungry'
+  '(I) (?:have|''ve) (?:much |a lot of |so much |too much )?thirst': '$1 am thirsty'
+  '(you|we|they) (?:have|''ve) (?:much |a lot of |so much |too much )?thirst': '$1 are thirsty'
+  '(he|she|it) has (?:much |a lot of |so much |too much )?thirst': '$1 is thirsty'
+  '(am|is|are|was|were) with (?:much |a lot of |so much |too much )?thirst': '$1 thirsty'
+  '(I) (?:have|''ve) (?:much |a lot of |so much |too much )?sleep(?!\s+\w)': '$1 am sleepy'
+  '(you|we|they) (?:have|''ve) (?:much |a lot of |so much |too much )?sleep(?!\s+\w)': '$1 are sleepy'
+  '(he|she|it) has (?:much |a lot of |so much |too much )?sleep(?!\s+\w)': '$1 is sleepy'
+  '(am|is|are|was|were) with (?:much |a lot of |so much |too much )?sleep(?!\s+\w)': '$1 sleepy'
+  '(I) (?:have|''ve) (?:much |a lot of |so much |too much )?fear': '$1 am afraid'
+  '(you|we|they) (?:have|''ve) (?:much |a lot of |so much |too much )?fear': '$1 are afraid'
+  '(he|she|it) has (?:much |a lot of |so much |too much )?fear': '$1 is afraid'
+  '(am|is|are|was|were) with (?:much |a lot of |so much |too much )?fear': '$1 afraid'
+  '(I) (?:have|''ve) (?:much |a lot of |so much |too much )?shame': '$1 am ashamed'
+  '(you|we|they) (?:have|''ve) (?:much |a lot of |so much |too much )?shame': '$1 are ashamed'
+  '(he|she|it) has (?:much |a lot of |so much |too much )?shame': '$1 is ashamed'
+  '(am|is|are|was|were) with (?:much |a lot of |so much |too much )?shame': '$1 ashamed'
+  '(I) (?:have|''ve) (?:much |a lot of |so much |too much )?hurry': '$1 am in a hurry'
+  '(you|we|they) (?:have|''ve) (?:much |a lot of |so much |too much )?hurry': '$1 are in a hurry'
+  '(he|she|it) has (?:much |a lot of |so much |too much )?hurry': '$1 is in a hurry'
+  '(am|is|are|was|were) with (?:much |a lot of |so much |too much )?hurry': '$1 in a hurry'
+  '(I) (?:have|''ve) (?:much |a lot of |so much |too much )?luck': '$1 am lucky'
+  '(you|we|they) (?:have|''ve) (?:much |a lot of |so much |too much )?luck': '$1 are lucky'
+  '(he|she|it) has (?:much |a lot of |so much |too much )?luck': '$1 is lucky'
+  '(am|is|are|was|were) with (?:much |a lot of |so much |too much )?luck': '$1 lucky'
+  '(I) (?:have|''ve) (?:much |a lot of |so much |too much )?cold(?!\s+\w)': '$1 am cold'
+  '(you|we|they) (?:have|''ve) (?:much |a lot of |so much |too much )?cold(?!\s+\w)': '$1 are cold'
+  '(he|she|it) has (?:much |a lot of |so much |too much )?cold(?!\s+\w)': '$1 is cold'
+  '(am|is|are|was|were) with (?:much |a lot of |so much |too much )?cold(?!\s+\w)': '$1 cold'
+  '(I) (?:have|''ve) (?:much |a lot of |so much |too much )?heat(?!\s+\w)': '$1 am hot'
+  '(you|we|they) (?:have|''ve) (?:much |a lot of |so much |too much )?heat(?!\s+\w)': '$1 are hot'
+  '(he|she|it) has (?:much |a lot of |so much |too much )?heat(?!\s+\w)': '$1 is hot'
+  '(am|is|are|was|were) with (?:much |a lot of |so much |too much )?heat(?!\s+\w)': '$1 hot'
+  '(I) (?:have|''ve) (?:much |a lot of |so much |too much )?envy': '$1 am envious'
+  '(you|we|they) (?:have|''ve) (?:much |a lot of |so much |too much )?envy': '$1 are envious'
+  '(he|she|it) has (?:much |a lot of |so much |too much )?envy': '$1 is envious'
+  '(am|is|are|was|were) with (?:much |a lot of |so much |too much )?envy': '$1 envious'
+  '(I) (?:have|''ve) (?:much |a lot of |so much |too much )?jealousy': '$1 am jealous'
+  '(you|we|they) (?:have|''ve) (?:much |a lot of |so much |too much )?jealousy': '$1 are jealous'
+  '(he|she|it) has (?:much |a lot of |so much |too much )?jealousy': '$1 is jealous'
+  '(am|is|are|was|were) with (?:much |a lot of |so much |too much )?jealousy': '$1 jealous'

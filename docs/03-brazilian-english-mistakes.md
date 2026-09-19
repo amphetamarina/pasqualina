@@ -131,6 +131,9 @@ that pins the Portuguese meaning, never bare.
 
 ## 2. Grammar calques
 
+*`BR.States`: Harper was silent on all 46 State candidates, tested
+2026-09-18 with harper.js 2.10.0.*
+
 | Wrong → right | Trigger | Rule |
 |---|---|---|
 | I have 30 years → I am 30 (years old) | ter X anos | `BR.Age` |
@@ -142,9 +145,18 @@ that pins the Portuguese meaning, never bare.
 | do a mistake → make a mistake | — | H (`DoMistake`) |
 | lose time → waste time | perder tempo | Collocations |
 | take a decision → make a decision | tomar uma decisão | Collocations |
-| have sure → be sure | ter certeza | Collocations |
-| have luck → be lucky | ter sorte | Collocations |
-| I am with hunger / I have hunger → I am hungry | estar com fome | Collocations |
+| have sure → be sure | ter certeza | Collocations (moves to `BR.States` in 2b) |
+| have luck / be with luck → be lucky | ter sorte / estar com sorte | `BR.States` |
+| have/be with hunger → be hungry | ter fome / estar com fome | `BR.States` |
+| have/be with thirst → be thirsty | ter sede / estar com sede | `BR.States` |
+| have/be with sleep → be sleepy | ter sono / estar com sono | `BR.States` |
+| have/be with fear → be afraid | ter medo / estar com medo | `BR.States` |
+| have/be with shame → be ashamed | ter vergonha / estar com vergonha | `BR.States` |
+| have/be with hurry → be in a hurry | ter pressa / estar com pressa | `BR.States` |
+| have/be with cold → be cold | ter frio / estar com frio | `BR.States` |
+| have/be with heat → be hot | ter calor / estar com calor | `BR.States` |
+| have/be with envy → be envious | ter inveja / estar com inveja | `BR.States` |
+| have/be with jealousy → be jealous | ter ciúme / estar com ciúme | `BR.States` |
 | put attention → pay attention | prestar atenção | Collocations |
 | give a look → take a look | dar uma olhada | Collocations; H has `HaveTakeALook` for other forms |
 | close/open the light, TV, computer → turn off/on | fechar/abrir | Collocations; H (`OpenTheLight`) did not fire on "close" in 2.3.0 |

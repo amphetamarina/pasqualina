@@ -1,0 +1,46 @@
+I have hunger.
+We have hunger.
+He has hunger.
+I am with hunger.
+I have thirst.
+We have thirst.
+He has thirst.
+I am with thirst.
+I have sleep.
+We have sleep.
+He has sleep.
+I am with sleep.
+I have fear.
+We have fear.
+He has fear.
+I am with fear.
+I have shame.
+We have shame.
+He has shame.
+I am with shame.
+I have hurry.
+We have hurry.
+He has hurry.
+I am with hurry.
+I have luck.
+We have luck.
+He has luck.
+I am with luck.
+I have cold.
+We have cold.
+He has cold.
+I am with cold.
+I have heat.
+We have heat.
+He has heat.
+I am with heat.
+I have envy.
+We have envy.
+He has envy.
+I am with envy.
+I have jealousy.
+We have jealousy.
+He has jealousy.
+I am with jealousy.
+I am with hunger and she is with cold.
+He has luck in games.
