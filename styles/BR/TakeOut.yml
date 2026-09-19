@@ -1,0 +1,30 @@
+# Calques of Portuguese tirar (tirar foto, tirar a roupa) where English uses
+# another verb or drops "out"; tense-preserving one-click replacements.
+# Catalogue with sources: docs/03-brazilian-english-mistakes.md
+extends: substitution
+message: "English says '%s', not '%s' (tirar calque)."
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  '(take|takes|took|taking) out (a |one |some |the |my |your |his |her |their |our )?(photo|photos|picture|pictures|selfie|selfies)': '$1 $2$3'
+  '(take|takes|took|taking) out (the |my |your |his |her |their |our )?(shoes|clothes|jacket|coat|hat|glasses|shirt|pants|socks|sweater|cap|mask|ring|watch|earrings|makeup|make-up)': '$1 off $2$3'
+  '(take|takes|took|taking) out (my |our |your |his |her |their |a |some |the )?(vacation|vacations|holiday|holidays|day off|days off|leave|license|licence)': '$1 $2$3'
+  '(take|takes|took|taking) out (a |one )?nap': '$1 a nap'
+  '(take) out (a |one |some |the )?(copy|copies|xerox|print|printout)': 'make $2$3'
+  '(takes) out (a |one |some |the )?(copy|copies|xerox|print|printout)': 'makes $2$3'
+  '(took) out (a |one |some |the )?(copy|copies|xerox|print|printout)': 'made $2$3'
+  '(taking) out (a |one |some |the )?(copy|copies|xerox|print|printout)': 'making $2$3'
+  '(take) out (the |a |my |his |her |their |your )?(driver''s license|driver license|driving license|passport|visa|document|documents|certificate|degree|diploma|ID|id)': 'get $2$3'
+  '(takes) out (the |a |my |his |her |their |your )?(driver''s license|driver license|driving license|passport|visa|document|documents|certificate|degree|diploma|ID|id)': 'gets $2$3'
+  '(took) out (the |a |my |his |her |their |your )?(driver''s license|driver license|driving license|passport|visa|document|documents|certificate|degree|diploma|ID|id)': 'got $2$3'
+  '(taking) out (the |a |my |his |her |their |your )?(driver''s license|driver license|driving license|passport|visa|document|documents|certificate|degree|diploma|ID|id)': 'getting $2$3'
+  '(take) out (a |a good |a bad |a great |a high |a low |good |bad |great |high |low |the best |the worst |a \d+ |\d+ )?(grade|grades|note|notes|score|mark|marks) (in|on|at)': 'get $2$3 $4'
+  '(takes) out (a |a good |a bad |a great |a high |a low |good |bad |great |high |low |the best |the worst |a \d+ |\d+ )?(grade|grades|note|notes|score|mark|marks) (in|on|at)': 'gets $2$3 $4'
+  '(took) out (a |a good |a bad |a great |a high |a low |good |bad |great |high |low |the best |the worst |a \d+ |\d+ )?(grade|grades|note|notes|score|mark|marks) (in|on|at)': 'got $2$3 $4'
+  '(taking) out (a |a good |a bad |a great |a high |a low |good |bad |great |high |low |the best |the worst |a \d+ |\d+ )?(grade|grades|note|notes|score|mark|marks) (in|on|at)': 'getting $2$3 $4'
+  '(take) out (a |the |some |my |your )?(conclusion|conclusions)': 'draw $2$3'
+  '(takes) out (a |the |some |my |your )?(conclusion|conclusions)': 'draws $2$3'
+  '(took) out (a |the |some |my |your )?(conclusion|conclusions)': 'drew $2$3'
+  '(taking) out (a |the |some |my |your )?(conclusion|conclusions)': 'drawing $2$3'

@@ -1,0 +1,14 @@
+# tirar calques whose English fix is a rephrase, not a slot fill; the message
+# names the pattern. See docs/03-brazilian-english-mistakes.md.
+extends: existence
+message: "'%s' is a tirar calque. English rephrases it: 'come in first' (tirar primeiro lugar), 'catch up' (tirar o atraso), 'set aside time' (tirar um tempo), 'clear the table' (tirar a mesa), 'make fun of' (tirar sarro), 'handle easily' (tirar de letra)."
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - '\b(?:take|takes|took|taking)\s+out\s+(?:first|second|third|last)\s+place\b'
+  - '\b(?:take|takes|took|taking)\s+out\s+(?:the |a |some )?(?:delay|backlog)\b'
+  - '\b(?:take|takes|took|taking)\s+out\s+(?:a |some |the )?(?:time|moment|minutes|day|afternoon)\s+(?:to|for)\b'
+  - '\b(?:take|takes|took|taking)\s+out\s+(?:the |a )?table\b'
+  - '\b(?:take|takes|took|taking)\s+out\s+(?:sarro|onda)\s+(?:of|with|from)\b'
+  - '\b(?:take|takes|took|taking)\s+out\s+(?:of|from)\s+(?:the )?letter\b'

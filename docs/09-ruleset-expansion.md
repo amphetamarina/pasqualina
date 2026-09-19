@@ -753,6 +753,7 @@ state* (marital status), *fiscal* (tax), *judicial* overuse — skip.
 | 4a | `styles: extend Collocations with make/win` | Collocations, CollocationsPhrases | 80 |
 | 4b | `styles: extend Collocations with lose/pass and re-home win` | Collocations, CollocationsPhrases | 28 |
 | 5 | `styles: add TakeOut (tirar calques)` | TakeOut | 15 |
+| 5b | `styles: add TakeOut — rephrase companion` | TakeOutPhrases | 6 |
 | 6 | `styles: add Stay (ficar calques)` | Stay | 12 |
 | 7 | `styles: extend Prepositions — place and time` | Prepositions | 35 |
 | 8 | `styles: extend Prepositions — verb and adjective complements` | Prepositions | 30 |
