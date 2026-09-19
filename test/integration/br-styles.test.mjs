@@ -47,6 +47,12 @@ describe("BR styles", () => {
         });
         assert.deepEqual(extra, [], `lines flagged by more than one BR rule`);
       });
+
+      it("never emits a literal $n in a suggestion", async () => {
+        const issues = await runVale(text);
+        const bad = issues.filter((i) => i.rule.startsWith("BR.") && i.suggestions.some((s) => /\$[0-9]/.test(s)));
+        assert.deepEqual(bad.map((i) => `${i.line}: ${i.rule} '${i.matched}' -> ${JSON.stringify(i.suggestions)}`), []);
+      });
     });
   }
 });
