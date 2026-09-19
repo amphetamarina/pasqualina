@@ -1,0 +1,14 @@
+# Calques of Portuguese ficar com (= keep) where English uses keep; per-form
+# so the one-click fix keeps the tense.
+# Catalogue with sources: docs/03-brazilian-english-mistakes.md
+extends: substitution
+message: "English says '%s', not '%s' (ficar com = keep)."
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  '(stay) with (the |a |some |my |your |his |her |their |our |this |that |these |those )?(change|money|book|keys|car|copy|receipt|ticket|file|files|document|documents|rest|remainder|leftovers|bag|umbrella|phone|charger|pen|notes)': 'keep $2$3'
+  '(stays) with (the |a |some |my |your |his |her |their |our |this |that |these |those )?(change|money|book|keys|car|copy|receipt|ticket|file|files|document|documents|rest|remainder|leftovers|bag|umbrella|phone|charger|pen|notes)': 'keeps $2$3'
+  '(stayed) with (the |a |some |my |your |his |her |their |our |this |that |these |those )?(change|money|book|keys|car|copy|receipt|ticket|file|files|document|documents|rest|remainder|leftovers|bag|umbrella|phone|charger|pen|notes)': 'kept $2$3'
+  '(staying) with (the |a |some |my |your |his |her |their |our |this |that |these |those )?(change|money|book|keys|car|copy|receipt|ticket|file|files|document|documents|rest|remainder|leftovers|bag|umbrella|phone|charger|pen|notes)': 'keeping $2$3'

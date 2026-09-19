@@ -1,0 +1,17 @@
+# ficar calques whose English fix is a rephrase, not a slot fill; the message
+# names the pattern. See docs/03-brazilian-english-mistakes.md.
+extends: existence
+message: "'%s' is a ficar calque. English rephrases it: 'find out' (ficar sabendo), 'get a headache' (ficar com dor de cabeça), 'be unsure' (ficar em dúvida), 'look good on you' (ficar bem em você), 'keep an eye on' (ficar de olho), 'rest assured' (ficar em paz), 'it comes to' (ficar em), 'go without' (ficar sem)."
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - '\b(?:stay|stays|stayed|staying)\s+knowing(?:\s+(?:that|about|of))?\b'
+  - '\b(?:stay|stays|stayed|staying)\s+with\s+(?:a |the )?(?:headache|fever|flu|cold|cough|hunger|thirst|fear|shame|doubt|doubts|will|laziness|pity|anger|envy|jealousy)\b'
+  - '\b(?:stay|stays|stayed|staying)\s+(?:in|at)\s+(?:the |a )?(?:doubt|silence|foot|feet|standing|line|queue)\b'
+  - '\b(?:stay|stays|stayed|staying)\s+(?:good|bad|nice|great|beautiful|ugly|cool|strange|weird|odd|expensive|cheap|big|small|tight|loose|long|short)\s+(?:on|in|for|to)\s+(?:you|me|him|her|us|them|the)\b'
+  - '\b(?:stay|stays|stayed|staying)\s+(?:of|to|for)\s+(?:eye|eyes)(?:\s+(?:on|in))?\b'
+  - '\b(?:stay|stays|stayed|staying)\s+(?:at|in)\s+(?:the )?(?:peace|ease)\b'
+  - '\b(?:it|that|this)?\s*(?:stays|stayed|stay)\s+(?:at|in|for)\s+(?:\d+|R\$)\b'
+  - '\b(?:stay|stays|stayed|staying)\s+(?:a |one |two |three )?(?:day|days|week|weeks|month|months|year|years|hour|hours|night|nights|time|while)\s+without\b'
+  - '\b(?:stay|stays|stayed|staying)\s+without\s+(?:money|food|water|light|power|electricity|internet|signal|battery|gas|fuel|air|breath|words|voice|sleep|patience|options|choice|time|job|work|nothing|anything)\b'
