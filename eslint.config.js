@@ -56,13 +56,12 @@ export default [
     languageOptions: { globals: globals.browser },
   },
   {
-    // the adapters' only allowed internals are the three pure modules
     files: ["src/harper/**", "src/vale/**"],
     rules: {
       "no-restricted-imports": ["error", {
         patterns: [{
-          group: ["!../offsets.mjs", "!../issues.mjs", "!../memo.mjs", "!./normalize.mjs", "!harper.js", "!harper.js/binary", "!node:/*", "!../http/**"],
-          message: "adapters import only the pure modules (offsets, issues, memo), their own normalize, and their tool",
+          regex: "^(?!(?:\\./normalize\\.mjs$|\\.\\./offsets\\.mjs$|\\.\\./issues\\.mjs$|\\.\\./memo\\.mjs$|harper\\.js(?:/binary)?$|node:|\\.\\./http/)).+$",
+          message: "adapters import only the pure modules (offsets, issues, memo), their own normalize, their tool, node builtins, and src/http",
         }],
       }],
     },
