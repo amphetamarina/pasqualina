@@ -7,13 +7,14 @@ ignorecase: true
 nonword: true
 tokens:
   - '\b(?:I|you|we|they|he|she|it)\s+(?:have|has|had)\s+(?:much |a lot of |so much |too much )?pity\s+(?:of|for)\b'
-  - '\b(?:I|you|we|they|he|she|it)\s+(?:have|has|had)\s+(?:much |a lot of |some |no )?(?:will|wish|desire)\s+to\s+\w+'
+  - '\b(?:I|you|we|they|he|she|it)\s+(?:have|has|had)\s+(?:much |a lot of |some )?(?:will|wish|desire)\s+to\s+\w+'
   - '\b(?:I|you|we|they|he|she|it)\s+(?:have|has|had)\s+(?:much |a lot of |great |no |some )?difficulty\s+to\s+\w+'
   - '\b(?:I|you|we|they|he|she|it)\s+(?:have|has|had)\s+(?:much |a lot of |great |no |some )?facility\s+(?:to|with|for|in)\b'
   - '\b(?:I|you|we|they|he|she|it)\s+(?:have|has|had)\s+(?:the |no |much )?necessity\s+(?:of|to)\b'
   - '\b(?:I|you|we|they|he|she|it)\s+(?:have|has|had)\s+(?:no |the |some |enough )?conditions?\s+to\b'
   - '\b(?:am|is|are|was|were)\s+with\s+(?:a |the |much |a lot of )?(?:headache|fever|flu)\b'
   - '\b(?:don''t|doesn''t|didn''t|do not|does not|did not|not)\s+have\s+how\s+to\b'
-  - '\b(?:take|takes|took|taking|clear|clears|cleared|clearing|remove|removes|removed|removing|ask|asks|asked|asking)\s+(?:out\s+)?(?:a |my |your |his |her |their |some |the |any )?doubts?\b'
-  - '\b(?:I|you|we|they|he|she|it)\s+(?:have|has|had)\s+(?:a |any |some |many |no )?doubts?\b(?!\s+about)'
-  - '\b(?:did|made|make|makes|completed|complete|completes)\s+(?:\d+|two|three|four|five|ten|twenty|thirty|forty|fifty)\s+years(?:\s+old)?\b'
+  - '\b(?:take|takes|took|taking|ask|asks|asked|asking)\s+(?:out\s+)?(?:a |my |your |his |her |their |some |the |any )?doubts?\b'
+  - '\b(?:I|you|we|they|he|she|it)\s+(?:have|has|had)\s+(?:a |any |some |many )?doubts?\b(?!\s+(?:about|that|whether|if|as to|regarding|concerning)\b)'
+  - '\b(?:did|made|make|makes|completed|complete|completes)\s+(?:\d+|two|three|four|five|ten|twenty|thirty|forty|fifty)\s+years(?:\s+old)?\b(?!\s+(?:of|in|at|as|with)\b)'
+  - '\b(?:any|some) doubts\?'
