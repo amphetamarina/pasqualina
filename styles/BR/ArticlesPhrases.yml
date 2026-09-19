@@ -1,0 +1,15 @@
+# Article calques whose English fix is a rephrase; the message names the
+# pattern. See docs/03-brazilian-english-mistakes.md.
+extends: existence
+message: "'%s' is a Portuguese article calque. English rephrases it: 'every day' (todos os dias), 'everyone / the whole world' (todo mundo), 'all over the world' (no mundo todo), 'most of' (a maioria de), 'go to school' (ir à escola), 'at home / in bed', 'what is your name' (qual é)."
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - '\ball the (days|nights|mornings|afternoons|evenings|weeks|months|years|times|weekends|mondays|tuesdays|wednesdays|thursdays|fridays|saturdays|sundays|hours|minutes)\b'
+  - '\ball the (world|people|persons)\b'
+  - '\b(in|of|around|across) all the world\b'
+  - '\bthe (half|double|triple|majority|most part|biggest part|major part|greater part|great part) of\b'
+  - '\bgo(es|ing|ne)? to the (school|church|work|bed|college|university|prison|jail|court|class|hospital|sea)\b'
+  - '\b(in|at) the (home|bed)\b'
+  - '\bwhich is (your|his|her|their|our|my|the) (name|age|job|address|phone number|number|email|e-mail|nationality|problem|question|difference|reason|meaning|purpose|opinion|answer|solution|goal|objective|plan|idea|point|favorite|favourite|price|deadline|budget|priority|status|situation|role|function|next step|first step|best way|best option)\b'
