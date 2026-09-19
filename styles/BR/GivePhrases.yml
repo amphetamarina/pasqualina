@@ -1,0 +1,20 @@
+# dar calques whose English fix is a rephrase, not a slot fill; the message
+# names the pattern. See docs/03-brazilian-english-mistakes.md.
+extends: existence
+message: "'%s' is a dar calque. English rephrases it: 'go for a walk' (dar uma volta), 'stop by' (dar um pulo), 'cause trouble' (dar problema), 'went wrong / worked' (deu errado/certo), 'it's possible' (dá para), 'makes me …' (dá medo), 'take a break' (dar um tempo), 'find a way' (dar um jeito), 'tell off' (dar bronca), 'get along' (dar-se bem), 'show up' (dar as caras)."
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - '\b(?:give|gives|gave|giving)\s+(?:a |one )?(?:walk|stroll|turn)\b'
+  - '\b(?:give|gives|gave|giving)\s+(?:a |one )?jump\s+(?:at|in|to|by)\b'
+  - '\b(?:give|gives|gave|giving)\s+(?:a |one |some |much |a lot of )?(?:problem|problems)\b'
+  - '\b(?:gave|gives|give|giving)\s+(?:everything |all |it )?(?:wrong|certain|right|good|bad)\b'
+  - '\b(?:didn''t|did not|doesn''t|does not|won''t|will not)\s+give\s+(?:certain|right|wrong)\b'
+  - '\b(?:it|this|that)\s+(?:gives|gave|give)\s+to\s+\w+'
+  - '\b(?:gives|gave|give)\s+(?:me|you|him|her|us|them)\s+(?:fear|hunger|sleep|thirst|laziness|anger|shame|pity|will|envy|headache|work|luck|bad luck|profit|loss)\b'
+  - '\b(?:give|gives|gave|giving)\s+(?:a |one )(?:time|break|pause|rest)\b'
+  - '\b(?:give|gives|gave|giving)\s+(?:a |one )way\s+(?:to|for)\b'
+  - '\b(?:give|gives|gave|giving)\s+(?:a |one )?(?:bronca|scold|scolding)\b'
+  - '\b(?:gives|give|gave|giving)\s+(?:myself|yourself|himself|herself|ourselves|themselves)\s+(?:well|badly|bad|good)(?:\s+with)?\b'
+  - '\b(?:give|gives|gave|giving)\s+the\s+faces?\b'

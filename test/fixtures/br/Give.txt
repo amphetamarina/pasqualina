@@ -1,0 +1,15 @@
+Give a look at this.
+He gives a look at the paper.
+She gave a look at the paper.
+They have given a look at the paper.
+He is giving a look at the paper.
+I give an error.
+It gives an error.
+It gave an error.
+It has given an error.
+It is giving an error.
+Give a step forward.
+He gives a step forward.
+He gave a step forward.
+He has given a step forward.
+He is giving a step forward.

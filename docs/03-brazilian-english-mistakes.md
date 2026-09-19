@@ -178,7 +178,10 @@ harper.js 2.10.0.*
 | have/be with sleepiness → be sleepy | ter sonolência | `BR.States` |
 | I had X → I was X; we/you/they had X → were X | ter/estar com (past) | `BR.States` |
 | put attention → pay attention | prestar atenção | Collocations |
-| give a look → take a look | dar uma olhada | Collocations; H has `HaveTakeALook` for other forms |
+| give a look → take a look | dar uma olhada | `BR.Give`; H has `HaveTakeALook` for other forms |
+| give an error → throw an error | dar erro | `BR.Give` |
+| give a step → take a step | dar um passo | `BR.Give` |
+| give a walk/jump/problems/wrong/time/way/bronca; give me fear; give-se bem; give the faces | dar uma volta/pulo/problema/errado/tempo/jeito/bronca/medo/se bem/as caras | `BR.GivePhrases` (existence; rephrase) |
 | close/open the light, TV, computer → turn off/on | fechar/abrir | Collocations; H (`OpenTheLight`) did not fire on "close" in 2.3.0 |
 | say me → tell me; tell to me → tell me | dizer para mim | Collocations |
 | explain me → explain to me | explicar-me | Collocations |

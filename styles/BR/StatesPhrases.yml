@@ -18,3 +18,4 @@ tokens:
   - '\b(?:I|you|we|they|he|she|it)\s+(?:have|has|had)\s+(?:a |any |some |many )?doubts?\b(?!\s+(?:about|that|whether|if|as to|regarding|concerning)\b)'
   - '\b(?:did|made|make|makes|completed|complete|completes)\s+(?:\d+|two|three|four|five|ten|twenty|thirty|forty|fifty)\s+years(?:\s+old)?\b(?!\s+(?:of|in|at|as|with)\b)'
   - '\b(?:any|some) doubts\?'
+  - '(?m)(?:^|(?<=[.!?]\s))with certainty[.!]?'

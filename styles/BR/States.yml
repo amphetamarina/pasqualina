@@ -82,7 +82,6 @@ swap:
   '(I|you|we|they) (?:was|were) not agree': '$1 did not agree'
   '(he|she) was not agree': '$1 did not agree'
   '(am|is|are|was|were) with (\d+) years( old)?(?!\s+of\b)': '$1 $2 years old'
-  'with certainty': 'definitely'
   '(there is|there''s|there was|there were) no how( to)?': '$1 no way$2'
   '(I) (?:have|''ve) (?:much |a lot of |so much |too much )?anger(?!\s+\w)': '$1 am angry'
   '(you|we|they) (?:have|''ve) (?:much |a lot of |so much |too much )?anger(?!\s+\w)': '$1 are angry'

@@ -748,6 +748,7 @@ state* (marital status), *fiscal* (tax), *judicial* overuse — skip.
 | 2b | `styles: extend States with article/noun-phrase and singles` | States, StatesPhrases | 33 |
 | 2c | `styles: add States — extra states and past tense` | States | 52 |
 | 3 | `styles: add Give (dar calques)` | Give | 25 |
+| 3b | `styles: add Give — rephrase companion` | GivePhrases | 12 |
 | 4 | `styles: extend Collocations with make/win/lose/pass` | Collocations | 35 |
 | 5 | `styles: add TakeOut (tirar calques)` | TakeOut | 15 |
 | 6 | `styles: add Stay (ficar calques)` | Stay | 12 |
