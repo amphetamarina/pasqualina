@@ -1,0 +1,13 @@
+# Relative-pronoun calques whose English fix is a rephrase; the message names
+# the pattern. See docs/03-brazilian-english-mistakes.md.
+extends: existence
+message: "'%s' is a Portuguese relative-pronoun calque. English rephrases it: 'that / which' for things (o livro que -> the book that), 'who' for people, 'everything that' (tudo o que), 'where' (em que), 'this kind of thing' (esse tipo de coisa)."
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - '\b(book|books|car|cars|house|houses|thing|things|problem|problems|idea|ideas|movie|movies|film|films|song|songs|place|places|city|cities|country|countries|company|companies|project|projects|product|products|system|systems|method|methods|question|questions|answer|answers|word|words|sentence|sentences|text|texts|article|articles|paper|papers|study|studies|result|results|reason|reasons|way|ways|time|times|day|days|year|years|part|parts|piece|pieces|table|tables|chair|chairs|door|doors|window|windows|phone|phones|computer|computers|app|apps|website|websites|game|games|test|tests|exam|exams|class|classes|course|courses|lesson|lessons|meeting|meetings|trip|trips|party|parties|event|events|plan|plans|option|options|choice|choices|decision|decisions|change|changes|process|processes|story|stories|language|languages|name|names|number|numbers|price|prices|value|values|job|jobs|task|tasks|goal|goals|dream|dreams|team|teams|tool|tools|file|files|page|pages|line|lines|item|items|step|steps|form|forms|type|types|kind|kinds|level|levels|group|groups|version|versions|model|models|solution|solutions|alternative|alternatives|moment|moments|hour|hours|minute|minutes|week|weeks|month|months) (who|whom)\b'
+  - '\b(all|everything|nothing|something|anything|the only thing|the thing|the same) what\b'
+  - '\bin (the )?which (I|you|he|she|it|we|they) (live|lives|lived|work|works|worked|study|studies|studied|stay|stays|stayed|sleep|sleeps|slept|sit|sits|sat|eat|eats|ate|meet|meets|met|play|plays|played|grew up|was born|were born|are|is|was|were)\b'
+  - '\b(this|that) (kinds?|types?|sorts?) of (\w+s)\b'
+  - '\b(these|those) (kind|type|sort) of\b'

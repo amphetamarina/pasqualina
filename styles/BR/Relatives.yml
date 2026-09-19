@@ -1,0 +1,11 @@
+# Relative-pronoun calques (a pessoa que -> the person who). Exact fixes only.
+# Catalogue with sources: docs/03-brazilian-english-mistakes.md
+extends: substitution
+message: "English says '%s', not '%s' (relative pronoun)."
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  '(person|people|man|men|woman|women|boy|boys|girl|girls|guy|guys|friend|friends|colleague|colleagues|student|students|teacher|teachers|doctor|doctors|lawyer|lawyers|engineer|engineers|developer|developers|designer|designers|manager|managers|boss|bosses|professor|professors|child|children|kid|kids|baby|babies|mother|mothers|father|fathers|brother|brothers|sister|sisters|son|sons|daughter|daughters|husband|husbands|wife|wives|partner|partners|neighbour|neighbours|neighbor|neighbors|customer|customers|client|clients|user|users|employee|employees|worker|workers|player|players) which': '$1 who'
+  '(author|authors|writer|writers|artist|artists|singer|singers|actor|actors|actress|actresses|director|directors|president|presidents|minister|ministers|politician|politicians|leader|leaders|expert|experts|specialist|specialists|scientist|scientists|researcher|researchers|candidate|candidates|applicant|applicants|winner|winners|owner|owners|driver|drivers|passenger|passengers|patient|patients|nurse|nurses|officer|officers|soldier|soldiers|farmer|farmers|cook|cooks|chef|chefs|waiter|waiters|guest|guests|visitor|visitors|tourist|tourists|stranger|strangers|someone|somebody|anyone|anybody|everyone|everybody|nobody) which': '$1 who'

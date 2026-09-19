@@ -225,6 +225,8 @@ harper.js 2.10.0.*
 | enough good → good enough | bom o suficiente | Degree |
 | more old → older (-er/-est); speaks very good → speaks very well; too much people → too many people; each day more → more and more | mais velho / fala bem / gente demais / cada vez mais | DegreePhrases (existence) |
 | definitively → definitely; specially → especially; the last news → the latest news | definitivamente / especialmente / a última notícia | DegreeSuggestions (existence, suggestion) |
+| the person which → the person who | a pessoa que | Relatives |
+| the book who → the book that; everything what → everything that; in which I live → where I live; this kind of things → this kind of thing | o livro que / tudo o que / em que / esse tipo de coisa | RelativesPhrases (existence) |
 | since 3 years → for 3 years | há 3 anos | H (`SinceDuration`) |
 | think in you → think about you | pensar em | Prepositions |
 | dream with → dream about | sonhar com | Prepositions |
