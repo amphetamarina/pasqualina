@@ -131,8 +131,8 @@ that pins the Portuguese meaning, never bare.
 
 ## 2. Grammar calques
 
-*`BR.States`: Harper was silent on all 46 State candidates, tested
-2026-09-18 with harper.js 2.10.0.*
+*`BR.States` / `BR.StatesPhrases`: Harper was silent on all 46 State
+candidates, tested 2026-09-18 with harper.js 2.10.0.*
 
 | Wrong → right | Trigger | Rule |
 |---|---|---|
@@ -145,7 +145,20 @@ that pins the Portuguese meaning, never bare.
 | do a mistake → make a mistake | — | H (`DoMistake`) |
 | lose time → waste time | perder tempo | Collocations |
 | take a decision → make a decision | tomar uma decisão | Collocations |
-| have sure → be sure | ter certeza | Collocations (moves to `BR.States` in 2b) |
+| have sure → be sure | ter certeza | `BR.States` |
+| have headache → have a headache | estar com dor de cabeça | `BR.States` |
+| have fever → have a fever | estar com febre | `BR.States` |
+| have flu → have the flu | estar com gripe | `BR.States` |
+| have/be with pain → be in pain | estar com dor | `BR.States` |
+| have reason → be right | ter razão | `BR.States` |
+| have care → be careful | ter cuidado | `BR.States` |
+| have laziness → be lazy | ter preguiça | `BR.States` |
+| be agree → agree | estar de acordo | `BR.States` |
+| be with N years → be N years old | estar com N anos | `BR.States` |
+| any doubts? → any questions? | alguma dúvida? | `BR.States` |
+| with certainty → definitely | com certeza | `BR.States` |
+| there is no how → there is no way | não tem como | `BR.States` |
+| have pity of → feel sorry for; have will to → feel like; have difficulty to; have facility; have necessity; have no conditions to; be with headache/fever/flu; don't have how to; take out/clear/ask doubts; have doubts; did N years | ter pena, ter vontade, ter dificuldade/facilidade/necessidade, ter condições, estar com X, não ter como, tirar dúvida, fazer N anos | `BR.StatesPhrases` (existence; rephrase) |
 | have luck / be with luck → be lucky | ter sorte / estar com sorte | `BR.States` |
 | have/be with hunger → be hungry | ter fome / estar com fome | `BR.States` |
 | have/be with thirst → be thirsty | ter sede / estar com sede | `BR.States` |
