@@ -1,0 +1,15 @@
+# Verb-complementation calques whose English fix is a rephrase; the message
+# names the pattern. See docs/03-brazilian-english-mistakes.md.
+extends: existence
+message: "'%s' is a Portuguese complementation calque. English rephrases it: 'must go' (deve ir), 'enjoy doing' (gosto de fazer), 'worth doing', 'so that', 'I hope so', 'maybe' (pode ser), 'of course' (logicamente)."
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - '\b(?:must|could|should|would|can|may|might|cannot|can''t|couldn''t|shouldn''t|wouldn''t|won''t|mustn''t)\s+to\s+\w+'
+  - '\b(?:enjoy|enjoys|enjoyed|avoid|avoids|avoided|finish|finishes|finished|mind|minds|minded|consider|considers|considered|suggest|suggests|suggested|recommend|recommends|recommended|practice|practise|practices|practised|keep|keeps|kept|imagine|imagined|miss|misses|missed|deny|denied|delay|delayed|postpone|postponed|admit|admitted|appreciate|appreciated|can''t stand|couldn''t stand|can''t help|couldn''t help|look forward to|looking forward to|be used to|get used to|feel like|felt like|worth|worthwhile)\s+to\s+\w+'
+  - '\b(?:is|are|was|were|be|been|being)\s+(?:not\s+)?(?:worth|worthwhile)\s+(?:to|of)\b'
+  - '\b(?:for|in order)\s+(?:that|to that)\s+(?:I|you|he|she|it|we|they)\s+(?:can|could|may|might|will|would)\b'
+  - '\b(?:I|we|you|they|he|she)\s+(?:wait|waits|waited|hope|hopes|hoped)\s+(?:that|so)\b'
+  - '(?m)(?:^|(?<=[.!?]\s))(?:can|could)\s+be(?:[.!?,]| that)'
+  - '(?m)(?:^|(?<=[.!?]\s))(?:logically|obviously|clearly|naturally),?\s+(?:yes|no|that|it|this|I|we|you|they|he|she)\b'

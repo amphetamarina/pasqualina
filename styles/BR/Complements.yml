@@ -1,0 +1,18 @@
+# Verb-complementation calques (quero que, gosto de fazer, deve ir). Exact
+# fixes only; the -ing rephrases live in ComplementsPhrases.
+# Catalogue with sources: docs/03-brazilian-english-mistakes.md
+extends: substitution
+message: "English says '%s', not '%s' (Portuguese complementation)."
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  '(instead|rather) to': 'instead of'
+  '(instead|rather) of to': 'instead of'
+  '(despite|in spite) of to': 'despite'
+  '(thanks) god': 'thank God'
+  'thank to god': 'thank God'
+  'if god (wants|want|wills|will)': 'God willing'
+  '(let|lets|letting|make|makes|made|making) (me|you|him|her|us|them) to (\w+)': '$1 $2 $3'
+  '(I|you|we|they|he|she) (know|knows|knew) to (\w+)': '$1 $2 how to $3'

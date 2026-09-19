@@ -758,6 +758,7 @@ state* (marital status), *fiscal* (tax), *judicial* overuse — skip.
 | 7 | `styles: extend Prepositions — place and time` | Prepositions | 18 |
 | 7b | `styles: extend Prepositions — time phrases and CVC -ing` | Prepositions, PrepositionsPhrases | 13 |
 | 8 | `styles: extend Prepositions — verb and adjective complements` | Prepositions | 26 |
+| 9 | `styles: add Complements (verb complementation)` | Complements, ComplementsPhrases | 15 |
 | 9 | `styles: add Complements (verb complementation)` | Complements | 20 |
 | 10 | `styles: add Articles` | Articles | 20 |
 | 11 | `styles: add Agreement` | Agreement | 12 |
