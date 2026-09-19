@@ -167,6 +167,12 @@ own `Vale` style is built in and needs no sync.
   matters for sentence-start anchors: `(?:^|[.!?]\s+)` swallows the
   previous sentence's period and newline, so the alert lands on the
   **previous line**. Use `(?m)(?:^|(?<=[.!?]\s))` instead.
+- **But a `substitution` key that uses `$n` in its value is silently
+  dropped when the key also contains a positive lookahead `(?=…)` or
+  lookbehind `(?<=…)`** (negative lookahead `(?!…)` is fine). Vale
+  evidently switches engines once `$n` is present; the rule just never
+  fires, with no error. Worked around in `States.yml` by requiring a
+  clause end with `(?!\s+\w)`. Verified on 3.14.2.
 - A literal `-` argument for stdin returns `{}`; just redirect stdin.
 - JSON alerts also carry a `Suggestions` array (same content as
   `Action.Params` for `replace`); `lint.mjs` reads `Action`.
