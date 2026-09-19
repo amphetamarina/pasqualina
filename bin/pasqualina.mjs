@@ -5,6 +5,11 @@ import { lintAll } from "../src/lint.mjs";
 
 const pkg = JSON.parse(fs.readFileSync(new URL("../package.json", import.meta.url), "utf8"));
 
+process.stdout.on("error", (error) => {
+  if (error.code === "EPIPE") process.exit(0);
+  throw error;
+});
+
 process.exitCode = await run(process.argv.slice(2), {
   stdin: process.stdin,
   stdout: (text) => process.stdout.write(text),
