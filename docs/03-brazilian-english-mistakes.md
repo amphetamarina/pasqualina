@@ -210,6 +210,9 @@ harper.js 2.10.0.*
 | in the next week → next week | na próxima semana | Prepositions |
 | in the night → at night; at the morning → in the morning; in Christmas → at Christmas; in the bus → on the bus; on the picture → in the picture; in the phone → on the phone; in home → at home; in the age of 20 → at the age of 20; during three days → for three days; by example → for example; by the other side → on the other hand; by this reason → for this reason; by the first time → for the first time; by the contrary → on the contrary; at the least → at least; of sudden → suddenly; count with → count on; have to see with → have to do with | em/na/por… (lugar e tempo) | Prepositions |
 | the possibility to do → the possibility of doing (silent-e verbs fixed: of solving/making/writing, not 'solveing') | possibilidade de fazer | Prepositions |
+| the habit to stop → the habit of stopping; the risk to run → the risk of running; the idea to begin → the idea of beginning | (CVC doubling) | Prepositions |
+| in this night → tonight; with 30 years I → at 30 I; for three days ago → three days ago; in first place → first; in special → especially; to the long of → along; leave it with me → leave it to me | nesta noite / com 30 anos / há três dias / em primeiro lugar / ao longo de | Prepositions |
+| there is N years that → it has been N years; in the truth → actually; of fact → in fact; of this form → this way; in the maximum → at most | faz N anos / na verdade / de fato / desta forma / no máximo | PrepositionsPhrases (existence) |
 | since 3 years → for 3 years | há 3 anos | H (`SinceDuration`) |
 | think in you → think about you | pensar em | Prepositions |
 | dream with → dream about | sonhar com | Prepositions |

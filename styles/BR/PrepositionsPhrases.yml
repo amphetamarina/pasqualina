@@ -1,0 +1,13 @@
+# Preposition calques whose English fix is a rephrase; the message names the
+# pattern. See docs/03-brazilian-english-mistakes.md.
+extends: existence
+message: "'%s' is a preposition calque. English rephrases it: 'it has been N years' (faz N anos), 'actually / in practice' (na verdade / na prática), 'really / in fact / again' (de verdade / de fato / de novo), 'this way / likewise' (desta forma), 'at most / at least' (no máximo / no mínimo)."
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - '\b(?:there is|there are|it has|has|have)\s+(?:\d+|two|three|four|five|ten|twenty|many|several|some)\s+(?:days|weeks|months|years)\s+(?:that|since|ago)\b'
+  - '\bin the (?:truth|reality|practice|real life|daily|day to day|day-to-day|routine)\b'
+  - '\bof (?:truth|fact|new|nothing)\b'
+  - '\bof (?:this|that|the same|certain|any|which|what)\s+(?:form|way|manner)\b'
+  - '\bin the (?:maximum|minimum)\b'
