@@ -13,7 +13,7 @@ tokens:
   - '\b(?:make|makes|made|making)\s+(?:a |the )?lack\b'
   - '\b(?:make|makes|made|making)\s+(?:a |one )?question\s+(?:of|to)\b'
   - '\b(?:make|makes|made|making)\s+(?:\d+|many|several|few|two|three|five|ten)\s+years\s+(?:that|since)\b'
-  - '\b(?:make|makes|made|making)\s+(?:the |his |her |my |your |their )?will\b'
+  - '\b(?:make|makes|made|making)\s+(?:the )?will\s+of\b'
   - '\b(?:make|makes|made|making)\s+(?:an? )?interviews?\s+(?:with|to)\b'
   - '\b(?:make|makes|made|making)\s+(?:a |the |my |your |his |her )?work\s+(?:for|of|about)\s+(?:school|the school|university|the course|the class)\b'
   - '\b(?:make|makes|made|making)\s+(?:a |one )?company\s+(?:to|for)\b'

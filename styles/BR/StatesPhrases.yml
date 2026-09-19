@@ -16,6 +16,6 @@ tokens:
   - '\b(?:don''t|doesn''t|didn''t|do not|does not|did not|not)\s+have\s+how\s+to\b'
   - '\b(?:take|takes|took|taking|ask|asks|asked|asking)\s+(?:out\s+)?(?:a |my |your |his |her |their |some |the |any )?doubts?\b'
   - '\b(?:I|you|we|they|he|she|it)\s+(?:have|has|had)\s+(?:a |any |some |many )?doubts?\b(?!\s+(?:about|that|whether|if|as to|regarding|concerning)\b)'
-  - '\b(?:did|made|make|makes|completed|complete|completes)\s+(?:\d+|two|three|four|five|ten|twenty|thirty|forty|fifty)\s+years(?:\s+old)?\b(?!\s+(?:of|in|at|as|with)\b)'
+  - '\b(?:did|completed|complete|completes)\s+(?:\d+|two|three|four|five|ten|twenty|thirty|forty|fifty)\s+years(?:\s+old)?\b(?!\s+(?:of|in|at|as|with)\b)'
   - '\b(?:any|some) doubts\?'
   - '(?m)(?:^|(?<=[.!?]\s))with certainty[.!]?'
